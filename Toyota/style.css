@@ -1,0 +1,334 @@
+@charset "UTF-8";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  padding-top: 75px;
+}
+
+.fixedtop {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+  position: fixed;
+  z-index: 30;
+  opacity: 0.9;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navlink {
+  font-size: 16px;
+  font-weight: bold;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
+}
+
+.navlink a {
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 30px;
+  border-bottom: 4px solid transparent;
+  padding: 2.2% 0;
+}
+
+.navlink .link {
+  width: 170px;
+  height: 100%;
+  text-align: center;
+  margin: 0 7px;
+}
+
+.navlink .active {
+  border-bottom-color: #e41515;
+}
+
+.functionBoxOdd {
+  width: 960px;
+  height: 820px;
+  background-color: white;
+  margin: 75px auto;
+}
+
+.functiongroup {
+  width: 960px;
+  height: 430px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.functionandshadow {
+  width: 960px;
+  height: 390px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.shadow {
+  width: 440px;
+  height: 290px;
+  background-color: #eeeeee;
+  margin-top: 40px;
+}
+
+.function {
+  z-index: 1;
+}
+
+.functiontop {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: white;
+  width: 350px;
+  height: 140px;
+  background-color: #bb0404;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+
+.functiontop .functionnumber {
+  overflow: hidden;
+  font-weight: 100;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto 0 auto -23px;
+  text-align: center;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  font-size: 120px;
+}
+
+.functiontop .functiontitle {
+  margin: 44.5px 0px 44.5px -18px;
+  text-align: center;
+  font-size: 62px;
+}
+
+.functionbottom {
+  background-color: black;
+  width: 350px;
+  color: white;
+  font-family: 微軟正黑體;
+}
+
+.mainimg {
+  position: relative;
+  top: -250px;
+  left: 180px;
+  z-index: 0;
+}
+
+.videoicon {
+  width: 57px;
+  height: 36px;
+  z-index: 1;
+  position: relative;
+  top: -11%;
+  left: 14%;
+}
+
+.revolution {
+  background-color: #eeeeee;
+  width: 680px;
+  height: 275px;
+  position: relative;
+  top: -65%;
+  left: 5.2%;
+  font-style: 微軟正黑體;
+}
+
+.functionBoxEven {
+  width: 960px;
+  height: 725px;
+  background-color: white;
+  margin: 0px auto 100px;
+}
+
+.revolution.EvenSideStyle {
+  width: 680px;
+  height: 180px;
+  position: relative;
+  top: -64.9%;
+  left: 29.2%;
+}
+
+.functiontop.EvenSideStyle {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.mainimg.EvenSideStyle {
+  position: relative;
+  left: 1%;
+}
+
+.videoicon.EvenSideStyle {
+  position: relative;
+  left: -72.25%;
+}
+
+.shadow.EvenSideStyle {
+  position: relative;
+  left: 29.3%;
+  top: 5%;
+}
+
+.revolution.LastRevolution {
+  height: 180px;
+}
+
+.functionbottom h3 {
+  font-size: 25px;
+  font-weight: bold;
+  padding: 20px 50px 5px 25px;
+  line-height: 20px;
+}
+
+.revolutiondetails {
+  display: inline-block;
+  font-size: 16px;
+  color: white;
+  background-color: black;
+  text-align: center;
+  line-height: 1.2;
+  padding: 2px;
+  margin: 7px auto 7px 20px;
+}
+
+.revolutiontitle {
+  font-size: 18px;
+  font-weight: bolder;
+  color: #bb0404;
+  padding: 18px 10px 3px 20px;
+}
+
+.revolution p {
+  color: #686666;
+  margin: 0px 0px 0px 25px;
+  line-height: 23px;
+  font-size: 14.5px;
+}
+
+hr {
+  margin: 6px 10px;
+  display: inline-block;
+  width: 440px;
+  border-color: #bb0404;
+}
+
+.functionBoxEven .functiontop .functionnumber.EvenSideStyle {
+  overflow: hidden;
+  font-weight: 100;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin-right: -30px;
+  margin-left: -12px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  font-size: 120px;
+}
+
+.functiontitle {
+  margin: 44.5px 0px 44.5px -18px;
+  text-align: center;
+  font-size: 62px;
+}
+
+.functionbottom p {
+  line-height: 33px;
+  font-size: 18px;
+  padding: 5px 25px 15px;
+}
+/*# sourceMappingURL=style.css.map */
