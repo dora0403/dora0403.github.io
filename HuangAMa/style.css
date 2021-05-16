@@ -1,0 +1,195 @@
+body{
+  padding-top: 100px;
+}
+.top{
+  background-color:white;
+  position: fixed;
+  opacity: 0.98; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; 
+  box-sizing: border-box;
+}
+.menuicons{
+  color: rgb(73, 81, 85) ;
+  height: 30px;
+  text-align: right;
+  box-sizing: border-box;
+  position: relative;
+  right: 30px;
+  top: 15px;
+}
+.menuicons a{
+  color: rgb(73, 81, 85) ;
+  text-decoration: none;
+}
+.menuicons i{
+  margin-left: 20px;
+}
+.logo{
+  display: inline-block;
+}
+
+.logo img {
+  padding-left: 32px;
+  position: relative;
+  bottom: 8px;
+  height: 60px;
+  width: 60px;
+}
+
+.menulink{
+  display: inline-block;
+  margin-left: 60px;
+  position:absolute;
+  top: 55%;
+}
+.menulink a{
+  color: rgb(73, 81, 85) ;
+  text-decoration: none;
+  padding: 0px 13px 0px 0px;
+  
+}
+
+.menupic{
+  display: inline-block; 
+  width: 100%;
+  height: 440px;
+}
+
+.menupic img {
+  width: 100%;
+}
+.menupic img:hover{
+  content: url("封面動畫圖02.webp");
+}
+.firsttitle{
+  font-size: 23px;
+  text-align: center;
+  color: rgb(148, 152, 156);
+  margin: 30px 0px 0px 0px;
+}
+
+
+.title {
+  font-size: 23px;
+  text-align: center;
+  color: rgb(148, 152, 156);
+  margin: 80px 0px 0px 0px;
+}
+.dash {
+  color: rgb(228, 196, 54);
+  text-align: center;
+  font-size: 23px;
+  font-weight: 900;
+  margin: 0px 0px 5px;
+}
+.box {
+  width: 1120px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.item {
+  width: 250px;
+  margin: 15px 15px 10px;
+  box-sizing: border-box;
+  border: 1px solid white;
+}
+.item img {
+  width: 100%;
+}
+
+.txt p {
+  margin: 4px;
+  text-align: center;
+  font-size: 14px;
+  color: rgb(73, 81, 85);
+  line-height: 23px;
+}
+.txt .discount {
+  color: rgb(230, 190, 12);
+  font-size: 16px;
+  font-weight: bold;
+}
+.txt .original {
+  text-decoration: line-through;
+}
+
+.txt .nodiscount {
+  color: black;
+  font-size: 16px;
+}
+nav {
+  margin-top: 30px;
+  text-align: center;
+}
+
+nav a {
+  color: rgb(82, 75, 75);
+  text-decoration: none;
+  display: inline-block;
+  margin: 8px;
+}
+nav a:hover {
+  color: rgb(255, 9, 9);
+  border-bottom:  solid  rgb(230, 190, 12);
+}
+
+.footer {
+  width: 100%;
+  height: 75px;
+  font-size: 14px;
+  background-color: rgb(241, 234, 234);
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lastpageselection
+{
+  margin-bottom: 120px;
+}
+hr{
+  width: 90%;
+  align-items: center;
+  color: rgb(226, 219, 219);
+  opacity: 0.4;
+
+}
+.bottom {
+  margin: 20px 50px;
+  width: 1120px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.info {
+  color: rgb(82, 75, 75);
+  width: 330px;
+  margin: 20px 20px 20px 200px;
+  box-sizing: border-box;
+  border: 1px solid white;
+  line-height: 25px;
+}
+.info a {
+  font-size: 16px;
+  display: block;
+  text-decoration: none;
+  color: rgb(82, 75, 75);
+}
+.info h3 {
+  font-size: 22px;
+  text-decoration: none;
+  color: rgb(82, 75, 75);
+  padding: 5px 0px;
+}
+.info .infotitle {
+  font-size: 22px;
+  color: rgb(82, 75, 75);
+  padding: 5px 0px;
+}
+.info p {
+  font-size: 16px;
+  color: rgb(82, 75, 75);
+}
