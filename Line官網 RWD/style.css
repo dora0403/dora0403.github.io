@@ -1,0 +1,896 @@
+body {
+  padding-top: 75px;
+}
+/* *{
+    outline: 1px solid red;
+  } 檢查框架*/
+
+.fixedtop {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  position: fixed;
+  z-index: 10;
+  opacity: 0.9;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navlinkMobile {
+  display: none;
+}
+
+.toplogo {
+  margin: 0px 30px;
+}
+
+.toplogo img {
+  height: 15px;
+  width: 43px;
+}
+
+.navlink {
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.navlink a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  display: inline-block;
+  line-height: 30px;
+  border-bottom: 4px solid transparent;
+  margin: 0px 40px;
+}
+
+.navlink .active {
+  border-bottom-color: #000;
+}
+
+.topicons {
+  font-size: 14px;
+  color: black;
+  font-weight: bolder;
+  text-align: right;
+  box-sizing: border-box;
+  margin: 0px 30px;
+  padding-left: 10px;
+}
+
+.topicons a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.topicons i {
+  font-size: 20px;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: 微軟正黑體;
+  color: white;
+  font-weight: bolder;
+  position: relative;
+}
+
+.bannertxt {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  text-align: left;
+}
+
+.bannertxt h2 {
+  font-size: 140px;
+  margin-bottom: 20px;
+}
+
+.bannertxt h3 {
+  font-size: 40px;
+  padding-left: 10px;
+}
+
+.bannerimg {
+  margin-bottom: 40px;
+  transition: 1s;
+}
+
+.bannerimg img {
+  width: 100%;
+  /* animation: toppicchange 5s infinite alternate; */
+}
+
+.bannerimg img:hover {
+  content: url("img/toppicchange01.jpg");
+}
+
+/* @keyframes toppicchange {
+  0%{background-image: url("img/toppicchange01.jpg");}
+  100%{background-image: url("img/toppicchange02.jpg");}
+} */
+
+.title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+  font-weight: bold;
+}
+
+.title h2 {
+  font-size: 70px;
+}
+
+.title p {
+  font-size: 18px;
+  margin: 25px 0px 90px;
+  color: gray;
+  line-height: 25px;
+}
+
+.LineLifeGroup {
+  width: 100%;
+  margin: auto;
+  position: relative;
+}
+
+.LifeContainer {
+  width: 90%;
+  margin: auto;
+  display: flex;
+}
+
+.LifeContainer::before {
+  content: " ";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  background-color: white;
+  left: 49.7%;
+}
+
+.LifeContainer:last-child::after {
+  content: " ";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  background-color: white;
+  left: 49.47%;
+  bottom: -0.2%;
+}
+
+.LineLifeGroup .LifeContainer:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.LifeContainer .LifeDetails {
+  box-sizing: border-box;
+}
+
+.LifeContainer:nth-child(odd) .LifeDetails {
+  border-right: 1px dotted rgb(189, 188, 190);
+  padding: 10% 4% 10% 10%;
+}
+
+.LifeContainer:nth-child(odd) .LifePic {
+  padding: 10% 0% 10%;
+}
+
+.LifeContainer:nth-child(even) .LifeDetails {
+  border-left: 1px dotted rgb(189, 188, 190);
+  padding: 20% 4% 25% 10%;
+}
+
+.LifeContainer:nth-child(even) .LifePic {
+  padding: 20% 0% 10%;
+}
+
+.LifePic {
+  width: 50%;
+}
+
+.LifePic img {
+  width: 100%;
+}
+
+.LifeDetails {
+  width: 50%;
+}
+
+.LifeDetails .LifeIcon {
+  width: 36px;
+  height: 36px;
+  display: inline-block;
+}
+
+.LifeDetails .LifeTxt {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-weight: bolder;
+  font-family: 微軟正黑體;
+  font-size: 14px;
+}
+
+.LifeDetails h3 {
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.LifeDetails h4 {
+  font-size: 20px;
+  color: rgb(77, 189, 77);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.LifeDetails p {
+  font-size: 16px;
+  color: rgb(158, 161, 158);
+  margin-bottom: 35px;
+  line-height: 25px;
+}
+
+.LifeTxt .LifeMoreInfo {
+  color: rgb(75, 74, 74);
+  border: 1px solid rgb(212, 210, 210);
+  width: 150px;
+  height: 45px;
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.LifeTxt .LifeMoreInfo:hover {
+  background-color: rgb(77, 189, 77);
+  border-color: rgb(77, 189, 77);
+}
+
+.LifeTxt .LifeMoreInfo:hover a {
+  color: white;
+}
+
+.communicationsoftware {
+  background-color: #f7f8f9;
+  padding: 180px 0px;
+}
+
+.container {
+  width: 1080px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px auto;
+}
+
+.function {
+  text-align: center;
+  width: 360px;
+  height: 370;
+  line-height: 24px;
+  margin-bottom: 36px;
+}
+
+.function img {
+  width: 320px;
+  height: 240px;
+}
+
+.function h3 {
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bolder;
+  margin: 36px 20px 12px;
+}
+
+.function p {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.enterpriseservice {
+  width: 100%;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.enterpriseservice img {
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+}
+
+.enterpriseservice h2 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: white;
+  font-size: 46px;
+  font-weight: bolder;
+  position: absolute;
+  z-index: 1;
+}
+
+.Allproducts {
+  background-color: rgb(240, 239, 239);
+  padding: 180px 0px;
+}
+
+.productsection {
+  display: flex;
+  justify-content: center;
+}
+
+.productselect {
+  width: 300px;
+  height: 572px;
+  box-sizing: border-box;
+  padding-left: 70px;
+  margin-top: 70px;
+  position: sticky;
+  top: 200px;
+}
+
+.productselect button {
+  background-color: rgb(255, 255, 255);
+  color: gray;
+  font-size: 14px;
+  font-weight: bolder;
+  border: 1px solid rgb(129, 128, 128);
+  border-radius: 20px;
+  display: inline-block;
+  text-align: center;
+  align-items: flex-start;
+  padding: 8px 10px;
+  margin: 0px 0px 12px;
+}
+
+.productselect .clicked {
+  color: white;
+  background-color: rgb(77, 189, 77);
+}
+
+.productcontainer {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 940px;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 70px;
+  justify-content: space-evenly;
+}
+
+.product {
+  width: 250px;
+  height: 330px;
+  margin: 30px;
+  text-align: left;
+  line-height: 24px;
+  background-color: white;
+  box-shadow: 3px 3px 3px 3px rgb(202, 202, 202);
+  box-sizing: border-box;
+  position: relative;
+  padding: 40px;
+}
+
+.txt {
+  display: flex;
+  flex-direction: column;
+  height: 190px;
+}
+
+.product img {
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+}
+
+.product h3 {
+  font-size: 24px;
+  font-weight: bolder;
+  margin: 10px 0px;
+}
+
+.product p {
+  font-size: 14px;
+  flex-grow: 1;
+  /* 文字佔剩下的部分 讓下面的漢堡icon貼底 */
+}
+
+.product i {
+  color: rgb(199, 199, 199);
+}
+
+.darkpage {
+  position: absolute;
+  /* 絕對定位 以父層product為基準點*/
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0%;
+  transition: 0.5s;
+}
+
+.product:hover .darkpage {
+  opacity: 75%;
+}
+
+.moreinfo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.moreinfo a {
+  display: none;
+  text-decoration: none;
+}
+
+.moreinfo:hover a {
+  font-size: 14px;
+  border: 1px solid rgb(212, 210, 210);
+  width: 150px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 10px auto;
+}
+
+.moreinfo a:hover {
+  background-color: rgb(77, 189, 77);
+  border-color: rgb(77, 189, 77);
+}
+
+.moreinfo a:hover .fa-apple {
+  display: none;
+}
+
+.moreinfo a:hover .fa-google-play {
+  display: none;
+}
+
+.moreinfo a:hover .fa-download {
+  display: inline;
+}
+
+.moreinfo .fa-download {
+  display: none;
+}
+
+.moreinfo i {
+  color: white;
+  margin: 6px;
+  width: 10px;
+}
+
+.footerTop {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.footerDownload {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  position: relative;
+  padding-left: 60px;
+}
+
+.footerDownload img {
+  height: 40px;
+  border-radius: 15%;
+  margin-right: 10px;
+}
+
+.footerDownload a {
+  margin: 0px 8px;
+}
+
+.QRcode {
+  position: absolute;
+  top: -50px;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.QRcode img {
+  width: 90px;
+  height: 90px;
+  border-radius: 5%;
+  margin-bottom: 10px;
+}
+
+.footerBottom {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  position: relative;
+  padding-left: 60px;
+}
+
+.footerCorporation {
+  flex-grow: 1;
+}
+
+.footerProblems {
+  display: flex;
+  flex-grow: 10;
+}
+
+.footerFamilySite {
+  flex-grow: 3;
+}
+
+.footerFBYT {
+  flex-grow: 1.5;
+}
+
+.footerBottom a {
+  padding: 0 10px;
+}
+
+.footerLine {
+  display: none;
+}
+
+hr {
+  width: 90%;
+  align-items: center;
+  color: rgb(226, 219, 219);
+  opacity: 0.4;
+}
+
+/* 平板橫向 */
+
+@media screen and (max-width: 1199px) {
+  .toplogo,
+  .topicons {
+    display: none;
+  }
+  body {
+    padding-top: 0px;
+  }
+  .fixedtop {
+    display: none;
+  }
+  .bannertxt {
+    color: white;
+  }
+  .banner h2 {
+    font-size: 80px;
+  }
+  .banner h3 {
+    font-size: 30px;
+    padding-left: 3px;
+  }
+  .LifeOnLine {
+    display: none;
+  }
+  .navlinkMobile {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    opacity: 1;
+    z-index: 1;
+    background-color: white;
+    padding: 0px 35%;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(240, 239, 239);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+  }
+  .navlinkMobile a {
+    color: rgb(121, 121, 121);
+    font-weight: bolder;
+    line-height: 4.8;
+  }
+  .MobileActive {
+    border-bottom: 3px solid #000;
+  }
+  .title {
+    padding: 0px 5%;
+  }
+  .title h2 {
+    font-size: 28px;
+  }
+  .title p {
+    font-size: 14px;
+  }
+  .LineLifeGroup .verticalLine {
+    height: 100%;
+    border-right: 1px dashed rgb(197, 197, 197);
+    position: absolute;
+    top: 6%;
+    left: 68px;
+    z-index: -1;
+  }
+  .LifeContainer::before,
+  .LifeContainer:last-child::after {
+    content: none;
+  }
+  .LineLifeGroup .LifeContainer {
+    display: block;
+  }
+  .LineLifeGroup .LifeContainer .LifePic {
+    width: 100%;
+    padding: 10% 4% 10% 0%;
+  }
+  .LineLifeGroup .LifeContainer .LifeDetails img {
+    width: 36px;
+    height: 36px;
+  }
+  .LineLifeGroup .LifeContainer .LifeDetails {
+    width: 100%;
+    border-style: none;
+    display: flex;
+    padding: 10% 4% 10% 0%;
+  }
+  .LineLifeGroup .LifeContainer .LifeDetails:last-child {
+    padding: 10% 4% 20% 0%;
+  }
+  .LineLifeGroup .LifeContainer .LifeTxt {
+    display: inline-block;
+    margin-top: 0;
+    margin-left: 5%;
+  }
+  .LineToday {
+    content: url("img/LineToday手機.png");
+  }
+  .LinePost {
+    content: url("img/Line貼文串手機.png");
+  }
+  .LinePay {
+    content: url("img/LinePay手機.png");
+  }
+  .LineShopping {
+    content: url("img/Line購物手機.png");
+  }
+  .LineTV {
+    content: url("img/LineTV手機.png");
+  }
+  .Allproducts {
+    padding: 30% 0px;
+    font-size: 13px;
+  }
+  .productsection {
+    display: block;
+    background-color: rgb(240, 239, 239);
+  }
+  .productselect {
+    width: 100%;
+    overflow: auto;
+    /* 讓選單可以在一列 */
+    margin: 16px 0px 40px;
+    position: relative;
+    top: 25px;
+    /* 設定位為了要蓋掉原本的sticky */
+    padding: 0px 5%;
+    height: 50px;
+    box-sizing: border-box;
+  }
+  .productcontainer {
+    background-color: rgb(240, 239, 239);
+  }
+  .productselect ul {
+    white-space: nowrap;
+  }
+  /* 用flex-wrap無效??? */
+  .productselect ul li {
+    display: inline-block;
+  }
+  .productselect nav ul li:last-child {
+    margin-right: 5%;
+  }
+  .product {
+    width: 100%;
+    height: 100px;
+    margin: 0px;
+    padding: 20px 20px 20px 51px;
+    display: flex;
+    box-shadow: none;
+    background-color: rgb(240, 239, 239);
+    line-height: 20px;
+  }
+  .productBorderBottom {
+    width: 90%;
+    border-bottom: 1px solid rgb(226, 226, 226);
+  }
+  .product img {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    padding: 1% 1% auto 1%;
+  }
+  .product h3 {
+    font-size: 16px;
+    font-weight: bolder;
+    margin: 0px;
+  }
+  .product p {
+    font-size: 13px;
+    font-weight: bolder;
+    color: rgb(116, 116, 116);
+    padding-top: 2%;
+  }
+  .txt {
+    height: 0px;
+    margin-left: 5%;
+  }
+  .product i,
+  .product .moreinfo,
+  .product .darkpage,
+  hr {
+    display: none;
+  }
+  .function h3 {
+    font-size: 20px;
+  }
+  .enterpriseservice {
+    height: 120px;
+  }
+  .enterpriseservice h2 {
+    font-size: 20px;
+  }
+  .footerDownload {
+    display: none;
+  }
+  .footerTop {
+    height: 200px;
+    font-size: 12px;
+  }
+  .footerBottom {
+    display: block;
+    padding-left: 0px;
+    position: relative;
+    height: 150px;
+    font-size: 12px;
+  }
+  .footerBottom .footerCorporation {
+    display: inline-block;
+    margin-top: 10%;
+    margin-left: 5%;
+    padding: 0px;
+  }
+  .footerBottom .footerFamilySite {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    margin-top: 10%;
+    margin-right: 5%;
+    /* display: inline-block; */
+  }
+  .footerBottom .footerProblems {
+    margin-top: 7%;
+    margin-left: 5%;
+  }
+  .footerBottom a {
+    padding: 0px 6px 0px 0px;
+  }
+  .footerFBYT a {
+    padding: 0px 10px 0px 0px;
+  }
+  .footerBottom .footerFBYT {
+    display: block;
+    margin-top: 6%;
+    margin-left: 5%;
+  }
+  .footerBottom .footerLine {
+    padding: 5px 13px 5px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    display: inline-block;
+    color: #777;
+    margin: 6% 0px 15% 5%;
+  }
+  .footerLine i {
+    font-size: 20px;
+    color: rgb(59, 158, 13);
+  }
+  .col-1 {
+    width: 8.33333%;
+  }
+  .col-2 {
+    width: 16.66666%;
+  }
+  .col-3 {
+    width: 25%;
+  }
+  .col-4 {
+    width: 33.33333%;
+  }
+  .col-5 {
+    width: 41.66666%;
+  }
+  .col-6 {
+    width: 50%;
+  }
+  .col-7 {
+    width: 58.33333%;
+  }
+  .col-8 {
+    width: 65.66666%;
+  }
+  .col-9 {
+    width: 75%;
+  }
+  .col-10 {
+    width: 83.33333%;
+  }
+  .col-11 {
+    width: 91.66666%;
+  }
+  .col-12 {
+    width: 100%;
+  }
+}
+
+/* 平板直向 */
+
+@media screen and (max-width: 1023px) {
+  .LineLifeGroup .verticalLine {
+    left: 56px;
+  }
+  .product {
+    padding: 20px 20px 20px 40px;
+  }
+}
+
+/* 手機*/
+
+@media screen and (max-width: 767px) {
+  .LineLifeGroup .verticalLine {
+    left: 38px;
+  }
+  .banner h2 {
+    font-size: 35px;
+  }
+  .banner h3 {
+    font-size: 15px;
+    padding-left: 2px;
+  }
+  .navlinkMobile {
+    height: 60px;
+    padding: 0px 15%;
+  }
+  .navlinkMobile a {
+    line-height: 3.8;
+  }
+  .product {
+    padding: 20px;
+  }
+}
