@@ -155,7 +155,11 @@ body {
   border: 1px solid gray;
   border-radius: 50%;
   background-color: white;
-  left: 49.7%;
+  left: 50%;
+  /* margin-left:-5px; 為了要讓圈圈置中 先放在父層寬度50%的位置 再扣回圈圈一半寬度5px */
+  /* 一樣道理 負回去自己一半  */
+  transform: translateX(-50%);
+
 }
 
 .LifeContainer:last-child::after {
@@ -166,7 +170,8 @@ body {
   border: 1px solid gray;
   border-radius: 50%;
   background-color: white;
-  left: 49.47%;
+  left: 50%;
+  margin-left: -8px;
   bottom: -0.2%;
 }
 
@@ -340,6 +345,7 @@ body {
   margin-top: 70px;
   position: sticky;
   top: 200px;
+  overflow: hidden;
 }
 
 .productselect button {
@@ -373,7 +379,7 @@ body {
 
 .product {
   width: 250px;
-  height: 330px;
+  /* height: 330px;原本有寫死高度 檢討後發現不需要 拿掉後下面RWD版本也不用寫死高度覆蓋*/
   margin: 30px;
   text-align: left;
   line-height: 24px;
@@ -381,13 +387,13 @@ body {
   box-shadow: 3px 3px 3px 3px rgb(202, 202, 202);
   box-sizing: border-box;
   position: relative;
-  padding: 40px;
+  padding: 30px;
 }
 
 .txt {
+  height: 190px;
   display: flex;
   flex-direction: column;
-  height: 190px;
 }
 
 .product img {
@@ -635,7 +641,7 @@ hr {
     border-right: 1px dashed rgb(197, 197, 197);
     position: absolute;
     top: 6%;
-    left: 68px;
+    left: calc(5% + 18px - 0.5px);
     z-index: -1;
   }
   .LifeContainer::before,
@@ -647,7 +653,7 @@ hr {
   }
   .LineLifeGroup .LifeContainer .LifePic {
     width: 100%;
-    padding: 10% 4% 10% 0%;
+    padding: 10% 0% 10% 0%;
   }
   .LineLifeGroup .LifeContainer .LifeDetails img {
     width: 36px;
@@ -717,7 +723,6 @@ hr {
   }
   .product {
     width: 100%;
-    height: 130px;
     margin: 0px;
     padding: 20px 20px 20px 51px;
     display: flex;
@@ -725,15 +730,18 @@ hr {
     background-color: rgb(240, 239, 239);
     line-height: 20px;
   }
+  .txt{
+    width: 80%;
+  }
   .productBorderBottom {
     width: 90%;
     border-bottom: 1px solid rgb(226, 226, 226);
+    margin-top: 1.5%;
   }
   .product img {
     width: 60px;
     height: 60px;
     border-radius: 15px;
-    padding: 1% 1% auto 1%;
   }
   .product h3 {
     font-size: 16px;
@@ -747,7 +755,9 @@ hr {
     padding-top: 2%;
   }
   .txt {
-    height: 0px;
+    height: 100%;
+    /* 為了覆蓋桌機版的高度 桌機會寫死高度是因為要讓左下角三點flex-grow */
+    /* 高度100%會吃 */
     margin-left: 5%;
   }
   .product i,
@@ -862,20 +872,17 @@ hr {
 /* 平板直向 */
 
 @media screen and (max-width: 1023px) {
-  .LineLifeGroup .verticalLine {
-    left: 56px;
-  }
+
   .product {
     padding: 20px 20px 20px 40px;
   }
+
 }
 
 /* 手機*/
 
 @media screen and (max-width: 767px) {
-  .LineLifeGroup .verticalLine {
-    left: 37px;
-  }
+
   .banner h2 {
     font-size: 35px;
   }
