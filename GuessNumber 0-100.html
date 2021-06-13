@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
+    <link rel="Shortcut Icon" type="image/x-icon" href="img/123.webp" />
+    <style>
+        .jumbotron{
+            height: 130px;
+            background-color: rgb(245, 189, 211);
+            font-size: 50px;
+        }
+        .gameBox{
+            background-color: rgb(255, 241, 246);
+            border: 2px solid rgb(152, 187, 252);
+            border-radius: 3%;
+        }
+        .startBox{
+            display: grid;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .startBtn{
+            width: 140px;
+            height: 20%;
+            font-weight: bolder;
+            font-size: 26px;
+            color: rgb(253, 146, 203);
+            border: 5px solid rgb(255, 132, 132);
+            border-radius: 7%;
+            box-shadow: 5px yellow;
+            background-color: rgb(251, 248, 214);
+        }
+        #hintBox{
+            width: 60%;
+            height: 100px;
+            border-radius: 2%;
+            border: 2px solid rgb(170, 217, 245) ;
+            font-size: 55px;
+            color: rgb(179, 128, 246);
+            background-color: rgb(253, 253, 253);
+        }
+        .userBox{
+            display: flex;
+        }
+
+        .inputWithPic{
+            width: 50%;
+        }
+        .inputWithPic img{
+            margin-right: 0;
+
+        }
+        input{
+            width: 55%;
+            height: 55px;
+            font-size: 26px;
+            color:black;
+            border: 2px solid rgb(255, 196, 216);
+        }
+
+        .buttonsBox{
+            grid-template-columns: repeat(3, 1fr);
+
+        }
+        .buttonsBox button{
+            width: 58px;
+            height: 58px;
+            font-size: 20px;
+            font-weight: bolder;
+            background-color: rgb(253, 253, 253);
+            color: rgb(147, 173, 245);
+            border: 1px solid rgb(170, 217, 245);
+            margin:auto;
+        }
+
+        .buttonsBox button:hover {
+            color:palevioletred;
+            background-color: rgb(255, 241, 251);
+        }
+
+
+        @media screen and (max-width:767px) {
+            .gameBox h1{width: 70%;}
+            .buttonsBox{width: 60%;}
+            .jumbotron{
+                font-size: 35px;
+            }
+            .startBox{
+            display: grid;
+            margin: auto;}
+
+            .startBtn{width: 47%;
+                height: 100px;
+                margin: auto;}
+
+            #hintBox{
+            width: 75%;
+            height: 85px;
+            font-size: 45px;
+            }
+        }
+    </style>
+
+    <title>你有多會猜!</title>
+  </head>
+  <body>
+      <div class="jumbotron text-center fw-bold text-light d-grid">
+        <p class="m-auto">Number Guessing Game <i class="far fa-heart"></i></p>
+    </div>
+      <div class="container mt-5">
+            <div class="row">
+              <div class="col-1 col-md-2 col-lg-3"></div>
+              <div class="col-10 col-md-8 col-lg-6 gameBox">
+                  <div class="startBox my-5">
+                  <button class=" m-auto  startBtn animated infinite bounce"  style="animation-duration:1.5s">
+                      <p class="m-auto ">按我開始<br>GO <i class="fas fa-plane"></i></p></button>
+                  <div id="hintBox" class="text-center d-grid m-auto">
+                      <p class="m-auto"></p>
+                  </div>
+                </div>
+
+                  <div class="userBox mb-5">
+                  <div class="buttonsBox d-grid m-auto">
+                    <button class="number">1</button>
+                    <button class="number">2</button>
+                    <button class="number">3</button>
+                    <button class="number">4</button>
+                    <button class="number">5</button>
+                    <button class="number">6</button>
+                    <button class="number">7</button>
+                    <button class="number">8</button>
+                    <button class="number">9</button>
+                    <button id="delete"><i class="fas fa-times"></i></button>
+                    <button class="number">0</button>
+                    <button id="enter"><i class="fas fa-check"></i></button>
+                </div>
+                  <div class="inputWithPic d-grid mb-3 mx-auto">
+                      <input for="text" id="input" value="" placeholder="人家想猜~" class="text-center mx-auto"></input>
+                      <img src="https://i.pinimg.com/originals/28/4e/6f/284e6fc952f3429f4a6b3065833dbb92.gif" class="w-75" alt="">
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-1 col-md-2 col-lg-3"></div>
+            </div>
+      </div>
+
+<script>
+    let startBtn=document.getElementsByClassName("startBtn")[0];
+    let hint = document.querySelector("#hintBox p");
+    let min="0";  let max="100";
+    hint.innerText=`${min}~${max}`;
+    let answer=0; //正確答案
+    let previousInput="";
+    let buttons=document.querySelectorAll(".buttonsBox button");
+
+    window.onload=function(){
+        buttons.forEach(function(btn){
+            btn.disabled=true;})}
+
+    window.addEventListener("click",windowClick);
+    window.addEventListener("click",changeImg);
+    //一開始點視窗任何地方會出現警語 只能按開始 所以要找出按到的是否為開始
+    //找點擊事件的目標(被點到的)類別名稱(是字串 可用typeof檢查)
+    //因按鈕有子物件p所以也可能被點擊到 被點到的子物件的上層物件的類別名稱也要包含
+    function windowClick(event){
+        //  if ((event.target.className).includes("startBtn") || (event.target.parentNode.className).includes("startBtn")) {
+        //原本想說亂按window時要按到開始鈕才開始 但其實直接寫開始鈕的click事件即可 } 
+          //else {
+            alert("想幹麻？ 遊戲還沒開始呢！"); //}
+        };
+
+    startBtn.addEventListener("click",function(){
+        if(answer!=0 && hint.innerText!="再玩一次?"){
+            alert("你按到開始了啦！只能重來！ : )");
+            answer=0;
+            window.onclick=function(){
+                   window.location.reload();}
+            }
+        else{
+            start();
+        }})
+
+    function start(){
+        answer = getRandom();
+        min="0"; max="100";
+        hint.innerText=`${min}~${max}`;
+        input.value="";
+
+        window.removeEventListener("click",windowClick);
+        startBtn.classList.remove("bounce");
+        buttons.forEach(function(btn){btn.disabled=false;})
+    }
+
+    function changeImg(){
+        document.getElementsByTagName("img")[0].src="https://i.pinimg.com/originals/28/4e/6f/284e6fc952f3429f4a6b3065833dbb92.gif";
+    }
+
+    function getRandom(){
+        return Math.floor(Math.random() * 99) + 1;
+        }
+
+    //為每個按鈕加入顯示數字事件 querySelectorAll 回傳的是nodelist 可以forEach
+    let input=document.getElementById("input");
+    document.querySelectorAll(".number").forEach(x=>
+        x.addEventListener('click', function () {
+            if(input.value.length + 1 > 2){
+              alert("超過範圍了啦！自己去按叉叉！");
+            }
+            else{
+               input.value += x.innerText;
+            }
+      }));
+
+    //按X刪除
+    document.querySelector("#delete").addEventListener('click', function() {
+        if(input.value==""){
+            alert("你又沒填！要叉叉掉啥米！？")
+            input.placeholder="不要亂按！"
+        }
+        else{
+            input.value="";
+            input.placeholder= "想認輸?";
+        }
+            
+        });
+
+    //按勾送出答案
+    document.querySelector("#enter").addEventListener('click', function() {
+        if(input.value==""){
+            alert("你又沒填！按勾勾幹麻？")
+            input.placeholder="不要亂按！"
+            return;
+        }
+        if(input.value == answer){
+                hint.innerText=String(answer);
+
+            setTimeout(function(){
+               alert("猜中了！很會喔！點任意鑑重新載入吧！");
+               hint.innerText="再玩一次?";
+               input.value=""; input.placeholder="來玩啊！";
+               window.onclick=function(){
+                   window.location.reload();
+               }}, 70);
+
+
+               return;
+            }
+
+            if (parseInt(input.value)>parseInt(max) || parseInt(input.value)<parseInt(min)) {
+                alert("超過範圍了啦！賣鬧！");
+                input.value="";
+                input.placeholder="不要亂猜！"
+                return;
+            }
+
+            else if(parseInt(input.value) > answer){
+                max=input.value;
+            }
+            else if(parseInt(input.value) < answer){
+                min=input.value;
+            }
+
+                hint.innerText=`${min}~${max}`;
+                previousInput=input.value;
+                input.value="";
+
+           //答案60 猜50 50-100 又猜20
+            // else if(parseInt(input.value) > answer && min=="0"){
+            //     max=input.value;
+            //     hint.innerText=`${min}~${max}`;
+            //     previousInput=input.value;
+            //     input.value="";
+            // }
+            // else if(parseInt(input.value) < answer && max=="100"){
+            //     min=input.value;
+            //     hint.innerText=`${min}~${max}`;
+            //     previousInput=input.value;
+            //     input.value="";
+            // }
+            // else if(parseInt(input.value) > answer && parseInt(input.value)>parseInt(previousInput)){
+            //     //超過範圍 答案50 猜70 0~70 又猜80
+            // }
+            // else if(parseInt(input.value) < answer && parseInt(input.value)<parseInt(previousInput)){
+            //     min=input.value;
+            //     hint.innerText=`${min}~${max}`;
+            //     previousInput=input.value;
+            //     input.value="";
+            // }
+            // else if(parseInt(input.value) < answer && answer>parseInt(previousInput)){
+            //     min=input.value;
+            //     max=previousInput;
+            //     hint.innerText=`${min}~${max}`;
+            //     previousInput=input.value;
+            //     input.value="";
+            // }
+
+
+
+        });
+
+
+
+
+</script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+  </body>
+</html>
