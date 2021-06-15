@@ -19,25 +19,25 @@
             border: 2px solid rgb(152, 187, 252);
             border-radius: 3%;
         }
+
         .startBox{
-            display: grid;
             display: flex;
-            flex-wrap: wrap;
+            /* 寫在這是因為下面RWD要改 */
         }
 
         .startBtn{
-            width: 140px;
-            height: 20%;
+            width: 130px;
+            margin-left: 7% !important;
             font-weight: bolder;
-            font-size: 26px;
+            font-size: 25px;
             color: rgb(253, 146, 203);
             border: 5px solid rgb(255, 132, 132);
             border-radius: 7%;
-            box-shadow: 5px yellow;
             background-color: rgb(251, 248, 214);
+            
         }
         #hintBox{
-            width: 60%;
+            width: 57%;
             height: 100px;
             border-radius: 2%;
             border: 2px solid rgb(170, 217, 245) ;
@@ -47,13 +47,15 @@
         }
         .userBox{
             display: flex;
+            flex-direction:row-reverse;
         }
 
         .inputWithPic{
             width: 50%;
         }
         .inputWithPic img{
-            margin-right: 0;
+            margin-left: 11%;
+            margin-top: 7%;
 
         }
         input{
@@ -62,10 +64,13 @@
             font-size: 26px;
             color:black;
             border: 2px solid rgb(255, 196, 216);
+            margin: 0 auto;
         }
 
         .buttonsBox{
             grid-template-columns: repeat(3, 1fr);
+            margin-left: 10%;
+            height: 97%;
 
         }
         .buttonsBox button{
@@ -87,27 +92,90 @@
 
         @media screen and (max-width:767px) {
             .gameBox h1{width: 70%;}
-            .buttonsBox{width: 60%;}
+            
             .jumbotron{
-                font-size: 35px;
+                font-size: 30px;
             }
             .startBox{
-            display: grid;
-            margin: auto;}
+                margin-top: 13% !important;
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr);     
+                margin-bottom: 4% !important;         
+            }
 
-            .startBtn{width: 47%;
-                height: 100px;
-                margin: auto;}
+            .startBtn{              
+                width: 95px;
+                height: 80px;
+                margin: auto;
+                font-size: 18px;
+                }
 
             #hintBox{
-            width: 75%;
+            width: 170px;
             height: 85px;
-            font-size: 45px;
+            font-size: 40px;
+            margin-right: 2px !important;
             }
+            .userBox{
+            display: block;
+            }
+            .inputWithPic {
+             grid-template-columns: repeat(2, 1fr);
+              width: 100%;
+             }
+            input{
+            width: 90%;
+            height: 55px;
+            font-size: 25px;
+            color:black;
+            border: 2px solid rgb(255, 196, 216);
+            margin: auto 10% auto 15% !important;
+            
+            }
+
+            .inputWithPic img{
+                margin: auto !important;
+             }
+
+            .buttonsBox{width: 55%;
+            margin: auto;
+            }
+            
+            .buttonsBox button{
+            width: 58px;
+            height: 58px;
+            font-size: 20px;
+            font-weight: bolder;
+            background-color: rgb(253, 253, 253);
+            color: rgb(147, 173, 245);
+            border: 1px solid rgb(170, 217, 245);
+            margin:auto;
+         }
         }
+        /* 單純為i5/SE寫 */
+      @media screen and (max-width: 350px) {
+        #hintBox{
+            width: 130px;
+            height: 85px;
+            font-size: 28px;
+            }
+        .startBtn{              
+            width: 85px;
+            height: 80px;
+            margin: auto;
+            font-size: 15px;
+            }
+        .buttonsBox{
+            width: 70%;
+            margin: auto;
+            }
+        input{
+            font-size: 20px;
+        }
+      }
     </style>
 
-    <title>你有多會猜!</title>
+    <title>你有多會猜！</title>
   </head>
   <body>
       <div class="jumbotron text-center fw-bold text-light d-grid">
@@ -118,15 +186,20 @@
               <div class="col-1 col-md-2 col-lg-3"></div>
               <div class="col-10 col-md-8 col-lg-6 gameBox">
                   <div class="startBox my-5">
-                  <button class=" m-auto  startBtn animated infinite bounce"  style="animation-duration:1.5s">
+                  <button class="startBtn m-auto animated infinite bounce"  style="animation-duration:1.5s">
                       <p class="m-auto ">按我開始<br>GO <i class="fas fa-plane"></i></p></button>
                   <div id="hintBox" class="text-center d-grid m-auto">
                       <p class="m-auto"></p>
                   </div>
                 </div>
 
-                  <div class="userBox mb-5">
-                  <div class="buttonsBox d-grid m-auto">
+                  <div class="userBox mb-4">
+                    <div class="inputWithPic d-grid mb-3 mx-auto">
+                        <input for="text" id="input" value="" placeholder="人家想猜~" class="text-center"></input>
+                        <img src="https://i.pinimg.com/originals/28/4e/6f/284e6fc952f3429f4a6b3065833dbb92.gif" class="w-75" alt="">
+  
+                    </div>
+                  <div class="buttonsBox d-grid">
                     <button class="number">1</button>
                     <button class="number">2</button>
                     <button class="number">3</button>
@@ -140,11 +213,7 @@
                     <button class="number">0</button>
                     <button id="enter"><i class="fas fa-check"></i></button>
                 </div>
-                  <div class="inputWithPic d-grid mb-3 mx-auto">
-                      <input for="text" id="input" value="" placeholder="人家想猜~" class="text-center mx-auto"></input>
-                      <img src="https://i.pinimg.com/originals/28/4e/6f/284e6fc952f3429f4a6b3065833dbb92.gif" class="w-75" alt="">
-
-                  </div>
+                  
                 </div>
 
               </div>
@@ -158,12 +227,11 @@
     let min="0";  let max="100";
     hint.innerText=`${min}~${max}`;
     let answer=0; //正確答案
-    let previousInput="";
     let buttons=document.querySelectorAll(".buttonsBox button");
 
     window.onload=function(){
         buttons.forEach(function(btn){
-            btn.disabled=true;})}
+            btn.disabled=true;})} //一開始視窗載入時先禁掉 按開始才打開
 
     window.addEventListener("click",windowClick);
     window.addEventListener("click",changeImg);
@@ -243,36 +311,34 @@
                 hint.innerText=String(answer);
 
             setTimeout(function(){
-               alert("猜中了！很會喔！點任意鑑重新載入吧！");
+               alert("猜中了！很會喔！隨便點一下重新載入吧！");
+               //如果alert後要做以下這些事情 就要一起放在延遲方法裡面 寫在外面的話會先跑
                hint.innerText="再玩一次?";
                input.value=""; input.placeholder="來玩啊！";
                window.onclick=function(){
                    window.location.reload();
                }}, 70);
 
-
                return;
             }
 
+            //不論如何 猜的數字不會大於max 或小於min
             if (parseInt(input.value)>parseInt(max) || parseInt(input.value)<parseInt(min)) {
                 alert("超過範圍了啦！賣鬧！");
                 input.value="";
                 input.placeholder="不要亂猜！"
                 return;
             }
-
+            
             else if(parseInt(input.value) > answer){
                 max=input.value;
             }
             else if(parseInt(input.value) < answer){
                 min=input.value;
             }
-
                 hint.innerText=`${min}~${max}`;
-                previousInput=input.value;
                 input.value="";
-
-           //答案60 猜50 50-100 又猜20
+        }); //原本寫的笨方法
             // else if(parseInt(input.value) > answer && min=="0"){
             //     max=input.value;
             //     hint.innerText=`${min}~${max}`;
@@ -286,7 +352,7 @@
             //     input.value="";
             // }
             // else if(parseInt(input.value) > answer && parseInt(input.value)>parseInt(previousInput)){
-            //     //超過範圍 答案50 猜70 0~70 又猜80
+             
             // }
             // else if(parseInt(input.value) < answer && parseInt(input.value)<parseInt(previousInput)){
             //     min=input.value;
@@ -301,12 +367,6 @@
             //     previousInput=input.value;
             //     input.value="";
             // }
-
-
-
-        });
-
-
 
 
 </script>
