@@ -61,7 +61,7 @@
         height: 65px;
         font-size: 20px;
         font-weight: bolder;
-        color: rgb(139, 207, 228);
+        color: rgb(134, 204, 226);
         background-color: rgb(253, 253, 253);
         border: 1px solid rgb(196, 209, 236);
         border-radius: 50%;
@@ -94,7 +94,7 @@
         .buttonsBox button{
         width: 42px;
         height: 42px;
-        font-size: 15px;
+        font-size: 16px;
         }
       }
       /* 單純為i5/SE寫 */
@@ -136,10 +136,13 @@
           </div>
 
           <div class="buttonsBox mx-auto mt-3">
-            <button id="clearAll">AC</button>
-            <button id="backspace">Del</button>
-            <button id="negative">+/-</button>
-            <button id="operator">÷</button>
+            <button class="d-grid" id="clearAll"><span class="m-auto">AC</span>
+            </button>
+            <button class="d-grid" id="backspace"><span class="m-auto">Del</span>
+            </button>
+            <button class="d-grid" id="negative"><span class="m-auto">+/-</span>
+            </button>
+            <button class="d-grid" id="operator">÷</button>
             <button class="number text-center">7</button>
             <button class="number">8</button>
             <button class="number">9</button>
@@ -154,7 +157,8 @@
             <button id="operator">+</button>
             <button class="number">0</button>
             <button id="point">.</button>
-            <button id="percentage">%</button>
+            <button class="d-grid" id="percentage"><span class="m-auto">%</span>
+            </button>
             <button id="operator" class="equal">=</button>
           </div>
         </div>
