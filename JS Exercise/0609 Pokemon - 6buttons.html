@@ -13,98 +13,100 @@
       crossorigin="anonymous"
     />
 
-    <title>Hello, world!</title>
+    <title>Hello, Pokemon!</title>
+    <style>
+      h1 {
+        color: rgb(233, 130, 147);
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <div class="jumbotron"><h1>寶可夢圖鑑列表</h1></div>
+    <div class="jumbotron"><h1>Pokemon圖鑑列表 2.0</h1></div>
 
-    <button class="btn btn-primary" onclick="fetchPokemon()">
-      載入寶可夢圖鑑列表
-    </button>
+    <div class="row d-flex justify-content-center">
+      <button class="btn btn-warning mx-2">Click+1</button>
+      <button class="btn btn-info mx-2">Click-1</button>
+      <button class="btn btn-primary mx-2">Load All</button>
+      <button class="btn btn-secondary mx-2">reset</button>
+      <button class="btn btn-success mx-2">Timer</button>
+      <button class="btn btn-danger mx-2">Stop Timer</button>
+    </div>
 
-    <button class="btn btn-danger">方法二載入appendChild()</button>
-    <!-- 改成第二個方法 -->
-
-    <button class="btn btn-success">方法三</button>
-    <!-- 改成第三個方法 -->
-
-    <button class="btn btn-secondary">reset</button>
-    <!-- 重設 reset() -->
-
-    <div id="container"></div>
-
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-      crossorigin="anonymous"
-    ></script>
+    <div class="container mt-4"></div>
 
     <script>
-      let container = document.getElementById("container");
-      // window.onload=appendPokemon();
-      function setPokemon() {
-        let h1 = document.getElementsByTagName("h1")[0];
-        h1.innerText = "Pokemon圖鑑列表";
+      let container = document.getElementsByClassName("container")[0];
+      let btn1 = document.getElementsByTagName("button")[0];
+      let btn2 = document.getElementsByTagName("button")[1];
+      let btn3 = document.getElementsByTagName("button")[2];
+      let btn4 = document.getElementsByTagName("button")[3];
+      let btn5 = document.getElementsByTagName("button")[4];
+      let btn6 = document.getElementsByTagName("button")[5];
+      let times = 0;
 
-        let fileName = "001";
+      function setImg(item) {
+        let fileName = item.toString().padStart(3, "0"); //三位數 不足的補0
         let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
-        let PokemonImg = `<img src="${pathFile}">`;
 
-        container.innerHTML = PokemonImg;
-        //用JS寫出的變成物件 原始碼並不會有
-      }
-
-      //方法2 新增DOM元素
-      function appendPokemon() {
         let img = document.createElement("img");
-        img.setAttribute(
-          "src",
-          "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png"
-        );
+        img.setAttribute("src", pathFile);
         container.appendChild(img);
       }
 
-      let btn2 = document.getElementsByTagName("button")[1];
-      btn2.onclick = fetchPokemon;
+      btn1.addEventListener("click", function () {
+        times++;
+        setImg(times);
+      });
 
-      function fetchPokemon() {
-        let pokemons = "";
-        for (let i = 1; i <= 898; i++) {
-          let fileName = i.toString().padStart(3, "0"); //三位數 不足的補0
-          let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
-          let PokemonImg = `<img src="${pathFile}">`;
-          pokemons += PokemonImg;
-        }
-        container.innerHTML = pokemons;
-      }
+      btn2.addEventListener("click", function () {
+        let lastChild = container.lastChild;
+        container.removeChild(lastChild);
+        times--;
+      });
 
-      //方法2 for迴圈 + 新增DOM元素
-      function fetchPokemon_appendChild() {
-        container.removeChild(container.childNodes[0]);
+      btn3.addEventListener("click", function () {
+        loadAll(898);
+      });
 
-        for (let i = 1; i <= 898; i++) {
-          let fileName = i.toString().padStart(3, "0"); //三位數 不足的補0
-          let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
-          let img = document.createElement("img");
-          img.setAttribute("src", pathFile);
-
-          container.appendChild(img);
+      function loadAll(times) {
+        for (let i = 1; i <= times; i++) {
+          setImg(i);
         }
       }
+      btn4.addEventListener("click", function () {
+        reset();
+      });
 
-      let btn3 = document.getElementsByTagName("button")[2];
-      btn3.addEventListener("click",fetchPokemon);
-
-      function reset() {
+      function reset(){
         container.innerHTML = "";
+        times = 0;
       }
-      let btn4 = document.querySelector(".btn-secondary");
-      btn4.onclick = reset;
+      
+      let intervalId;
+      btn5.addEventListener("click", function (event) {
+        if (times =!0){
+          reset();
+        }
+        intervalId = setInterval(function () {
+          times++;
+          setImg(times);
+          if(times>898){
+            clearInterval(intervalId);
+          }
+        }, 500);
+      });
+
+      btn6.addEventListener("click", function (event) {
+        clearInterval(intervalId);
+      });
+
+      
     </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
