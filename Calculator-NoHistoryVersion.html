@@ -164,7 +164,7 @@
         <div class="col-2 col-lg-3 col-xl-4"></div>
       </div>
     </div>
-<!-- 等號待解決 內容物大於盒子 字體縮小 -->
+
     <script>
       let history=document.getElementsByClassName("history")[0];
       let current=document.querySelector(".currentNum");
@@ -197,7 +197,13 @@
             sum = previousNum / currentNum;
         }
         sum_string=String(sum);
-        return sum_string ;
+        if (sum_string.length>=9){
+          return "Too Large"
+        }
+        else{
+          return sum_string ;
+        }
+        
       }
 
       //按下運算子後 只能按個位數 夭壽喔
@@ -226,7 +232,7 @@
 
           // }
           else {
-            operation(numberArray.pop(),current.innerText,operatorArray.pop());
+            sum_string=operation(numberArray.pop(),current.innerText,operatorArray.pop());
             numberArray.push(sum_string);
             operatorArray.push(operator);
             current.innerText=sum_string;
@@ -241,12 +247,9 @@
             num.addEventListener('click', function () {
               if (current.innerText.length>=9) return;
 
-              // ok, I have a workaround way to reach this.
-              // let us define a global parameter: reset
-              // and when user click operator, set "reset" to true.
-              // when user press number right after operator, clear innerText and set reset to false.
-              //so first step
-
+              
+              // when user clicks operator, set "reset" to true.
+              // when user clicks number right after operator, clear innerText and set reset to false.
               // when "reset" is true, we clear innerText and set "reset" to false in order to prevent resetting again.
                 if(current.innerText=="0" || reset == true){
                   // history.innerText = numberArray[0]? numberArray[0]: "";
