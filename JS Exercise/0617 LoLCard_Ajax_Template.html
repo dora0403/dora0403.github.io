@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League of Legends</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <style>
+        .card img{
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            font-weight: bolder;
+        }
+
+        .card-body {
+            background-color: hsl(17, 100%, 87%);
+            font-size: 1em;
+        }
+
+        .card:hover {
+            box-shadow: 8px 8px 15px #808080;
+        }
+
+        .card:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+
+
+        .card:hover .card-body {
+            background-color: hsl(44, 100%, 65%);       
+        }
+        #description{
+            line-height: 1.5;
+            font-size: 1.3em;
+        }
+        .modal-title{
+            font-weight: bolder;
+            font-size: 2em;
+        }
+        #characteristics{
+            font-weight: bolder;
+            font-size: 1.2em;
+            color: palevioletred;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+          <img src="https://armandodalessandro.files.wordpress.com/2014/01/lol-banner.jpg" class="w-100" alt="">
+        <button id="loadHeros" class="btn btn-info btn-lg d-flex mx-auto my-5">Load Heros</button>
+        <div class="row mx-4">
+
+    
+        </div>
+      </div>
+    
+    <template id='herosCard'>
+        <div class="col-12 col-md-6 col-xl-3">
+        <div class="card my-3">
+            <img src="" class="card-img-top w-100" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <div class="d-flex flex-row justify-content-around mt-4 mb-1">
+                    <a href="#" class="btn btn-primary btn-detal">詳細內容</a>
+                    <a href="#" class="btn btn-danger btn-video">影片介紹</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </template>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <p class="modal-title" id="exampleModalLabel"></p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                     <img id="heroImg" class="w-100">
+                     <p id="description" class="my-4 text-primary"></p>
+                     <p id= "characteristics"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 影片Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body d-flex">
+                    <iframe width="465" height="315" src="https://www.youtube.com/embed/1MOjmAsF3OM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    <script type='module'>
+        import { $g } from '/Modules/helpers.js';
+        let row = $g('.row');
+        const url="https://ddragon.leagueoflegends.com/cdn/10.22.1/data/zh_TW/champion.json";
+
+
+        $g("#loadHeros").addEventListener("click",XMLgetJSON);
+
+        //AJAX請求
+        let xhr = new XMLHttpRequest;
+        let dataLoL,herosName=[],herosValue=[];
+        
+        function XMLgetJSON(){
+            xhr.onload = function () { 
+                dataLoL=JSON.parse(this.response);
+                herosName=Object.keys(dataLoL.data);
+                herosValue=Object.values(dataLoL.data);
+                loadHeros();
+                // console.log(herosName);
+            } 
+            xhr.open('GET', url); 
+            xhr.send();       
+        }
+
+        //使用模板載入角色
+        function loadHeros(){
+            let card = $g('#herosCard');
+            herosName.forEach((hero,index)=>{
+                let cloneContent = card.content.cloneNode(true);
+                cloneContent.querySelector('h5').innerText =`${index+1}. ${hero} ${herosValue[index].name}`;
+                cloneContent.querySelector('p').innerText = `${herosValue[index].blurb.slice(0,50)}...`;
+                cloneContent.querySelector('img').src =`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${hero}_0.jpg`;
+
+                cloneContent.querySelector(".btn-detal").addEventListener('click',function(){
+                this.setAttribute("data-toggle","modal");
+                this.setAttribute("data-target","#exampleModal");
+                getDetail(hero,index);
+                })
+                cloneContent.querySelector(".btn-video").addEventListener('click',function(){
+                this.setAttribute("data-toggle","modal");
+                this.setAttribute("data-target","#videoModal");
+                getVideo(hero,index);
+                })
+                row.append(cloneContent);
+            })}
+
+            function getDetail(hero,index){
+                let modal = $g("#exampleModal");
+                modal.querySelector(".modal-title").innerText=`${hero} ${herosValue[index].name}`;
+                modal.querySelector("#description").innerText=`${herosValue[index].blurb}`;
+                modal.querySelector("#characteristics").innerHTML=`HP：${herosValue[index].stats.hp}<br>Move Speed：${herosValue[index].stats.movespeed}<br>Armor：${herosValue[index].stats.armor}<br>Spell Block：${herosValue[index].stats.spellblock}<br>AttackRange：${herosValue[index].stats.attackrange}`;
+
+                modal.querySelector("#heroImg").src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${hero}_0.jpg`;
+            }
+
+            function getVideo(hero,index){
+                let modal = $g("#videoModal");
+                modal.querySelector(".modal-title").innerText=`${hero} ${herosValue[index].name}`;
+                // modal.querySelector("#heroVideo").src = ``;
+            }
+            
+
+			
+
+      
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
