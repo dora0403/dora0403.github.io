@@ -128,13 +128,12 @@
 
     
 
-    <script type='module'>
-        import { $g } from './helpers.js';
-        let row = $g('.row');
+    <script>
+        let row = document.querySelector('.row');
         const url="https://ddragon.leagueoflegends.com/cdn/10.22.1/data/zh_TW/champion.json";
 
 
-        $g("#loadHeros").addEventListener("click",XMLgetJSON);
+        document.querySelector("#loadHeros").addEventListener("click",XMLgetJSON);
 
         //AJAX請求
         let xhr = new XMLHttpRequest;
@@ -154,7 +153,7 @@
 
         //使用模板載入角色
         function loadHeros(){
-            let card = $g('#herosCard');
+            let card = document.querySelector('#herosCard');
             herosName.forEach((hero,index)=>{
                 let cloneContent = card.content.cloneNode(true);
                 cloneContent.querySelector('h5').innerText =`${index+1}. ${hero} ${herosValue[index].name}`;
@@ -175,7 +174,7 @@
             })}
 
             function getDetail(hero,index){
-                let modal = $g("#exampleModal");
+                let modal = document.querySelector("#exampleModal");
                 modal.querySelector(".modal-title").innerText=`${hero} ${herosValue[index].name}`;
                 modal.querySelector("#description").innerText=`${herosValue[index].blurb}`;
                 modal.querySelector("#characteristics").innerHTML=`HP：${herosValue[index].stats.hp}<br>Move Speed：${herosValue[index].stats.movespeed}<br>Armor：${herosValue[index].stats.armor}<br>Spell Block：${herosValue[index].stats.spellblock}<br>AttackRange：${herosValue[index].stats.attackrange}`;
@@ -184,7 +183,7 @@
             }
 
             function getVideo(hero,index){
-                let modal = $g("#videoModal");
+                let modal = document.querySelector("#videoModal");
                 modal.querySelector(".modal-title").innerText=`${hero} ${herosValue[index].name}`;
                 // modal.querySelector("#heroVideo").src = ``;
             }
