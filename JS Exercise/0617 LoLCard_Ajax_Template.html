@@ -153,6 +153,7 @@
 
         //使用模板載入角色
         function loadHeros(){
+            row.innerText=""; //只是避免一直按 全部卡片又重複增加
             let card = document.querySelector('#herosCard');
             herosName.forEach((hero,index)=>{
                 let cloneContent = card.content.cloneNode(true);
