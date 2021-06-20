@@ -56,14 +56,14 @@
 <body>
     <div class="container-fluid">
           <img src="https://armandodalessandro.files.wordpress.com/2014/01/lol-banner.jpg" class="w-100" alt="">
-        <button id="loadHeros" class="btn btn-info btn-lg d-flex mx-auto my-5">Load Heros</button>
+        <button id="loadHeroes" class="btn btn-info btn-lg d-flex mx-auto my-5">Load Heroes</button>
         <div class="row mx-4">
 
     
         </div>
       </div>
     
-    <template id='herosCard'>
+    <template id='heroesCard'>
         <div class="col-12 col-md-6 col-xl-3">
         <div class="card my-3">
             <img src="" class="card-img-top w-100" alt="...">
@@ -133,32 +133,32 @@
         const url="https://ddragon.leagueoflegends.com/cdn/10.22.1/data/zh_TW/champion.json";
 
 
-        document.querySelector("#loadHeros").addEventListener("click",XMLgetJSON);
+        document.querySelector("#loadHeroes").addEventListener("click",XMLgetJSON);
 
         //AJAX請求
         let xhr = new XMLHttpRequest;
-        let dataLoL,herosName=[],herosValue=[];
+        let dataLoL,heroesName=[],heroesValue=[];
         
         function XMLgetJSON(){
             xhr.onload = function () { 
                 dataLoL=JSON.parse(this.response);
-                herosName=Object.keys(dataLoL.data);
-                herosValue=Object.values(dataLoL.data);
-                loadHeros();
-                // console.log(herosName);
+                heroesName=Object.keys(dataLoL.data);
+                heroesValue=Object.values(dataLoL.data);
+                loadHeroes();
+                // console.log(heroesName);
             } 
             xhr.open('GET', url); 
             xhr.send();       
         }
 
         //使用模板載入角色
-        function loadHeros(){
+        function loadHeroes(){
             row.innerText=""; //只是避免一直按 全部卡片又重複增加
-            let card = document.querySelector('#herosCard');
-            herosName.forEach((hero,index)=>{
+            let card = document.querySelector('#heroesCard');
+            heroesName.forEach((hero,index)=>{
                 let cloneContent = card.content.cloneNode(true);
-                cloneContent.querySelector('h5').innerText =`${index+1}. ${hero} ${herosValue[index].name}`;
-                cloneContent.querySelector('p').innerText = `${herosValue[index].blurb.slice(0,50)}...`;
+                cloneContent.querySelector('h5').innerText =`${index+1}. ${hero} ${heroesValue[index].name}`;
+                cloneContent.querySelector('p').innerText = `${heroesValue[index].blurb.slice(0,50)}...`;
                 cloneContent.querySelector('img').src =`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${hero}_0.jpg`;
 
                 cloneContent.querySelector(".btn-detal").addEventListener('click',function(){
@@ -176,16 +176,16 @@
 
             function getDetail(hero,index){
                 let modal = document.querySelector("#exampleModal");
-                modal.querySelector(".modal-title").innerText=`${hero} ${herosValue[index].name}`;
-                modal.querySelector("#description").innerText=`${herosValue[index].blurb}`;
-                modal.querySelector("#characteristics").innerHTML=`HP：${herosValue[index].stats.hp}<br>Move Speed：${herosValue[index].stats.movespeed}<br>Armor：${herosValue[index].stats.armor}<br>Spell Block：${herosValue[index].stats.spellblock}<br>AttackRange：${herosValue[index].stats.attackrange}`;
+                modal.querySelector(".modal-title").innerText=`${hero} ${heroesValue[index].name}`;
+                modal.querySelector("#description").innerText=`${heroesValue[index].blurb}`;
+                modal.querySelector("#characteristics").innerHTML=`HP：${heroesValue[index].stats.hp}<br>Move Speed：${heroesValue[index].stats.movespeed}<br>Armor：${heroesValue[index].stats.armor}<br>Spell Block：${heroesValue[index].stats.spellblock}<br>AttackRange：${heroesValue[index].stats.attackrange}`;
 
                 modal.querySelector("#heroImg").src = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${hero}_0.jpg`;
             }
 
             function getVideo(hero,index){
                 let modal = document.querySelector("#videoModal");
-                modal.querySelector(".modal-title").innerText=`${hero} ${herosValue[index].name}`;
+                modal.querySelector(".modal-title").innerText=`${hero} ${heroesValue[index].name}`;
                 // modal.querySelector("#heroVideo").src = ``;
             }
             
