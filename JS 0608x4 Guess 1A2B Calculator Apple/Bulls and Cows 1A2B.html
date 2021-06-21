@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
+    <link rel="Shortcut Icon" type="image/x-icon" href="img/123.webp" />
+
+    <title>Bulls and Cows 你有多會猜！</title>
+    <style>
+      .gameBox{
+          background-color: rgb(255, 241, 246);
+          border: 2px solid rgb(152, 187, 252);
+          border-radius: 3%;
+      }
+      .jumbotron{
+          height: 170px;
+          background-color: rgb(245, 189, 211);
+          font-size: 50px;
+          margin-bottom: 5%;
+      }
+      
+      .ruleBtn{
+        width: 90px;
+        height: 40px;
+        background-color: rgb(241, 146, 111);
+      }
+      .buttonsBox{
+        display: flex;
+      }
+      .gameBtn{
+        width: 60%;
+        margin-left:4% ;
+        display: flex;
+      }
+      
+      .startBtn{
+          width: 140px;
+          height: 20%;
+          font-weight: bolder;
+          font-size: 26px;
+          color: rgb(253, 146, 203);
+          border: 2px solid rgb(255, 132, 132);
+          box-shadow: 5px yellow;
+          background-color: rgb(251, 248, 214);
+          margin-left: 6%;
+      }
+      
+      .userBox{
+          display: flex;
+          flex-direction:row-reverse;
+      }
+
+      .inputWithPic{
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+      }
+      .inputWithPic img{
+          margin-left: 5%;
+          margin-top: 6%;
+
+      }
+      input{
+          width: 60%;
+          height: 55px;
+          font-size: 26px;
+          color:black;
+          border: 2px solid rgb(255, 196, 216);
+          margin: 0 2%;
+      }
+      .inputWithEnter{
+        display: flex;
+        /* justify-content: space-evenly; */
+        align-items: center;
+        
+      }
+
+      #enter{
+        width: 40px;
+        height: 40px;
+        margin: 0 3%;
+      }
+
+      .recordBox {
+        width: 40%;
+        height: 235px;
+        background-color: white;
+        border:1px solid rgb(199, 199, 199);
+        border-radius: 5px;
+        margin: auto 3% auto 8%;
+      }
+
+
+      .buttonsBox button:hover {
+          color:palevioletred;
+          background-color: rgb(255, 241, 251);
+      }
+
+
+      @media screen and (max-width:767px) {
+          .gameBox h1{
+            width: 70%;
+          }          
+          .jumbotron{
+              font-size: 35px;
+              height: 140px;
+          }       
+          .buttonsBox{
+            height: 150px;
+            margin-bottom: 1rem!important;
+            margin-top: 2rem!important;
+          }
+          .startBtn{
+              width: 47%;
+              height: 100px;
+              margin-right: 2% !important;
+          }          
+          .gameBtn{
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            }
+
+          .userBox{
+            display: block;
+            margin-bottom: 2.5rem!important;
+            }
+
+          .inputWithPic {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            margin-bottom: 1.5rem!important
+          }
+          
+          input{
+            width: 90%;
+            height: 55px;
+            font-size: 22px;
+            color:black;
+            border: 2px solid rgb(255, 196, 216);
+            margin: 5% 0 5% auto !important; 
+
+            }
+
+          .inputWithPic img{
+            margin: auto 2% auto 0 !important;
+            width: 50% !important;
+                
+          }
+          .inputWithEnter{
+            width: 50% !important;
+            display: grid;
+          }
+          
+          #enter{
+            margin-left: 37%;
+          }
+          .recordBox {
+            width: 90%;
+            margin: auto;
+          }
+          
+      }
+  </style>
+  </head>
+  <body>
+    <div class="jumbotron text-center fw-bold text-light d-grid">
+      <p class="mx-auto mt-3">Bulls and Cows <i class="far fa-heart"></i></p>
+      <button type="button" class="btn ruleBtn mx-auto mb-5" data-bs-toggle="modal" data-bs-target="#introductionModal">遊戲介紹</button>
+  </div>
+  
+    <div class="container mt-5">
+          <div class="row">
+            <div class="col-1 col-md-2 col-lg-3"></div>
+            <div class="col-10 col-md-8 col-lg-6 gameBox">
+                <div class="buttonsBox my-5">
+                <button class="btn btn-danger startBtn animated infinite bounce"  style="animation-duration:1.5s">開始 <i class="fas fa-dice"></i></button>
+                <div class="gameBtn">
+                <button class="btn btn-warning m-auto restartBtn">放棄重來</button>
+                <button type="button" class="btn btn-secondary hintBtn m-auto" data-bs-toggle="modal" data-bs-target="#hintModal">佛心提示</button>
+                <button type="button" class="btn btn-success answerBtn m-auto" data-bs-toggle="modal" data-bs-target="#hintModal">看答案</button>
+                </div>
+              </div>
+                
+                <div class="userBox mb-5">
+                  <div class="inputWithPic">
+                    <div class="inputWithEnter">
+                      <input for="text" id="input" value="" placeholder="人家想猜~" class="text-center"></input> 
+                      <button id="enter"><i class="fas fa-check"></i></button>
+                    </div>
+
+                  <img src="https://i.pinimg.com/originals/28/4e/6f/284e6fc952f3429f4a6b3065833dbb92.gif" class="w-75" alt="">
+
+                    </div>
+                  
+                  <div class="recordBox d-grid overflow-auto ">
+                    <ul class="list-group m-auto">
+                      
+                    </ul>
+                   </div>
+                  </div>
+                </div>
+                   <template id="record-li">
+                     <li class="list-group-item bg-light">
+                      <span class="rounded showAB me-3 px-2 py-1" style="background-color: rgb(255, 187, 209);"></span>
+                      <span class="inputNumber">1234 繼續加油!</span>
+                     </li>
+                   </template>
+
+            <div class="col-1 col-md-2 col-lg-3"></div>
+          </div>
+    </div>
+
+    <!--遊戲介紹 Modal -->
+  <div class="modal fade" id="hintModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">還沒開始阿！</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        請先按開始！
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary " data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="hintModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">還沒開始阿！</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        請先按開始！
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary " data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        <!-- 遊戲介紹 Modal -->
+  <div class="modal fade" id="introductionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">我的介紹就是...</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        自己上網查 顆顆顆
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary " data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script>
+      let answerArray;
+      let input=document.getElementById("input");
+      let inputArray;
+      let startBtn=document.getElementsByClassName("startBtn")[0];
+      let record = document.querySelector("#recordBox ul");
+      
+      window.onload=function(){
+        disableBtn("#enter");
+        disableBtn(".restartBtn");
+        disableBtn("#input")
+      } ;
+    
+      window.addEventListener("click",changeImg);
+      
+      startBtn.addEventListener('click',function(){
+        answerArray=getAnswer().map(String);
+        changeModalContent();
+        disableBtn("#enter");
+        disableBtn(".restartBtn");
+        disableBtn("#input")
+    })
+    function getAnswer(){       
+      let topic=Array.from(Array(10).keys()); //類似range(0,10) 排成陣列      
+      topic.sort((a, b) => { return Math.random() > 0.5 ? -1 : 1; });
+      return topic.slice(0, 4); //從索引0開始取到索引3
+        //Math.random()隨機出來的數與0.5做為一個比較，如果大於.5就返回 -1(a排在b前面)，反之返回1(b排在a前面)
+      }
+
+      //確認輸入的值是否符合規範
+      document.querySelector("#enter").addEventListener('click', function() {
+        //字串.split("用啥當斷點隔開") 成陣列
+        inputArray=input.value.split('');
+
+        //1.確認有輸入值
+        if(input.value==""){
+            alert("你又沒填！按勾勾幹麻？")
+            input.placeholder="下好離手！"
+            return;
+          }
+
+        //2.確認是否為數字
+        else if(isNaN(input.value)){
+          alert("請輸入「數字」！"); //isNan數字回傳true 文字回傳false
+        }
+        
+        //3.確認是否輸入四個
+        else if(inputArray.length!=4){
+          alert("請輸入「四個」數字！");
+        }
+
+        else{
+          let repeatBool;
+          //4.就算輸入四個數字也要確認有無重複 用filter(where)找一樣的數字
+          inputArray.forEach(function(item){
+          repeatBool=inputArray.filter(x=>x==item).length>1;         
+          })
+
+          if(repeatBool){
+            alert("請輸入四個「不同」的數字！");
+          }
+
+          //真正進入檢查AB
+          else{
+            checkAB(inputArray);
+          }          
+        }
+        input.value = "";
+        });
+
+        function checkAB(inputArray){
+          let ul=document.querySelector('.list-group');          
+          let li = document.querySelector('#record-li');//模板
+          let cloneContent = li.content.cloneNode(true);
+          let A=0,B=0;//定義在裡面因為每次都要重新判斷
+          for(let i=0;i<=3;i++){
+            
+            if(answerArray.includes(inputArray[i])){ //如果有這個數字
+            
+                if (answerArray[i] == inputArray[i]) //有這個數字且位置一樣 A
+                {         
+                  A++;
+                }
+                else //有這個數字但位置不一樣
+                {
+                  B++;
+                }
+              }
+            }
+          if(A==4){
+            setTimeout(function(){
+               alert("猜中了！很會喔！再見！");
+               //如果alert後要做以下這些事情 就要一起放在延遲方法裡面 寫在外面的話會先跑
+               window.onclick=function(){
+                   window.location.reload();
+               }}, 500);
+               //寫進紀錄
+            cloneContent.querySelector('.showAB').setAttribute('class','bg-warning rounded showAB me-3 px-2 py-1')
+            cloneContent.querySelector('.showAB').innerText ="4A0B"
+            cloneContent.querySelector('.inputNumber').setAttribute('class','text-danger fw-bolder inputNumber');
+            cloneContent.querySelector('.inputNumber').innerText =`${input.value}`;
+            ul.append(cloneContent);
+          }
+          else{
+            cloneContent.querySelector('.showAB').innerText =`${A}A${B}B`
+            cloneContent.querySelector('.inputNumber').innerText =`${input.value}`;
+            ul.append(cloneContent);
+          }
+          updateScroll()
+          }
+
+      function updateScroll(){ 
+        var element = document.getElementsByClassName("recordBox")[0];
+        element.scrollTop = element.scrollHeight;
+      }      
+
+    function changeImg(){
+        document.getElementsByTagName("img")[0].src="https://i.pinimg.com/originals/28/4e/6f/284e6fc952f3429f4a6b3065833dbb92.gif";
+    }
+    function disableBtn(selector){
+        //已經禁用了要打開
+        if(document.querySelector(selector).disabled==true){
+          document.querySelector(selector).disabled=false;
+        }
+        else{
+          document.querySelector(selector).disabled=true;
+        }
+      }    
+
+    function changeModalContent(){
+      document.querySelector(".hintBtn").addEventListener('click',function(){
+        document.querySelector("#hintModal .modal-title").innerText="這麼簡單也要提示?";
+        document.querySelector("#hintModal .modal-body").innerText=`答案是 ${answerArray[0]} X ${answerArray[2]} X \n下次要自己動腦想喔！`;
+      })
+      document.querySelector(".answerBtn").addEventListener('click',function(){
+        document.querySelector("#hintModal .modal-title").innerText="找好告訴你了...";
+        document.querySelector("#hintModal .modal-body").innerText=`答案是 ${answerArray[0]}${answerArray[1]}${answerArray[2]}${answerArray[3]} \n下次要自己動腦想喔！`;
+      })
+      
+    }
+  
+        document.getElementsByClassName("restartBtn")[0].addEventListener('click',function(){
+          window.location.reload();
+        })
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+  </body>
+</html>
