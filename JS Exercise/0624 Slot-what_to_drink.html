@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
+
+  <title>Hello, Slot!</title>
+  <style>
+    img {
+      width: 95%;
+    }
+    button{
+      position: relative;
+      top: -40%;
+      left: 35%;
+      background-color: rgb(229, 255, 224);
+      border-radius: 50%;
+      border:1px solid rgb(76, 197, 181);
+      width: 80px;
+      height: 80px;
+      color: rgb(0, 140, 255);
+    }
+    button:hover{
+      border:3px solid rgb(154, 163, 248);
+      background-color: rgb(255, 254, 168);
+    }
+
+    [what-id], [who-id] {
+      height: 110px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      transition: 0.3s;
+    }
+
+    [what-id].active {
+      border: 5px solid rgb(255, 64, 64);
+      box-shadow: 0 0 20px violet;
+      transition: 0s;
+    }
+
+    [who-id].active {
+      border: 5px solid rgb(15, 159, 255);
+      box-shadow: 0 0 20px rgb(120, 239, 255);
+      transition: 0s;
+    }
+    .slotheart{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding-top: 10%;
+    }
+    .slot{
+      width: 80%;
+      margin-right:0 ;
+      margin-left: auto;
+    }
+    #heart{
+      margin-left:3% ;
+      margin-right: auto;
+      width: 500px;
+      height: 400px;
+      position: relative;
+      padding:0 !important;
+    }
+    #heart:hover{
+      transform: scale(1.12);
+      transition: .4s;
+    }
+    #heart:before,
+    #heart:after{
+      position: absolute;
+      left:0;
+      top:0;
+      content: '';
+      width: 250px;
+      height: 400px;
+      background: pink;
+      border-radius: 200px 200px 0 0;
+    }
+    #heart:after {
+      content: '';
+      left: 250px;
+      top:0
+    }
+    #heart:before,
+    #heart:after{
+      position: absolute;
+      left:250px;
+      top:0;
+      content: '';
+      width: 250px;
+      height: 400px;
+      background: pink;
+      border-radius: 400px 400px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+    #heart:after {
+      content: '';
+      left: 0;
+      top:0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    #msg {
+      font-size: 32px;
+      text-align: center;
+      position: relative;
+      z-index: 5;
+      top: 30%;
+      left: 110px;
+      width: 280px;
+      color: rgb(89, 131, 255);
+      text-align: center;
+    }
+    @media screen and (max-width:1024px) {
+      .slotheart{
+      display: flex;
+      flex-direction: column;
+      padding-top: 6%;
+      }     
+      .slot{
+      width: 95%;
+      height: 550px;
+      margin: auto;
+      
+      }
+      [what-id], [who-id] {
+      height: 125px;
+      }
+      #heart{
+        margin: auto;
+
+      }
+      img{
+        width: 70%;
+      };
+
+    }
+
+    @media screen and (max-width:767px) {
+      .slot{
+      width: 100%;
+      height: 450px;
+      }
+      .container{
+        display: grid;
+      }
+      .slotheart{
+        margin: auto;
+      }
+
+      [what-id], [who-id] {
+      height: 100px;
+      }
+
+      img{
+        width: 95%;
+      };
+
+      #heart{
+        transform: scale(0.6);
+      }
+
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row slotheart">
+
+      <div class="col-12 col-xl-6 slot">
+        <div class="row">
+          <div what-id="3" class="col-3"></div>
+          <div who-id="1" class="col-3"></div>
+          <div what-id="4" class="col-3"></div>
+          <div who-id="2" class="col-3"></div>
+        </div>
+
+        <div class="row">
+          <div who-id="6" class="col-3"></div>
+          <div class="col-6"></div>
+          <div what-id="5" class="col-3"></div>
+        </div>
+
+        <div class="row">
+          <div what-id="2" class="col-3"></div>
+          <div class="col-6">
+            <button class="fw-bold">BUY<br>起來</button>
+          </div>
+          <div who-id="3" class="col-3"></div>
+        </div>
+
+        <div class="row">
+          <div who-id="5" class="col-3"></div>
+          <div what-id="1" class="col-3"></div>
+          <div who-id="4" class="col-3"></div>
+          <div what-id="6" class="col-3"></div>
+        </div>
+
+      </div>
+
+      <div class="col-12 col-xl-6 my-auto" id="heart">
+        <div class="fw-bold" id="msg">誰要買給我呢^^</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let msg = document.getElementById('msg');
+    let who ;
+    let what;
+    // let steps = 0; //剩下要走的步數
+    let who_steps = 0;
+    let what_steps = 0; //目前剩餘步數
+    let who_allSteps = 0;
+    let what_allSteps = 0;
+    let speed; //速率(越大越慢)
+
+    let what_brickData = [
+      {
+        id: "1",
+        img: "img/makeup.png",
+        name: "化妝品"
+      },
+      {
+        id: "2",       
+        img: "img/house.png",
+        name: "房子"
+      },
+      {
+        id: "3",
+        img: "img/dress.png",
+        name: "衣服"       
+      },
+      {
+        id: "4",
+        img: "img/bag.png",
+        name: "包包"        
+      },
+      {
+        id: "5",
+        img: "img/car.png",
+        name:"車車"          
+      },
+      {
+        id: "6",
+        img: "img/drink.png",
+        name: "珍奶"
+      }
+    ]
+
+    let who_brickData = [
+      {
+        id: "1",
+        img: "img/girl.png",
+        name: "我"
+      },
+      {
+        id: "2",
+        img: "img/boy.png",
+        name: "男友"
+      },
+      {
+        id: "3",
+        img: "img/boy.png",
+        name: "男友"
+      },
+      {
+        id: "4",
+        img: "img/girl.png",
+        name: "我"
+      },
+      {
+        id: "5",
+        img: "img/boy.png",
+        name: "男友"
+      },
+      {
+        id: "6",
+        img: "img/boy.png",
+        name: "男友"
+      }
+    ]
+
+    let what_bricks = document.querySelectorAll("[what-id]");
+    let who_bricks = document.querySelectorAll("[who-id]");
+
+    window.onload=function(){
+      what_bricks = setBricks(what_bricks,"what-id",what_brickData);
+      who_bricks = setBricks(who_bricks,"who-id",who_brickData);
+    }
+    
+    //製作brick (畫面上的磚塊,磚塊的屬性id,磚塊的資料陣列)
+    function setBricks(bricks,id,brickData){  
+        bricks = Array.from(bricks).sort(
+          (a, b) => {
+            return a.getAttributeNode(id).value - b.getAttributeNode(id).value;
+          })
+     
+      bricks.forEach((x, index) => {
+      let data = brickData[index]
+      let img = document.createElement("img");
+      img.setAttribute("src", data.img);
+      x.appendChild(img);
+    })
+    
+    return bricks;
+
+    }
+
+
+    //按下start
+    document.querySelector("button").addEventListener('click', function () {
+      removeActiveBrick(who_bricks)
+      removeActiveBrick(what_bricks)
+      what_steps = setGoingWay (what_brickData)
+      who_steps = setGoingWay (who_brickData)
+      what_allSteps = what_steps;
+      who_allSteps = who_steps;
+      let who=GoNextBrick(who_bricks,who_brickData, who_steps, who_allSteps, 0)
+      let what=GoNextBrick(what_bricks,what_brickData, what_steps, what_allSteps, 0)
+    })
+    
+    function setGoingWay (brickData) {
+      speed = 100;
+      let random = Math.floor(Math.random() * brickData.length+ 1) ;
+      console.log(random);
+      steps = random + (3 * brickData.length);
+      // allSteps = steps;
+      return steps;
+    }
+
+    function removeActiveBrick(bricks) {
+      bricks.forEach((x, index) => {
+        x.classList.remove('active');
+    })
+    }
+
+    function GoNextBrick(bricks, brickData, steps, allSteps, currentIndex) {
+        bricks[currentIndex].classList.remove('active');
+        currentIndex++;
+        if (currentIndex >= bricks.length) currentIndex = 0;
+        bricks[currentIndex].classList.add('active');
+        steps--;
+
+        if (steps > 0) {
+          setTimeout(()=>{
+            GoNextBrick(bricks, brickData, steps, allSteps, currentIndex)
+          }, speed);
+          if (steps < Math.floor(allSteps / 3)) speed += 3
+        }
+
+        else {
+          //跑完ㄌ
+          if(brickData[0].name=="我") {
+            who = brickData[currentIndex].name;
+          }
+            
+          else{
+            what = brickData[currentIndex].name;
+          }
+          setTimeout(()=>{
+            setMessage(who,what)   
+          },400)
+                
+      }
+    }
+
+    function setMessage(who,what){
+      msg.innerHTML = `${who} 買 ${what} 給我<br>YA～<i class="far fa-smile-wink"></i>`;
+    }
+
+
+
+  </script>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>

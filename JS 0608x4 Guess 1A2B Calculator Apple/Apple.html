@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="Shortcut Icon" type="image/x-icon" href="img/apple.png" />
+    <title>I have an apple!</title>
+    <style>
+        .navbar-brand{
+            margin: auto 10%;
+            font-size:24px ;
+        }
+        .navbar-nav{
+          width: 56%;
+        }
+        .nav-item{
+          margin: auto 10%;
+        }
+        .navbar-toggler {
+          background-color: rgb(202, 202, 202) !important;
+        }
+        .service{
+          font-size: 14px;
+        }
+        .service i{
+          font-size: 21px;
+        }
+        .color ,.network ,.storage{
+          border-bottom: 1px rgb(211, 211, 211) solid ;
+        }
+        .colorBtns{
+          background-color: white;
+          width: 30%;
+          height: 90px;
+          border: 1px solid silver;
+          border-radius: 5%;
+        }
+        .networkBtns{
+          background-color: white;
+          width: 40%;
+          height: 90px;
+          border: 1px solid silver;
+          border-radius: 5%;
+        }
+        .colorBtns:hover,.networkBtns:hover{
+          border: 1px solid black;
+          background-color: rgb(255, 255, 247);
+        }
+        button .active{
+          border: 5px solid rgb(143, 195, 255);
+        }
+        .colorBtns p, .networkBtns p{
+          font-size: 14px;
+          color: gray;
+        }
+        @media screen and (max-width: 767px) {
+            .navbar-brand{
+            margin: auto 7%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#" ><img src="" alt=""><i class="fab fa-apple"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav"> 
+            <li class="nav-item">
+              <a class="nav-link  text-white" href="#">iphone</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  text-white" href="#">iPad</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link  text-white" href="#">Mac</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link  text-white" href="#"><i class="fas fa-search"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link  text-white" href="#"><i class="fas fa-cart-plus"></i></a>
+              </li>             
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="productImg d-grid">
+                <img src="img/iphone11-白.png" class="product_img mx-auto w-75">
+              </div>
+              <div class="row mt-4 px-5 service">
+                <div class="col-6 text-center py-2">
+                  <i class="fas fa-plane mb-2"></i>
+                  <p>快速且免額外付費的運送服務</p>
+                </div>
+                <div class="col-6 text-center py-2">
+                  <i class="fas fa-box-open mb-2"></i>
+                  <p>免額外付費輕鬆退貨</p>
+                </div>
+                <div class="col-12 d-flex align-items-center justify-content-center border-top p-3">
+                  <div class="mx-3">
+                    <i class="far fa-comments"></i>
+                </div>
+                <div>
+                    <p class="m-0">有任何關於購買iPhone上的問題嗎^^</p>
+                    <a href="#">與apple專員線上對談</a>
+                </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6 p-4 ">
+              <h3 class="fw-bolder mb-4">購買iphone11</h3>
+                <div class="color">
+                  <h5 class="fw-bolder">選擇外觀</h5>
+
+                  <div class="d-flex flex-wrap my-2">
+                  <button class="m-2 colorBtns active">
+                  <img class="my-1 w-25" src="img/iphone11-紫.jfif">
+                  <p class="m-0">紫色</p></button>
+                  <button class="m-2 colorBtns active">
+                  <img class="my-1 w-25" src="img/iphone11-紫.jfif">
+                  <p class="m-0">紫色</p></button>
+                  <button class="m-2 colorBtns active">
+                  <img class="my-1 w-25" src="img/iphone11-紫.jfif">
+                  <p class="m-0">紫色</p></button>
+
+                </div>
+
+                </div>
+
+                <div class="storage mt-3">
+                  <h5 class="fw-bolder">選擇儲存容量</h5>
+                  <div class="d-flex flex-wrap my-2">
+                    <button class="m-2 colorBtns active">
+                    <p class="my-1 text-dark fw-bolder fs-5">64GB</p>
+                    <p class="m-0">NT$19,900</p>
+                  </button>
+                  </div>
+                </div>
+
+                <div class="network mt-3">
+                  <h5 class="fw-bolder">選擇連線能力</h5>
+                  <div class="d-flex flex-wrap my-2">
+                    <button class="m-2 networkBtns active">
+                    <p class="my-1 text-dark fw-bolder fs-6">Wi-Fi</p>
+                    <p class="m-0">NT$19,900</p>
+                  </button>
+                  <button class="m-2 networkBtns active">
+                    <p class="my-1 text-dark fw-bolder fs-6">Wi-Fi + 行動網路</p>
+                    <p class="m-0">NT$19,900</p>
+                  </button>
+                  </div>
+                  
+                </div>
+
+                <div class="price mt-4">
+                  <h5 class="fw-bolder d-inline my-auto ">價格試算</h5> <span class="m-3 text-dark fw-bolder fs-2">$NT10,500</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+//設定選項的陣列 依不同產品所需的
+      let products = {
+        iphone: {
+          color: ["white","black","green", "yellow","purple","red"],
+          storage: ["64GB","128GB","256GB"],
+          price: ["10000", "15000"]
+          
+        },
+        ipad: {
+          color: ["gray","silver","rose","green","blue"],
+          storage: ["64GB","256GB"],
+          network: ["wifi","cellular"],
+          price: ["10000", "15000"]
+        },
+        mac: {
+          color: ["gray","silver"],
+          ram:["8GB","16GB"],
+          storage: ["256GB","512GB","1TB"], // SSD 儲存裝置
+          price: ["10000", "15000"]
+        }
+      }
+
+      function productSelect(product) {
+        removeChild()
+        switch(product) {
+          case "iphone":
+            generateCap()
+            generateStorage
+            generateColor(products[product]["color"])
+          case "ipad":
+          case "mac":
+          
+        }
+      }
+
+      function removeChild() {
+        document.getElementsByClassName("colorBtn");
+      }
+
+      function generateColor(product) {
+      
+      }
+
+      function generateStorage(product) {
+
+      }
+
+      function generateCap(product) {
+
+      }
+    </script>
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
