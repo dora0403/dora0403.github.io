@@ -165,9 +165,6 @@
             let card = document.querySelector('#heroesCard');
             heroesName.forEach((hero,index)=>{
                 let cloneContent = card.content.cloneNode(true);
-                if(index==17){
-                    console.log(heroesValue[index].name);
-                }
                 cloneContent.querySelector('h5').innerText =`${index+1}. ${hero}${heroesValue[index].name}`;
                 cloneContent.querySelector('p').innerText = `${heroesValue[index].blurb.slice(0,50)}...`;
                 cloneContent.querySelector('img').src =`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${hero}_0.jpg`;
