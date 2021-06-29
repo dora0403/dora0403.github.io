@@ -70,8 +70,10 @@
     .storageBtn:hover,
     .ramBtn:hover, 
     .mac_storageBtn:hover {
-      transform: scale(1.08);
-      transition: .17s;
+      transform: scale(1.05);
+      transition: .4s; 
+      transition-property: transform; 
+      /* 延遲只作用在哪個樣式項目上 */
       background-color: rgb(255, 255, 244);
     }
 
@@ -104,6 +106,23 @@
       font-size: 1rem;
     }
 
+    /* 平板 */
+    @media screen and (max-width: 1024px) {
+      .networkBtn{
+        width: 65%;
+        height: 70px;
+      }
+      .ramBtn,.mac_storageBtn{
+        width: 65%;
+        height: 60px;
+      }
+      .colorBtn,.storageBtn{
+        width: 42%;
+        }
+
+
+    }
+
     @media screen and (max-width: 767px) {
       .navbar-brand {
         margin: auto 7%;
@@ -111,6 +130,9 @@
       .networkBtn {
       width: 45%;
       }
+      .colorBtn,.storageBtn{
+        width: 45%;
+        }
     }
   </style>
 </head>
@@ -123,22 +145,22 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#">iPhone</a>
+            <a class="nav-link  text-white" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">iPhone</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#">iPad</a>
+            <a class="nav-link  text-white" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">iPad</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#">Mac</a>
+            <a class="nav-link  text-white" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">Mac</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#" data-bs-toggle="modal" data-bs-target="#modal_search_shop_btn"><i class="fas fa-search"></i></a>
+            <a class="nav-link  text-white" href="#" data-bs-toggle="modal" data-bs-target="#modal_search_shop_btn" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"><i class="fas fa-search"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#" data-bs-toggle="modal" data-bs-target="#modal_search_shop_btn"><i class="fas fa-cart-plus"></i></a>
+            <a class="nav-link  text-white" href="#" data-bs-toggle="modal" data-bs-target="#modal_search_shop_btn" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"><i class="fas fa-cart-plus"></i></a>
           </li>
         </ul>
       </div>
@@ -162,11 +184,11 @@
           </div>
           <div class="col-12 d-flex align-items-center justify-content-center border-top p-3">
             <div class="mx-3">
-              <i class="far fa-comments"></i>
+              <i class="far fa-comment-dots"></i>
             </div>
             <div>
-              <p class="m-0">有任何關於購買iPhone上的問題嗎^^</p>
-              <a href="#">與apple專員線上對談</a>
+              <p class="m-0">有任何購買上的問題嗎？</p>
+              <a href="#">與apple專員線上對談^^</a>
             </div>
           </div>
         </div>
