@@ -108,18 +108,13 @@
 
     /* 平板 */
     @media screen and (max-width: 1024px) {
-      .networkBtn{
+      .networkBtn,.ramBtn,.mac_storageBtn{
         width: 65%;
         height: 70px;
-      }
-      .ramBtn,.mac_storageBtn{
-        width: 65%;
-        height: 60px;
       }
       .colorBtn,.storageBtn{
         width: 42%;
         }
-
 
     }
 
@@ -148,19 +143,19 @@
       <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">iPhone</a>
+            <a class="nav-link  text-white" href="#" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">iPhone</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">iPad</a>
+            <a class="nav-link  text-white" href="#" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">iPad</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">Mac</a>
+            <a class="nav-link  text-white" href="#" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Mac</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#" data-bs-toggle="modal" data-bs-target="#modal_search_shop_btn" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"><i class="fas fa-search"></i></a>
+            <a class="nav-link  text-white" href="#" data-bs-toggle="modal" data-bs-target="#modal_search_shop_btn"><i class="fas fa-search"></i></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  text-white" href="#" data-bs-toggle="modal" data-bs-target="#modal_search_shop_btn" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"><i class="fas fa-cart-plus"></i></a>
+            <a class="nav-link  text-white" href="#" data-bs-toggle="modal" data-bs-target="#modal_search_shop_btn"><i class="fas fa-cart-plus"></i></a>
           </li>
         </ul>
       </div>
@@ -290,11 +285,13 @@
       setIphonePage();
       changeModalContent();
     } 
+
     //按蘋果icon重新載入=回到預設頁面
     document.querySelector(".navbar-brand").addEventListener('click', function () { window.location.reload(); })
-    document.querySelectorAll(".navbar-nav a")[0].addEventListener('click', setIphonePage)
-    document.querySelectorAll(".navbar-nav a")[1].addEventListener('click', setIpadPage)
-    document.querySelectorAll(".navbar-nav a")[2].addEventListener('click', setMacPage)
+
+    document.querySelectorAll(".navbar-nav a")[0].addEventListener('click',setIphonePage)
+    document.querySelectorAll(".navbar-nav a")[1].addEventListener('click',setIpadPage)  
+    document.querySelectorAll(".navbar-nav a")[2].addEventListener('click',setMacPage)   
 
     let price=document.querySelector(".price span");
 
@@ -494,6 +491,8 @@
         document.querySelector("#modal_search_shop_btn .modal-body").innerText="順便買一支給我^^";
       })
       }
+
+
 
   </script>
 
