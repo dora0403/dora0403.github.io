@@ -190,7 +190,7 @@
       </div>
 
       <div class="col-12 col-md-6 p-4 ">
-        <h3 class="fw-bolder mb-4">購買iphone11</h3>
+        <h3 class="fw-bolder mt-2 mb-4">購買iphone11</h3>
 
         <div class="color">
           <h5 class="fw-bolder">外觀</h5>
@@ -322,9 +322,9 @@
       price.innerText = "";
     }
 
-    function removeButtonActiveClass(node) {
-      node.forEach((item, index) => {
-        item.classList.remove("active");
+    function removeButtonActiveClass(btnsCollection) {
+      btnsCollection.forEach((btn, index) => {
+        btn.classList.remove("active");
       })
     }
 

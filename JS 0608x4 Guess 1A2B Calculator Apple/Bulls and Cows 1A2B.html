@@ -237,11 +237,14 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">我的介紹就是...</h5>
+          <h5 class="modal-title" id="exampleModalLabel">遊戲介紹</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        自己上網查 顆顆顆
+          1A2B 這個遊戲在國外叫 mastermind 或 cows and bulls，玩法是從 0 ～ 9 猜 4 位數的數字，這 4 位數中的數字不能重覆，例如「5566」是不行的，因為5、6都重複了。<br>
+          假設答案是「1234」，您猜「3456」，那您猜中 3、4 這兩個數字，但是位置不對，這樣的情況稱為 2B。<br>
+          若您猜「2134」，您猜中1、2、3、4 這四個數字，其中1、2兩個數字位置不對，另外3、4兩個數字位置正確。 這樣的情況稱為 2A2B。
+          遊戲的目標就是要達到 4A -- 4 位數都猜中，且數字都在正確的位置上。加油囉 ! 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary " data-bs-dismiss="modal">Close</button>
@@ -255,6 +258,7 @@
       let inputArray;
       let startBtn=document.getElementsByClassName("startBtn")[0];
       let record = document.querySelector("#recordBox ul");
+      let guessTimes=0;
       
       window.onload=function(){
         disableBtn("#enter");
@@ -270,6 +274,7 @@
         disableBtn("#enter");
         disableBtn(".restartBtn");
         disableBtn("#input")
+        guessTimes=0;
     })
     function getAnswer(){       
       let topic=Array.from(Array(10).keys()); //類似range(0,10) 排成陣列      
@@ -338,9 +343,11 @@
                 }
               }
             }
+            
+          guessTimes++;
           if(A==4){
             setTimeout(function(){
-               alert("猜中了！很會喔！再見！");
+               alert(`猜中了！很會喔！但還是猜了 ${guessTimes} 次 比我還遜 再見！`);
                //如果alert後要做以下這些事情 就要一起放在延遲方法裡面 寫在外面的話會先跑
                window.onclick=function(){
                    window.location.reload();

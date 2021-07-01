@@ -2,22 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="Shortcut Icon" type="image/x-icon" href="img/apple.png" />
-    <title>IPad 限時特賣</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="Shortcut Icon" type="image/x-icon" href="img/apple.png" />
+  <title>IPad 限時特賣</title>
 </head>
 <style>
-.navbar-brand {
+  .navbar-brand {
     margin: auto 0 auto 10%;
     font-size: 24px;
   }
-  .navbar-collapse{
-    margin-right: 11%;
 
+  .navbar-collapse {
+    margin-right: 11%;
   }
 
   .nav-item a:hover {
@@ -37,13 +37,12 @@
     font-size: 21px;
   }
 
-  .color,
-  .storage_Ram_Network {
+  .selectionBox {
     border-bottom: 1px rgb(211, 211, 211) solid;
   }
 
   .colorBtn,
-  .storageBtn{
+  .storageBtn {
     background-color: white;
     width: 30%;
     height: 90px;
@@ -51,150 +50,329 @@
     border-radius: 5%;
   }
 
-  .networkBtn,.ramBtn,.mac_storageBtn {
+  .networkBtn {
     background-color: white;
-    width: 40%;
+    width: 37%;
     height: 90px;
     border: 1px solid silver;
     border-radius: 5%;
   }
-  .ramBtn,.mac_storageBtn{
-    height: 70px;
-  }
 
   .colorBtn:hover,
   .networkBtn:hover,
-  .storageBtn:hover,
-  .ramBtn:hover, 
-  .mac_storageBtn:hover {
-    transform: scale(1.08);
-    transition: .17s;
+  .storageBtn:hover {
+    transform: scale(1.05);
+    transition: .4s;
+    transition-property: transform;
+    /* 延遲只作用在哪個樣式項目上 */
     background-color: rgb(255, 255, 244);
-  }
-
-  .ramBtn:hover p, 
-  .mac_storageBtn:hover p{
-    font-weight: bolder;
   }
 
   .active {
     border: 3px solid rgb(143, 195, 255);
   }
-  .ramBtn.active, 
-  .mac_storageBtn.active{
-    font-weight: bolder;
-  }
 
   .colorBtn p:last-child,
   .networkBtn p:last-child,
-  .storageBtn p:last-child{
+  .storageBtn p:last-child {
     font-size: 13px;
     color: gray;
   }
 
-  .storageBtn p:first-child{
+  .storageBtn p:first-child {
     font-size: 1.25rem;
   }
 
-  .networkBtn p:first-child,
-  .mac_storageBtn:first-child  {
+  .networkBtn p:first-child {
     font-size: 1rem;
+  }
+
+  .accordion-button:not(.collapsed),.accordion-button{ 
+    /* collapse表示收起的狀態  :not(.collapsed) 打開時 */
+    font-size: 19px;
+    color: rgb(45, 100, 202);
+    font-weight: bolder;
+  }
+
+  .accordion-button::after,
+  .accordion-button:not(.collapsed)::after {
+    content: "更改" !important;
+    background-image: none;
+    transform: none;
+    width: 2rem;
+    color: rgb(150, 150, 150);
+    text-decoration: underline;
+    font-size: 16px;
+
+  }
+
+  /* 平板 */
+  @media screen and (max-width: 1024px) {
+    .networkBtn {
+      width: 65%;
+      height: 75px;
+    }
+    .colorBtn,
+    .storageBtn {
+      width: 44%;
+    }
   }
 
   @media screen and (max-width: 767px) {
     .navbar-brand {
       margin: auto 7%;
     }
+
     .networkBtn {
-    width: 45%;
+      width: 45%;
+    }
+
+    .colorBtn,
+    .storageBtn {
+      width: 45%;
     }
   }
 </style>
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#"><img src="" alt=""><i class="fab fa-apple"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link text-center  text-white" href="#">今天只賣 iPad</a>
-        </li>     
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="#"><img src="" alt=""><i class="fab fa-apple"></i></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link text-center  text-white" href="#" data-bs-toggle="collapse"
+              data-bs-target=".navbar-collapse.show">今天只賣 iPad</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div class="productImg d-grid mt-3">
+          <img src="img/ipadAir-灰.png" class="product_img mx-auto w-75">
+        </div>
+        <div class="row mt-5 px-5 service">
+          <div class="col-6 text-center py-2">
+            <i class="fas fa-plane mb-2"></i>
+            <p>快速且免額外付費的運送服務</p>
+          </div>
+          <div class="col-6 text-center py-2">
+            <i class="fas fa-box-open mb-2"></i>
+            <p>免額外付費輕鬆退貨</p>
+          </div>
+          <div class="col-12 d-flex align-items-center justify-content-center border-top p-3">
+            <div class="mx-3">
+              <i class="far fa-comment-dots"></i>
+            </div>
+            <div>
+              <p class="m-0">有任何購買愛配的問題嗎？</p>
+              <a href="#">與apple專員線上對談^^</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 p-4 ">
+        <h3 class="fw-bolder mt-2 mb-4">購買iPad Air</h3>
+        <!-- 手風琴 -->
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                aria-controls="panelsStayOpen-collapseOne">
+                外觀
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+              aria-labelledby="panelsStayOpen-headingOne">
+              <div class="accordion-body">
+                <div class="d-flex flex-wrap my-1 colorBtnsBox">
+                  <button class="m-2 colorBtn">
+                    <img class="my-1 w-25" src="img/ipadAir-color灰.png">
+                    <p class="m-0">太空灰色</p>
+                  </button>
+                  <button class="m-2 colorBtn">
+                    <img class="my-1 w-25" src="img/ipadAir-color銀.png">
+                    <p class="m-0">銀色</p>
+                  </button>
+                  <button class="m-2 colorBtn">
+                    <img class="my-1 w-25" src="img/ipadAir-color金.jfif">
+                    <p class="m-0">玫瑰金色</p>
+                  </button>
+                  <button class="m-2 colorBtn">
+                    <img class="my-1 w-25" src="img/ipadAir-color綠.jfif">
+                    <p class="m-0">綠色</p>
+                  </button>
+                  <button class="m-2 colorBtn">
+                    <img class="my-1 w-25" src="img/ipadAir-color藍.png">
+                    <p class="m-0">藍色</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseTwo">
+                儲存容量
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+              aria-labelledby="panelsStayOpen-headingTwo">
+              <div class="accordion-body">
+                <div class="d-flex flex-wrap my-1 storageBtnsBox">
+                  <button class="m-2 storageBtn">
+                    <p class="my-1 text-dark fw-bolder">64GB</p>
+                    <p class="m-0">NT$18900起</p>
+                  </button>
+                  <button class="m-2 storageBtn">
+                    <p class="my-1 text-dark fw-bolder">256GB</p>
+                    <p class="m-0">NT$23900起</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseThree">
+                連線能力
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+              aria-labelledby="panelsStayOpen-headingThree">
+              <div class="accordion-body">
+                <div class="d-flex flex-wrap my-1 networkBtnsBox">
+                  <button class="m-2 networkBtn">
+                    <p class="my-1 text-dark fw-bolder">Wi-Fi</p>
+                  </button>
+                  <button class="m-2 networkBtn">
+                    <p class="my-1 text-dark fw-bolder">Wi-Fi + 行動網路</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="price mt-3">
+          <h5 class="fw-bolder d-inline my-auto ">價格試算</h5> <span class="m-3 text-dark fw-bolder fs-2"></span>
+        </div>
+
+      </div>
     </div>
   </div>
-</nav>
+  </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <div class="productImg d-grid">
-        <img src="img/iphone11-白.png" class="product_img mx-auto w-75">
-      </div>
-      <div class="row mt-5 px-5 service">
-        <div class="col-6 text-center py-2">
-          <i class="fas fa-plane mb-2"></i>
-          <p>快速且免額外付費的運送服務</p>
-        </div>
-        <div class="col-6 text-center py-2">
-          <i class="fas fa-box-open mb-2"></i>
-          <p>免額外付費輕鬆退貨</p>
-        </div>
-        <div class="col-12 d-flex align-items-center justify-content-center border-top p-3">
-          <div class="mx-3">
-            <i class="far fa-comments"></i>
-          </div>
-          <div>
-            <p class="m-0">有任何購買愛配的問題嗎^^</p>
-            <a href="#">與apple專員線上對談</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-        const url = '';
+  <script>
+    const url = 'https://raw.githubusercontent.com/dora0403/dora0403.github.io/main/JS%200608x4%20Guess%201A2B%20Calculator%20Apple/ipad.json';
 
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', url);
-        xhr.send();
+    const ipadObj = {
+      "iPad": [
+        { "sku": "001", "color": "太空灰色", "storage": "64GB", "network": "Wi-Fi", "price": "NT$18,900", "img": "img/ipadAir-灰.png" },
+        { "sku": "002", "color": "太空灰色", "storage": "64GB", "network": "Wi-Fi + 行動網路", "price": "NT$23,200", "img": "img/ipadAir-灰.png" },
+        { "sku": "003", "color": "太空灰色", "storage": "256GB", "network": "Wi-Fi", "price": "NT$23,900", "img": "img/ipadAir-灰.png" },
+        { "sku": "004", "color": "太空灰色", "storage": "256GB", "network": "Wi-Fi + 行動網路", "price": "NT$28,200", "img": "img/ipadAir-灰.png" },
 
-        let iPadArray;
-        let Size = "11吋顯示器",
-            Color = "太空灰色",
-            STorage = "128GB",
-            Network = "Wi-Fi",
-            Price = 24900,
-            Image = "iPadPro_11_Gray.jfif";
-        let sizeSection = document.querySelector('.sizeSection .buttons');
-        let colorSection = document.querySelector('.colorSection .buttons');
-        let storageSection = document.querySelector('.storageSection .buttons');
-        let networkSection = document.querySelector('.networkSection .buttons');
+        { "sku": "005", "color": "銀色", "storage": "64GB", "network": "Wi-Fi", "price": "NT$18,900", "img": "img/ipadAir-銀.png" },
+        { "sku": "006", "color": "銀色", "storage": "64GB", "network": "Wi-Fi + 行動網路", "price": "NT$23,200", "img": "img/ipadAir-銀.png" },
+        { "sku": "007", "color": "銀色", "storage": "256GB", "network": "Wi-Fi", "price": "NT$23,900", "img": "img/ipadAir-銀.png" },
+        { "sku": "008", "color": "銀色", "storage": "256GB", "network": "Wi-Fi + 行動網路", "price": "NT$28,200", "img": "img/ipadAir-銀.png" },
 
-        xhr.onload = function () {
-            iPadArray = JSON.parse(xhr.responseText);
-            creatSizeBtns();
-            creatColorBtns();
-            creatStorageBtns();
-            creatNetworkBtns();
-        }
-    </script>
+        { "sku": "005", "color": "玫瑰金色", "storage": "64GB", "network": "Wi-Fi", "price": "NT$18,900", "img": "img/ipadAir-金.png" },
+        { "sku": "006", "color": "玫瑰金色", "storage": "64GB", "network": "Wi-Fi + 行動網路", "price": "NT$23,200", "img": "img/ipadAir-金.png" },
+        { "sku": "007", "color": "玫瑰金色", "storage": "256GB", "network": "Wi-Fi", "price": "NT$23,900", "img": "img/ipadAir-金.png" },
+        { "sku": "008", "color": "玫瑰金色", "storage": "256GB", "network": "Wi-Fi + 行動網路", "price": "NT$28,200", "img": "img/ipadAir-金.png" },
+
+        { "sku": "005", "color": "綠色", "storage": "64GB", "network": "Wi-Fi", "price": "NT$18,900", "img": "img/ipadAir-綠.png" },
+        { "sku": "006", "color": "綠色", "storage": "64GB", "network": "Wi-Fi + 行動網路", "price": "NT$23,200", "img": "img/ipadAir-綠.png" },
+        { "sku": "007", "color": "綠色", "storage": "256GB", "network": "Wi-Fi", "price": "NT$23,900", "img": "img/ipadAir-綠.png" },
+        { "sku": "008", "color": "綠色", "storage": "256GB", "network": "Wi-Fi + 行動網路", "price": "NT$28,200", "img": "img/ipadAir-綠.png" },
+
+        { "sku": "005", "color": "天藍色", "storage": "64GB", "network": "Wi-Fi", "price": "NT$18,900", "img": "img/ipadAir-藍.png" },
+        { "sku": "006", "color": "天藍色", "storage": "64GB", "network": "Wi-Fi + 行動網路", "price": "NT$23,200", "img": "img/ipadAir-藍.png" },
+        { "sku": "007", "color": "天藍色", "storage": "256GB", "network": "Wi-Fi", "price": "NT$23,900", "img": "img/ipadAir-藍.png" },
+        { "sku": "008", "color": "天藍色", "storage": "256GB", "network": "Wi-Fi + 行動網路", "price": "NT$28,200", "img": "img/ipadAir-藍.png" }
+      ]
+    }
+    let iPadArray = ipadObj["iPad"];
+    let imgArray;
+    let chosenColor,chosenStorage,chosenNetwork;
+
+    window.onload = () => {
+      setImgArray()
+      openAllAccordions()
+      setButtons(".colorBtn",0)
+      setButtons(".storageBtn",1)
+      setButtons(".networkBtn",2)
+    }
+
+    function setImgArray() {
+      let myset = new Set();
+      iPadArray.forEach((item, index) => {
+        myset.add(item.img)
+      })
+      imgArray = [...myset]; // Array.from(myset);
+    }
+
+    function setButtons(classname,accordionIndex) {
+      let Btns = document.querySelectorAll(classname);
+      Btns.forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        if(btn.classList.contains("colorBtn")) document.querySelector(".productImg img").src = imgArray[index]
+
+        removeButtonActiveClass(Btns); //在加上新點的按鈕的active前 先移掉同個系列的按鈕的active 
+        btn.classList.add("active");
+        setTimeout(() => {
+          document.getElementsByClassName("accordion-button")[accordionIndex].click();
+        }, 250);
+        document.getElementsByClassName("accordion-button")[accordionIndex].innerText=document.querySelector(classname+".active p").innerText
+        checkFinalPrice();
+      })
+    })
+    }
+
+    function removeButtonActiveClass(btnsCollection) {
+      btnsCollection.forEach((btn, index) => {
+        btn.classList.remove("active");
+      })
+    }
+
+    function openAllAccordions(){
+      // document.getElementsByClassName("accordion-button")[0].click(); 第一個原本就開了
+      document.getElementsByClassName("accordion-button")[1].click();
+      document.getElementsByClassName("accordion-button")[2].click();
+    }
+    
+    function checkFinalPrice(){
+      chosenStorage=document.querySelector(".storageBtn.active p");
+      chosenNetwork=document.querySelector(".networkBtn.active p");
+
+      if(chosenStorage!=null && chosenNetwork!=null){
+        let chosenProduct = iPadArray.find(x => x.storage == chosenStorage.innerText && x.network == chosenNetwork.innerText);
+        document.querySelector(".price span").innerText=chosenProduct.price;
+      }
+    }
+
+  </script>
 
 
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
 
 </body>
 
