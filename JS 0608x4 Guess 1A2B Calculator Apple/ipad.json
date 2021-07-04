@@ -1,27 +1,168 @@
-{"iPad":[
-    { "sku": "001", "color": "太空灰色", "storage": "64GB", "net_work": "Wi-Fi", "price": "NT$18,900","img": "img/ipadAir-灰2.png" },
-    { "sku": "002", "color": "太空灰色", "storage": "64GB", "net_work": "Wi-Fi + 行動網路", "price": "NT$23,200", "img": "img/ipadAir-灰2.png" },
-    { "sku": "003", "color": "太空灰色", "storage": "256GB", "net_work": "Wi-Fi", "price": "NT$23,900", "img": "img/ipadAir-灰2.png" },
-    { "sku": "004", "color": "太空灰色", "storage": "256GB", "net_work": "Wi-Fi + 行動網路", "price": "NT$28,200", "img": "img/ipadAir-灰2.png"},
+{
+  "iPad": [
+    {
+      "sku": "001",
+      "color": "太空灰色",
+      "storage": "64GB",
+      "network": "Wi-Fi",
+      "price": "NT$18,900",
+      "img": "img/ipadAir-灰.png"
+    },
+    {
+      "sku": "002",
+      "color": "太空灰色",
+      "storage": "64GB",
+      "network": "Wi-Fi + 行動網路",
+      "price": "NT$23,200",
+      "img": "img/ipadAir-灰.png"
+    },
+    {
+      "sku": "003",
+      "color": "太空灰色",
+      "storage": "256GB",
+      "network": "Wi-Fi",
+      "price": "NT$23,900",
+      "img": "img/ipadAir-灰.png"
+    },
+    {
+      "sku": "004",
+      "color": "太空灰色",
+      "storage": "256GB",
+      "network": "Wi-Fi + 行動網路",
+      "price": "NT$28,200",
+      "img": "img/ipadAir-灰.png"
+    },
 
-    { "sku": "005", "color": "銀色", "storage": "64GB", "net_work": "Wi-Fi", "price": "NT$18,900", "img": "img/ipadAir-銀2.png" },
-    { "sku": "006", "color": "銀色", "storage": "64GB", "net_work": "Wi-Fi + 行動網路", "price": "NT$23,200", "img": "img/ipadAir-銀2.png"},
-    { "sku": "007", "color": "銀色", "storage": "256GB", "net_work": "Wi-Fi", "price": "NT$23,900", "img": "img/ipadAir-銀2.png" },
-    { "sku": "008", "color": "銀色", "storage": "256GB", "net_work": "Wi-Fi + 行動網路", "price": "NT$28,200", "img": "img/ipadAir-銀2.png"  },
+    {
+      "sku": "005",
+      "color": "銀色",
+      "storage": "64GB",
+      "network": "Wi-Fi",
+      "price": "NT$18,900",
+      "img": "img/ipadAir-銀.png"
+    },
+    {
+      "sku": "006",
+      "color": "銀色",
+      "storage": "64GB",
+      "network": "Wi-Fi + 行動網路",
+      "price": "NT$23,200",
+      "img": "img/ipadAir-銀.png"
+    },
+    {
+      "sku": "007",
+      "color": "銀色",
+      "storage": "256GB",
+      "network": "Wi-Fi",
+      "price": "NT$23,900",
+      "img": "img/ipadAir-銀.png"
+    },
+    {
+      "sku": "008",
+      "color": "銀色",
+      "storage": "256GB",
+      "network": "Wi-Fi + 行動網路",
+      "price": "NT$28,200",
+      "img": "img/ipadAir-銀.png"
+    },
 
-    { "sku": "005", "color": "玫瑰金色", "storage": "64GB", "net_work": "Wi-Fi", "price": "NT$18,900", "img": "img/ipadAir-金2.png" },
-    { "sku": "006", "color": "玫瑰金色", "storage": "64GB", "net_work": "Wi-Fi + 行動網路", "price": "NT$23,200", "img": "img/ipadAir-金2.png" },
-    { "sku": "007", "color": "玫瑰金色", "storage": "256GB", "net_work": "Wi-Fi", "price": "NT$23,900", "img": "img/ipadAir-金2.png" },
-    { "sku": "008", "color": "玫瑰金色", "storage": "256GB", "net_work": "Wi-Fi + 行動網路", "price": "NT$28,200", "img": "img/ipadAir-金2.png" },
+    {
+      "sku": "005",
+      "color": "玫瑰金色",
+      "storage": "64GB",
+      "network": "Wi-Fi",
+      "price": "NT$18,900",
+      "img": "img/ipadAir-金.png"
+    },
+    {
+      "sku": "006",
+      "color": "玫瑰金色",
+      "storage": "64GB",
+      "network": "Wi-Fi + 行動網路",
+      "price": "NT$23,200",
+      "img": "img/ipadAir-金.png"
+    },
+    {
+      "sku": "007",
+      "color": "玫瑰金色",
+      "storage": "256GB",
+      "network": "Wi-Fi",
+      "price": "NT$23,900",
+      "img": "img/ipadAir-金.png"
+    },
+    {
+      "sku": "008",
+      "color": "玫瑰金色",
+      "storage": "256GB",
+      "network": "Wi-Fi + 行動網路",
+      "price": "NT$28,200",
+      "img": "img/ipadAir-金.png"
+    },
 
-    { "sku": "005", "color": "綠色", "storage": "64GB", "net_work": "Wi-Fi", "price": "NT$18,900", "img": "img/ipadAir-綠2.png" },
-    { "sku": "006", "color": "綠色", "storage": "64GB", "net_work": "Wi-Fi + 行動網路", "price": "NT$23,200", "img": "img/ipadAir-綠2.png" },
-    { "sku": "007", "color": "綠色", "storage": "256GB", "net_work": "Wi-Fi", "price": "NT$23,900", "img": "img/ipadAir-綠2.png" },
-    { "sku": "008", "color": "綠色", "storage": "256GB", "net_work": "Wi-Fi + 行動網路", "price": "NT$28,200", "img": "img/ipadAir-綠2.png" },
+    {
+      "sku": "005",
+      "color": "綠色",
+      "storage": "64GB",
+      "network": "Wi-Fi",
+      "price": "NT$18,900",
+      "img": "img/ipadAir-綠.png"
+    },
+    {
+      "sku": "006",
+      "color": "綠色",
+      "storage": "64GB",
+      "network": "Wi-Fi + 行動網路",
+      "price": "NT$23,200",
+      "img": "img/ipadAir-綠.png"
+    },
+    {
+      "sku": "007",
+      "color": "綠色",
+      "storage": "256GB",
+      "network": "Wi-Fi",
+      "price": "NT$23,900",
+      "img": "img/ipadAir-綠.png"
+    },
+    {
+      "sku": "008",
+      "color": "綠色",
+      "storage": "256GB",
+      "network": "Wi-Fi + 行動網路",
+      "price": "NT$28,200",
+      "img": "img/ipadAir-綠.png"
+    },
 
-    { "sku": "005", "color": "天藍色", "storage": "64GB", "net_work": "Wi-Fi", "price": "NT$18,900", "img": "img/ipadAir-藍2.png" },
-    { "sku": "006", "color": "天藍色", "storage": "64GB", "net_work": "Wi-Fi + 行動網路", "price": "NT$23,200", "img": "img/ipadAir-藍2.png" },
-    { "sku": "007", "color": "天藍色", "storage": "256GB", "net_work": "Wi-Fi", "price": "NT$23,900", "img": "img/ipadAir-藍2.png" },
-    { "sku": "008", "color": "天藍色", "storage": "256GB", "net_work": "Wi-Fi + 行動網路", "price": "NT$28,200", "img": "img/ipadAir-藍2.png" }
-]}
-
+    {
+      "sku": "005",
+      "color": "天藍色",
+      "storage": "64GB",
+      "network": "Wi-Fi",
+      "price": "NT$18,900",
+      "img": "img/ipadAir-藍.png"
+    },
+    {
+      "sku": "006",
+      "color": "天藍色",
+      "storage": "64GB",
+      "network": "Wi-Fi + 行動網路",
+      "price": "NT$23,200",
+      "img": "img/ipadAir-藍.png"
+    },
+    {
+      "sku": "007",
+      "color": "天藍色",
+      "storage": "256GB",
+      "network": "Wi-Fi",
+      "price": "NT$23,900",
+      "img": "img/ipadAir-藍.png"
+    },
+    {
+      "sku": "008",
+      "color": "天藍色",
+      "storage": "256GB",
+      "network": "Wi-Fi + 行動網路",
+      "price": "NT$28,200",
+      "img": "img/ipadAir-藍.png"
+    }
+  ]
+}
