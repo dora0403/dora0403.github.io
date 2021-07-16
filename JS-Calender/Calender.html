@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>假文青月曆</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="Shortcut Icon" type="image/x-icon" href="img/小日曆ICON.png" />
+
+  <!-- 字體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+TC:wght@300&family=Permanent+Marker&family=Ubuntu:ital,wght@0,300;1,500&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+  <!-- datepicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css"
+    integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
+
+  <style>
+    td {
+      text-align: left;
+      font-size: 17px;
+      height: 120px;
+      color: rgb(96, 176, 255);
+      position: relative;
+      background-color: rgb(255, 245, 247);
+      background-color: rgb(253, 253, 253);
+      font-family: 'Ubuntu', sans-serif;
+      
+      cursor: pointer;
+      /* 滑鼠游標改成指向 */
+    }
+
+    td:hover {
+      background-color: rgb(255, 251, 240);
+    }
+
+    .today_td {
+      background-color: rgb(255, 239, 242) !important;
+      color: rgb(248, 167, 87);
+      font-weight: bold;
+      position: relative;
+    }
+
+    .today_td::before {
+      content: "TODAY";
+      font-size: 13px;
+      
+      color: lightyellow;
+      background-color: rgb(149, 208, 231);
+      position: absolute;
+      right: 13px;
+    }
+
+    .scheduled_td {
+      background-color: rgb(251, 243, 255);
+    }
+
+    th {
+      background-color: pink;
+      color: steelblue;
+      /* 字型則一 */
+      font-family: 'Nanum Pen Script', cursive;
+      
+      font-size: 1.5rem;
+    }
+
+    .title {
+      height: 170px;
+      background-image: url("../JS-Calender/img/背景1.jpg");
+      background-size: cover;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      table-layout: fixed;
+      /* 平均分配寬度 */
+    }
+
+    #weekend {
+      color: rgb(216, 88, 131);
+    }
+
+    .quotation {
+      font-weight: bold;
+      color: rgb(75, 152, 224);
+    }
+
+    .icon_quotation_box {
+      width: 40%;
+
+    }
+
+    .icon_quotation_box img {
+      width: 60px;
+    }
+
+    .monthBox {
+      flex-grow: 1;
+      margin-left: 2%;
+    }
+
+    /* 月份數字 */
+    .monthBox h1 {
+      font-size: 140px;
+      font-family: 'Nanum Pen Script', cursive;
+      color: hotpink;
+    }
+
+    /* 月份英文 */
+    .monthBox span {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 30px;
+      color: indianred;
+    }
+
+    #year {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 40px;
+      color: rgb(46, 161, 255);
+      
+
+    }
+
+    .modal-header {
+      background-color: rgb(255, 209, 218);
+      color: rgb(209, 91, 130);
+    }
+
+    .modal-header span {}
+
+    .list_p {
+      color: rgb(54, 53, 53);
+      font-weight: normal;
+      font-size: 15px;
+      background-color: moccasin;
+      border-radius: 8px;
+      height: 30%;
+      overflow: hidden;
+    }
+
+    .list_div {
+      overflow: hidden;
+      overflow-y: auto;
+      height: 80px;
+      width: 90%;
+    }
+
+    .list_div::-webkit-scrollbar {
+      display: none
+    }
+
+    #todo-detail {
+      height: 120px;
+    }
+
+    .selector img {
+      width: 30px;
+    }
+
+    .selector button,
+    .close {
+      background: transparent;
+      box-shadow: 0px 0px 0px transparent;
+      border: 0px solid transparent;
+      text-shadow: 0px 0px 0px transparent;
+    }
+
+    .saveBtn,
+    .editBtn {
+      background-color: rgb(230, 149, 176);
+      color: white;
+    }
+
+    .saveBtn:hover,
+    .editBtn:hover {
+      color: white;
+      background-color: rgb(216, 127, 156);
+    }
+
+    .cxlBtn {
+      background-color: rgb(212, 212, 212);
+      color: white;
+    }
+
+    .cxlBtn:hover {
+      color: white;
+      background-color: rgb(207, 207, 207);
+    }
+
+    .deleteBtn {
+      background-color: salmon;
+      color: white;
+    }
+
+    .deleteBtn:hover {
+      color: white;
+      background-color: rgb(255, 127, 95);
+    }
+
+    /* 平板 */
+    @media screen and (max-width: 1024px) {}
+
+    @media screen and (max-width: 767px) {
+      table th {
+        padding: 1rem !important;
+      }
+
+      td {
+        height: 50px;
+        font-size: 15px;
+        padding: .4rem !important;
+
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        <div class="title d-flex">
+
+          <div class="icon_quotation_box d-flex align-self-center ml-4">
+            <img src="img/flower.png">
+            <p class="my-auto mx-3 quotation"></p>
+          </div>
+          <div class="monthBox d-flex">
+            <span class="mt-4">JAN</span>
+            <h1 id="month" class="align-self-center"></h1>
+          </div>
+
+          <div class="yearWithSelector d-flex flex-column justify-content-center mx-4">
+            <p class="text-center" id="year"></p>
+
+            <div class="selector ">
+              <button onclick="goPreviousMonth()" title="上個月"><img src="img/arror left.png" alt=""></button>
+              <button onclick="goNextMonth()" title="下個月"><img src="img/arror right.png" alt=""></button>
+              <!-- <input type="text" id="datepicker" value=""> -->
+              <button title="找月份"><img src="img/search.png" alt="" id="datepicker"></button>
+              <button title="回主頁"><img src="img/homepage.png" alt="" id="homePage"></button>
+              <a href="https://www.notion.so/zh-tw" title="作筆記" target="_blank"><img src="img/takenote.png" alt=""
+                  id="notion"></a>
+
+              <!-- <img src="img/next2.png" alt="">  粉色箭頭 -->
+            </div>
+
+          </div>
+
+        </div>
+
+        <table class="table table-bordered">
+          <thead>
+            <tr class="text-center">
+              <th id="weekend">SUN</th>
+              <th>MON</th>
+              <th>TUE</th>
+              <th>WED</th>
+              <th>THU</th>
+              <th>FRI</th>
+              <th id="weekend">SAT</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td></tr><tr><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td></tr><tr><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td></tr><tr><td>27</td><td>28</td><td>29</td><td>30</td><td></td><td></td><td></td></tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 新增行程 -->
+  <div class="modal fade" id="addScheduleModal" tabindex="-1" role="dialog" aria-labelledby="addScheduleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <!-- modal-dialog-centered -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title date" id="addScheduleModalLabel"></h5> <span class="my-auto mx-1">幹大事 <i
+              class="far fa-calendar-check"></i></span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="closeBtn">×</span>
+          </button>
+        </div>
+        <div id="input-area" class="modal-body">
+          <!-- <input id="" type="date" /><br> -->
+          <div class="input-group my-3 w-50">
+            <span class="input-group-text">Title</span>
+            <input id="todo-item" type="text" required="required" placeholder="六個字以內的大事" maxlength="6" title="必填"
+              class="form-control border-left-0" />
+          </div>
+          <div class="input-group my-3 ">
+            <textarea id="todo-detail" type="text" placeholder="詳細說明" class="form-control"></textarea>
+          </div>
+          <div class="input-group my-3 w-50">
+            <span class="input-group-text">Label Color </span>
+            <input id="todo-color" type="color" class="form-control border-left-0" value="#FFE0F0">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn cxlBtn" data-dismiss="modal">
+            Cancel
+          </button>
+          <button type="button" class="btn saveBtn">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 檢視行程 -->
+  <div class="modal fade" id="editScheduleModal" tabindex="-1" role="dialog" aria-labelledby="editScheduleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title date_editModal" id="editScheduleModalLabel"></h5><span class="my-auto mx-1">修改大事 <i
+              class="fas fa-pencil-alt"></i></span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div id="input-area" class="modal-body">
+          <div class="input-group my-3 w-50">
+            <span class="input-group-text">Title</span>
+            <input id="edit-item" type="text" required="required" placeholder="六個字以內的大事" maxlength="6" title="必填"
+              class="form-control border-left-0" />
+          </div>
+          <div class="input-group my-3 ">
+            <textarea id="edit-detail" type="text" placeholder="詳細說明" class="form-control"></textarea>
+          </div>
+          <div class="input-group my-3 w-50">
+            <span class="input-group-text">Label Color </span>
+            <input id="edit-color" type="color" class="form-control border-left-0" value="">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn deleteBtn" onclick="">
+            刪除
+          </button>
+          <button type="button" class="btn editBtn">
+            <!-- onclick="EditTodoItem()" -->
+            修改
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const quotations = [
+      { img: "img/sun.png", words: "如果你的面前有陰影，那是因為你的背後有陽光。" },
+      { img: "img/road.png", words: "你只有走完必須走的路，才能過想過的生活。" },
+      { img: "img/happiness.png", words: "快樂不是因為擁有的多而是因為計較的少！" },
+      { img: "img/flower.png", words: "你若盛開，蝴蝶自來。" },
+      { img: "img/dream.png", words: "一切成就都緣於一個夢想和毫無根據的自信。" },
+      { img: "img/work.png", words: "在逆境中看到生活的美，在希望中別忘記奮鬥。" },
+      { img: "img/2steps.png", words: "成功只有兩步：第一步，和堅持到最後一步。" },
+      { img: "img/star.png", words: "經歷過最黑的夜，才能看見最亮的星星。" },
+      { img: "img/peace.png", words: "生氣是拿別人做錯的事來懲罰自己" },
+      { img: "img/hope.png", words: "Learn from yesterday, live for today,\nhope for tomorrow." },
+      { img: "img/knowledge.png", words: "Knowledge is power." },
+      { img: "img/workHard.png", words: "Genius is one percent inspiration and ninety-nine percent perspiration." }
+    ]
+    const month_en = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AUG", "SEPT", "OCT", "NOV", "DEC"];
+    let tbody = document.getElementsByTagName("tbody")[0];
+    let today = new Date(); //取得今天日期
+    let year = today.getFullYear();
+    let month = today.getMonth(); //月份是從0開始
+    let date = today.getDate(); //用today今天日期去取得日期中的日(1~31)
+
+    window.onload = function () {
+      setTitle();
+      setTable();
+      pickDate();
+      document.getElementById('homePage').addEventListener('click', () => {
+        window.location.reload();
+      })
+    }
+
+    function pickDate() {
+      $("#datepicker").datepicker({
+        format: "yyyy-mm",
+        autoclose: true,
+      });
+
+
+      $('#datepicker').bind("click", function () {
+        let pickedDate = $("img#datepicker").datepicker("getDate");
+        let pickedYear = pickedDate.getFullYear();
+        let pickedMonth = pickedDate.getMonth();
+        console.log(pickedMonth)
+      })
+
+      // $("#datepicker").datepicker({
+      //   onSelect: function () {
+      //     var pickedDate = $(this).datepicker('getDate');
+      //     console.log(pickedDate)
+      //   }
+      // });
+
+      // $('#datepicker').datepicker().on('changeMonth', function (ev) {
+      //   $('#datepicker').datepicker('hide');
+      // });
+
+      //$('#datepicker').click();
+
+
+    }
+
+
+    function setTable() {
+      //先找出本月第一天星期幾
+      let firstDay = new Date(year, month, 1).getDay(); //getDay()取得星期幾 0(日)~6(六)
+
+      //取得當月最後一天 可以得知當月有幾天
+      let totalDaysOfMonth = new Date(year, month + 1, 0).getDate();//相較於1是第一天 0就會是倒一天=上個月的最後一天 
+
+      let day = 1;
+      let lastDays_previousMonth = firstDay; //需顯示上個月剩餘有多少天 剛好等於這個月第一天的索引
+      let rows = Math.ceil((totalDaysOfMonth + firstDay) / 7);  //算表格要有幾列
+
+      for (let row = 0; row < rows; row++) {
+        //月曆的一行一行
+        let tr = document.createElement("tr");
+        for (let col = 0; col < 7; col++) {
+          //行中的每一格日子
+          let td = document.createElement("td"); //日期
+          if (row == 0 && col < firstDay) {
+            //每個月1日前面的空格 也就是上個月的最後
+          }
+          else {
+            let storageKey = `${year}-${(month + 1).toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`
+
+            if (day <= totalDaysOfMonth) {
+              td.innerText = day;
+              if (day == date && month == today.getMonth()) {
+                td.classList.add('today_td');
+              }
+              if (localStorage.getItem(storageKey) != null) {
+                td.classList.add('scheduled_td')
+                let list_div = document.createElement("div");
+                list_div.setAttribute("class", "list_div mx-auto");
+                let todoList = JSON.parse(localStorage.getItem(storageKey));
+
+                todoList.forEach((item, index) => {
+                  let list_p = document.createElement("p");
+                  list_p.innerText = item.title;
+                  list_p.setAttribute("class", "list_p my-1 px-2");
+                  list_p.setAttribute("item_id", item.id);
+                  if (item.detail != undefined) {
+                    list_p.setAttribute("title", `${item.detail}`);
+                  }
+
+                  list_p.style.backgroundColor = item.bgColor;
+                  list_div.appendChild(list_p);
+
+                  //創立了行程項目就要設click事件檢視
+                  list_p.addEventListener('click', function () {
+                    //先把修改MODAL裡的內容設成原本的資料
+                    document.getElementById("edit-item").value = item.title;
+                    item.detail == undefined ? document.getElementById("edit-detail").value = "" : document.getElementById("edit-detail").value = item.detail;
+                    document.getElementById("edit-color").value = item.bgColor;
+                    $("#editScheduleModal").modal("show");
+                    document.getElementsByClassName("date_editModal")[0].innerText = storageKey;
+
+                    //刪除行程
+                    document.getElementsByClassName("deleteBtn")[0].addEventListener('click', function () {
+                      let filtered = todoList.filter(x => x.id != item.id); //把不是"要刪除的行程(也就是現在這個item)"挑出來 其他沒調整的再重新加入
+                      localStorage.setItem(storageKey, JSON.stringify(filtered));
+
+                      //如果已經刪到沒行程了就連KEY全刪掉                
+                      if (JSON.parse(localStorage.getItem(storageKey)).length == 0) localStorage.removeItem(storageKey)
+
+                      window.location.reload();
+                    })
+
+                    //修改行程
+                    document.getElementsByClassName("editBtn")[0].addEventListener('click', function () {
+                      console.log(todoList[index].title)
+                      todoList[index].title = document.getElementById("edit-item").value;
+                      todoList[index].detail = document.getElementById("edit-detail").value;
+                      todoList[index].bgColor = document.getElementById("edit-color").value;
+                      if (document.getElementById("edit-item").value == "") {
+                        alert('幹啥大事要說阿！')
+                        return;
+                      }
+                      localStorage.setItem(storageKey, JSON.stringify(todoList));
+                      document.getElementsByClassName("closeBtn")[0].click();
+                      window.location.reload();
+                    })
+
+
+                  })
+                });
+                td.appendChild(list_div);
+              }
+              td.addEventListener("click", function (event) {
+                let target; //為了要取得所選格子的日期
+                //console.log(event);
+                if (event.target.localName == "p" || event.target.localName == "div") {
+                  //console.log(event.target.offsetParent);
+                  target = event.target.offsetParent;
+                }
+
+                else {
+                  target = event.target;
+                }
+                if (event.target.localName != "p") $("#addScheduleModal").modal("show"); //此為bootstrap4 若使用5要改
+
+                document.getElementsByClassName("date")[0].innerText = `${year}-${(month + 1).toString().padStart(2, "0")}-${(target.childNodes[0].data).toString().padStart(2, "0")}`;
+
+              });
+            } else {
+              //下個月
+            }
+            day++;
+          }
+          tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+      }
+    }
+    document.getElementsByClassName("saveBtn")[0].addEventListener('click', () => {
+      SaveSchedule()
+    })
+
+    function showSchedule() {
+
+    }
+
+    function SaveSchedule() {
+      //抓input的值
+      let id = makeId();
+      let date = document.getElementsByClassName("date")[0].innerText;
+      let todoItem = document.getElementById("todo-item").value;
+      let todoDetail = document.getElementById("todo-detail").value;
+      let todoColor = document.getElementById("todo-color").value;
+
+      let todoObj = { id: id, title: todoItem, detail: todoDetail, bgColor: todoColor };
+      let todoList = [];
+      if (todoItem == "") {
+        alert('幹啥大事要說阿！')
+        return;
+      }
+      else {
+        //當天還沒有任何行程時 直接新增
+        if (localStorage.getItem(date) == null) {
+          todoList.push(todoObj);
+        }
+        //當天已經建立過行程時 先把舊的行程們全抓下來 再新增新的那筆 再一次顯示
+        else {
+          todoList = JSON.parse(localStorage.getItem(date));
+          todoList.push(todoObj);
+        }
+        localStorage.setItem(date, JSON.stringify(todoList));
+      }
+
+      setTable();
+      document.getElementsByClassName("closeBtn")[0].click();
+      window.location.reload();
+    }
+
+
+    function goNextMonth() {
+      month++;
+      setTitle()
+      setTable();
+    }
+    function goPreviousMonth() {
+      month--;
+      setTitle()
+      setTable();
+    }
+
+    function goParticularMonth() {
+
+    }
+
+    function setTitle() {
+      tbody.innerHTML = "";
+      document.querySelector(".icon_quotation_box img").src = quotations[(month % 12)].img;
+      document.querySelector(".icon_quotation_box p").innerText = quotations[(month % 12)].words;
+
+      document.getElementById("year").innerText = `${new Date(year, month, 1).getFullYear()}`;
+      document.querySelector(".monthBox span").innerText = month_en[(month % 12)];
+      document.querySelector(".monthBox h1").innerText = `${(new Date(year, month, 1).getMonth() + 1).toString().padStart(2, "0")}`
+
+    }
+
+    function makeId() {
+      let result = '';
+      let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let charactersLength = characters.length;
+      for (let i = 0; i < 32; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
+    }
+
+//選擇年月
+//
+
+
+
+
+
+//
+//                       _oo0oo_
+//                      o8888888o
+//                      88" . "88
+//                      (| -_- |)
+//                      0\  =  /0
+//                    ___/`---'\___
+//                  .' \\|     |// '.
+//                 / \\|||  :  |||// \
+//                / _||||| -:- |||||- \
+//               |   | \\\  -  /// |   |
+//               | \_|  ''\---/''  |_/ |
+//               \  .-\__  '-'  ___/-. /
+//             ___'. .'  /--.--\  `. .'___
+//          ."" '<  `.___\_<|>_/___.' >' "".
+//         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+//         \  \ `_.   \_ __\ /__ _/   .-` /  /
+//     =====`-.____`.___ \_____/___.-`___.-'=====
+//                       `=---='
+//
+//
+//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+//               佛祖保佑        BUG退散
+
+  </script>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js"
+    integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
