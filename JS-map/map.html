@@ -106,7 +106,7 @@
         });
         //設定圖資來源
         let osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        let osm = new L.TileLayer(osmUrl, { minZoom: 8, maxZoom: 19 });
+        let osm = new L.TileLayer(osmUrl, { minZoom: 8, maxZoom: 19 }); //設定地圖最大最小縮放
         map.addLayer(osm);
 
         //抓資料(Axios)
@@ -121,7 +121,7 @@
         let water_area_Data;
         let markers=L.markerClusterGroup();//marker叢集 根據地圖縮放顯示
         window.onload=function(){
-            Promise.all([areaDataRequest,waterDataRequest])
+            Promise.all([areaDataRequest,waterDataRequest]) //保證兩個資料都拿到
             .then(response=>{
                 let[area,water]=response;
                 areaData=area.data
@@ -142,7 +142,8 @@
                         Lat: area != undefined ? area.Lat : undefined,
                         Lng: area != undefined ? area.Lng : undefined
                     }
-                }).filter(x => x.Lat != undefined).groupBy('CountyTown');
+                }).filter(x => x.Lat != undefined).groupBy('CountyTown'); //按地區分群 拿到各地區每個月的用水量
+
                 console.log(water_area_Data)
                 //初始化marker
                 setMarker();
@@ -164,7 +165,7 @@
             if(this.value!=""){
                 //改變地圖焦點
                 let county = areaData.find(x=>x.City==this.value)
-                map.setView([county.Lat,county.Lng],12)
+                map.setView([county.Lat,county.Lng],12) //(緯度,經度,縮放值)
             }
 
         })
