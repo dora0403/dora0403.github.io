@@ -177,11 +177,14 @@
             Object.keys(water_area_Data).forEach(x=>{
                 let data = water_area_Data[x]
                 let marker = L.marker([data[0].Lat,data[0].Lng]);
-                let avearge = (data.map(x=>parseInt(x.TheDailyDomesticConsumptionOfWaterPerPerson)).reduce((a,b)=>a+b)/12).toFixed(2);
+                let average = (data.map(x=>parseInt(x.TheDailyDomesticConsumptionOfWaterPerPerson)).reduce((a,b)=>a+b)/12).toFixed(2);
+
+                //設定點了marker後秀出的文字
                 marker.bindPopup(`
                 <h4>${data[0].County} ${data[0].Town}</h4>
-                <p>整年平均每人用水量:<br>${avearge}公升</p>
+                <p>整年平均每人用水量:<br>${average}公升</p>
                 `);
+                
                 marker.addEventListener('click',function(){
                     document.querySelector("strong").innerText=`${data[0].County} ${data[0].Town}`;
 
@@ -199,7 +202,7 @@
                         let td = document.createElement("td")
                         let icon = document.createElement("i")
                         icon.classList.add("fas","fa-circle");
-                        icon.style.color=parseFloat(x.TheDailyDomesticConsumptionOfWaterPerPerson) > avearge ? "red" : "greenyellow"
+                        icon.style.color=parseFloat(x.TheDailyDomesticConsumptionOfWaterPerPerson) > average ? "red" : "greenyellow"
                         td.appendChild(icon)
                         tag_tr.appendChild(td)
                     })
