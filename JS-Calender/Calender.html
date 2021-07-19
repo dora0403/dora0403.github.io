@@ -16,16 +16,14 @@
     rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
   <!-- datepicker -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.css"
-    integrity="sha512-YdYyWQf8AS4WSB0WWdc3FbQ3Ypdm0QCWD2k4hgfqbQbRCJBEgX0iAegkl2S1Evma5ImaVXLBeUkIlP6hQ1eYKQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 
   <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
 
   <style>
-    td {
+    .calender td {
       text-align: left;
       font-size: 17px;
       height: 120px;
@@ -34,12 +32,18 @@
       background-color: rgb(255, 245, 247);
       background-color: rgb(253, 253, 253);
       font-family: 'Ubuntu', sans-serif;
-      
       cursor: pointer;
       /* 滑鼠游標改成指向 */
     }
 
-    td:hover {
+    .calender th {
+      background-color: pink;
+      color: steelblue;
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 1.5rem;
+    }
+
+    .calender td:hover {
       background-color: rgb(255, 251, 240);
     }
 
@@ -62,15 +66,6 @@
 
     .scheduled_td {
       background-color: rgb(251, 243, 255);
-    }
-
-    th {
-      background-color: pink;
-      color: steelblue;
-      /* 字型則一 */
-      font-family: 'Nanum Pen Script', cursive;
-      
-      font-size: 1.5rem;
     }
 
     .title {
@@ -97,7 +92,6 @@
 
     .icon_quotation_box {
       width: 40%;
-
     }
 
     .icon_quotation_box img {
@@ -125,18 +119,14 @@
 
     #year {
       font-family: 'Source Code Pro', monospace;
-      font-size: 40px;
+      font-size: 44px;
       color: rgb(46, 161, 255);
-      
-
     }
 
     .modal-header {
       background-color: rgb(255, 209, 218);
       color: rgb(209, 91, 130);
     }
-
-    .modal-header span {}
 
     .list_p {
       color: rgb(54, 53, 53);
@@ -163,16 +153,22 @@
       height: 120px;
     }
 
-    .selector img {
+    .yearWithSelector img
+     {
       width: 30px;
     }
 
-    .selector button,
+    .yearWithSelector button,
     .close {
       background: transparent;
       box-shadow: 0px 0px 0px transparent;
       border: 0px solid transparent;
       text-shadow: 0px 0px 0px transparent;
+    }
+    /* 解決點按鈕時出現黑框[important] */
+    button:focus {
+    border: none;
+    outline: none;
     }
 
     .saveBtn,
@@ -207,6 +203,23 @@
       background-color: rgb(255, 127, 95);
     }
 
+    /* datepicker樣式 */
+
+    .datepicker th, .datepicker span{
+      font-size: 16px;
+      font-family: 'Ubuntu', sans-serif; 
+    }
+    .datepicker th{
+      font-size: 20px;
+    }
+
+    .datepicker,
+    .table-condensed {
+      width: 300px;
+      height:260px;
+      background-color: rgb(255, 235, 235);
+    }
+
     /* 平板 */
     @media screen and (max-width: 1024px) {}
 
@@ -239,29 +252,27 @@
           </div>
           <div class="monthBox d-flex">
             <span class="mt-4">JAN</span>
-            <h1 id="month" class="align-self-center"></h1>
+              <h1 id="month" class="align-self-center"></h1>
           </div>
 
-          <div class="yearWithSelector d-flex flex-column justify-content-center mx-4">
-            <p class="text-center" id="year"></p>
-
-            <div class="selector ">
-              <button onclick="goPreviousMonth()" title="上個月"><img src="img/arror left.png" alt=""></button>
-              <button onclick="goNextMonth()" title="下個月"><img src="img/arror right.png" alt=""></button>
-              <!-- <input type="text" id="datepicker" value=""> -->
+          <div class="yearWithSelector d-flex flex-column justify-content-center mx-5">
+            <div class="yearWithSearch d-flex align-content-center">
+              <p class="text-center my-auto" id="year"></p>
               <button title="找月份"><img src="img/search.png" alt="" id="datepicker"></button>
-              <button title="回主頁"><img src="img/homepage.png" alt="" id="homePage"></button>
-              <a href="https://www.notion.so/zh-tw" title="作筆記" target="_blank"><img src="img/takenote.png" alt=""
-                  id="notion"></a>
-
-              <!-- <img src="img/next2.png" alt="">  粉色箭頭 -->
             </div>
 
+            <div class="selector mx-auto">
+              <button onclick="goPreviousMonth()" title="上個月"><img src="img/arror left2.png" alt=""></button>
+              <button onclick="goNextMonth()" title="下個月"><img src="img/arror right2.png" alt=""></button>
+              <button title="回主頁"><img src="img/homepage.png" alt="" id="homePage"></button>
+              <!-- <a href="https://www.notion.so/zh-tw" title="作筆記" target="_blank"><img src="img/takenote.png" alt=""
+                  id="notion"></a> -->
+              <!-- <img src="img/next2.png" alt="">  粉色箭頭 -->
+            </div>
           </div>
-
         </div>
 
-        <table class="table table-bordered">
+        <table class="table table-bordered calender">
           <thead>
             <tr class="text-center">
               <th id="weekend">SUN</th>
@@ -331,7 +342,7 @@
           <h5 class="modal-title date_editModal" id="editScheduleModalLabel"></h5><span class="my-auto mx-1">修改大事 <i
               class="fas fa-pencil-alt"></i></span>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
+            <span aria-hidden="true" class="editCloseBtn">×</span>
           </button>
         </div>
         <div id="input-area" class="modal-body">
@@ -347,6 +358,8 @@
             <span class="input-group-text">Label Color </span>
             <input id="edit-color" type="color" class="form-control border-left-0" value="">
           </div>
+          <input id="edit-id" value="" hidden>
+          <input id="edit-storageKey" value="" hidden>
         </div>
 
         <div class="modal-footer">
@@ -386,11 +399,13 @@
     let date = today.getDate(); //用today今天日期去取得日期中的日(1~31)
 
     window.onload = function () {
-      setTitle();
-      setTable();
+      refreshCalendar();
       pickDate();
       document.getElementById('homePage').addEventListener('click', () => {
-        window.location.reload();
+        today = new Date();
+        year = today.getFullYear();
+        month = today.getMonth();
+        refreshCalendar();
       })
     }
 
@@ -398,29 +413,15 @@
       $("#datepicker").datepicker({
         format: "yyyy-mm",
         autoclose: true,
+        minViewMode: "months"
       });
 
-
-      $('#datepicker').bind("click", function () {
-        let pickedDate = $("img#datepicker").datepicker("getDate");
-        let pickedYear = pickedDate.getFullYear();
-        let pickedMonth = pickedDate.getMonth();
-        console.log(pickedMonth)
-      })
-
-      // $("#datepicker").datepicker({
-      //   onSelect: function () {
-      //     var pickedDate = $(this).datepicker('getDate');
-      //     console.log(pickedDate)
-      //   }
-      // });
-
-      // $('#datepicker').datepicker().on('changeMonth', function (ev) {
-      //   $('#datepicker').datepicker('hide');
-      // });
-
-      //$('#datepicker').click();
-
+      $('#datepicker').datepicker()
+      .on("changeMonth", function(e) {
+        month = e.date.getMonth();
+        year = e.date.getFullYear();
+        refreshCalendar();
+      });
 
     }
 
@@ -447,7 +448,6 @@
           }
           else {
             let storageKey = `${year}-${(month + 1).toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`
-
             if (day <= totalDaysOfMonth) {
               td.innerText = day;
               if (day == date && month == today.getMonth()) {
@@ -477,35 +477,10 @@
                     document.getElementById("edit-item").value = item.title;
                     item.detail == undefined ? document.getElementById("edit-detail").value = "" : document.getElementById("edit-detail").value = item.detail;
                     document.getElementById("edit-color").value = item.bgColor;
+                    document.getElementById("edit-id").value = item.id;
+                    document.getElementById("edit-storageKey").value = storageKey;
                     $("#editScheduleModal").modal("show");
                     document.getElementsByClassName("date_editModal")[0].innerText = storageKey;
-
-                    //刪除行程
-                    document.getElementsByClassName("deleteBtn")[0].addEventListener('click', function () {
-                      let filtered = todoList.filter(x => x.id != item.id); //把不是"要刪除的行程(也就是現在這個item)"挑出來 其他沒調整的再重新加入
-                      localStorage.setItem(storageKey, JSON.stringify(filtered));
-
-                      //如果已經刪到沒行程了就連KEY全刪掉                
-                      if (JSON.parse(localStorage.getItem(storageKey)).length == 0) localStorage.removeItem(storageKey)
-
-                      window.location.reload();
-                    })
-
-                    //修改行程
-                    document.getElementsByClassName("editBtn")[0].addEventListener('click', function () {
-                      console.log(todoList[index].title)
-                      todoList[index].title = document.getElementById("edit-item").value;
-                      todoList[index].detail = document.getElementById("edit-detail").value;
-                      todoList[index].bgColor = document.getElementById("edit-color").value;
-                      if (document.getElementById("edit-item").value == "") {
-                        alert('幹啥大事要說阿！')
-                        return;
-                      }
-                      localStorage.setItem(storageKey, JSON.stringify(todoList));
-                      document.getElementsByClassName("closeBtn")[0].click();
-                      window.location.reload();
-                    })
-
 
                   })
                 });
@@ -523,7 +498,9 @@
                   target = event.target;
                 }
                 if (event.target.localName != "p") $("#addScheduleModal").modal("show"); //此為bootstrap4 若使用5要改
-
+                document.getElementById("todo-item").value = "";
+                document.getElementById("todo-detail").value = "";
+                document.getElementById("todo-color").value = "#FFE0F0";
                 document.getElementsByClassName("date")[0].innerText = `${year}-${(month + 1).toString().padStart(2, "0")}-${(target.childNodes[0].data).toString().padStart(2, "0")}`;
 
               });
@@ -541,9 +518,40 @@
       SaveSchedule()
     })
 
-    function showSchedule() {
+    //刪除行程
+    document.getElementsByClassName("deleteBtn")[0].addEventListener('click', function () {
+      let storageKey = document.getElementById("edit-storageKey").value;
+      let itemID = document.getElementById("edit-id").value;
+      todoList = JSON.parse(localStorage.getItem(storageKey));
+      let filtered = todoList.filter(x => x.id != itemID); //把不是"要刪除的行程(也就是現在這個item)"挑出來 其他沒調整的再重新加入
+      localStorage.setItem(storageKey, JSON.stringify(filtered));
+      
+      //如果已經刪到沒行程了就連KEY全刪掉                
+      if (JSON.parse(localStorage.getItem(storageKey)).length == 0) localStorage.removeItem(storageKey)
+      document.getElementsByClassName("editCloseBtn")[0].click();
+      refreshCalendar();
+    })
 
-    }
+    //修改行程
+    document.getElementsByClassName("editBtn")[0].addEventListener('click', function () {
+      let storageKey = document.getElementById("edit-storageKey").value;
+      let itemID = document.getElementById("edit-id").value;
+      todoList = JSON.parse(localStorage.getItem(storageKey));
+
+      let item = todoList.find(x => x.id == itemID);
+      let index = todoList.indexOf(item);
+      todoList[index].title = document.getElementById("edit-item").value;
+      todoList[index].detail = document.getElementById("edit-detail").value;
+      todoList[index].bgColor = document.getElementById("edit-color").value;
+      if (document.getElementById("edit-item").value == "") {
+        alert('幹啥大事要說阿！')
+        return;
+      }
+      localStorage.setItem(storageKey, JSON.stringify(todoList));
+      document.getElementsByClassName("editCloseBtn")[0].click();
+      refreshCalendar();
+    })
+
 
     function SaveSchedule() {
       //抓input的值
@@ -571,26 +579,24 @@
         }
         localStorage.setItem(date, JSON.stringify(todoList));
       }
-
-      setTable();
+      refreshCalendar();
       document.getElementsByClassName("closeBtn")[0].click();
-      window.location.reload();
+      // window.location.reload();
     }
 
 
     function goNextMonth() {
       month++;
-      setTitle()
-      setTable();
+      refreshCalendar();
     }
     function goPreviousMonth() {
       month--;
-      setTitle()
-      setTable();
+      refreshCalendar();
     }
 
-    function goParticularMonth() {
-
+    function refreshCalendar() {
+      setTitle();
+      setTable();
     }
 
     function setTitle() {
@@ -613,10 +619,6 @@
       }
       return result;
     }
-
-//選擇年月
-//
-
 
 
 
@@ -653,9 +655,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.10/datepicker.min.js"
-    integrity="sha512-RCgrAvvoLpP7KVgTkTctrUdv7C6t7Un3p1iaoPr1++3pybCyCsCZZN7QEHMZTcJTmcJ7jzexTO+eFpHk4OCFAg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
