@@ -1,0 +1,296 @@
+body {
+    margin: 0;
+}
+.headerSecton{
+
+}
+.logo a {
+    text-decoration: none;
+    color: cornflowerblue;
+    font-size: 40px;
+}
+
+.header-nav {
+    display: flex;
+}
+
+.header-nav .container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.main-nav {
+    flex-grow: 1;
+    justify-content: flex-end;
+    display: flex;
+    align-items:center;
+    margin-top: 10px;
+}
+.main-nav a {
+    text-decoration: none;
+    padding: 5px 20px;
+    border-radius: 5%;
+    margin: 0 10px;
+} 
+
+.loginBtn {
+    color: #fc8d61;
+    background-color: white;
+    border: 1px solid #fc8d61;
+}
+
+.signUpBtn {
+    color: white;
+    background-color: cornflowerblue;
+    border: 1px solid cornflowerblue;
+}
+
+.loginBtn:hover,
+.signUpBtn:hover {
+    color: white;
+    background-color: #fc8d61;
+    border: 1px solid #fc8d61;
+}
+
+#menu-control {
+    display: none;
+}
+
+.hb {
+    display: none;
+}
+/* ------------------------------------------------- */
+/* 搜尋 */
+
+
+/* ------------------------------------------------- */
+
+/* 第二塊導覽列 下拉式選單*/
+.dropdown-nav{
+  height: 40px;
+  background: white;
+  /* .sub-menu同色 */
+  display: grid;
+  
+}
+.navbar{
+    margin: 0 auto;
+    padding: 0;
+}
+
+.links{
+  display: flex;
+  padding: 0 !important;
+  margin-bottom: 10px;
+}
+.links li{
+  position: relative;
+  list-style: none;
+  margin: 5px 40px 0 40px;
+}
+.links li a{
+  text-decoration: none;
+  white-space: nowrap;
+  color: rgb(119, 119, 119);
+  font-size: 18px;
+}
+
+.links li:hover .arrow{
+  transform: rotate(180deg);
+  }
+
+.links li .arrow{
+  margin-left:6px ;
+  display: inline-block;
+  transition: all 0.3s ease;
+  color:darkolivegreen;
+}
+.links .sub-menu{
+  position: absolute;
+  width: 180px;
+  top: 26px;
+  left: -30%;
+  line-height: 40px;
+  background: white;
+  padding-left:0 ;
+  border-radius: 0 0 4px 4px;
+  display: none;
+  padding-top: 9px;
+}
+
+nav .navbar .links li:hover .sub-menu{
+  display: block;
+}
+.links .sub-menu li{
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  padding:0 35px;
+  margin: 0;
+}
+.links .sub-menu li:hover{
+  background-color: #fc8d61;
+  color: white;
+}
+.links .sub-menu li:hover a{
+  color: white;
+}
+
+.links .sub-menu a{
+  font-size: 16px;
+}
+
+#headerContent > nav > div > ul > li > a > i{
+    font-size: 15px;
+    padding: 0 5px;
+  }
+
+@media (max-width:991px) {
+    .dropdown-nav {
+        display: none;
+    }
+
+    .header-nav .container {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    body {
+        padding-top: 70px;
+        /* 跟header同高 */
+    }
+
+    .header-nav {
+        height: 70px;
+        z-index: 8;
+    }
+
+    .main-nav {
+        justify-content: flex-end;
+        margin-right: 20px;
+        margin-top: 0;
+    }
+
+    .main-nav a {
+        padding: 0 8px;
+        color: rgb(51, 51, 51);
+        border: none;
+        background-color: transparent;
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    .hb {
+        display: block;
+        width: 45px;
+        height: 45px;
+        border: none;
+        border-radius: 10%;
+        background-color: rgb(230, 227, 224);
+        position: relative;
+        /* 為了讓三條span吃到父層定位 */
+
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        -webkit-transition: .5s ease-in-out;
+        -moz-transition: .5s ease-in-out;
+        -o-transition: .5s ease-in-out;
+        transition: .5s ease-in-out;
+    }
+
+    .hb span {
+        width: 26px;
+        height: 2px;
+        background-color: cadetblue;
+        background-color: #fd9a73;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        /* 為了讓三條span在父層水平垂直置中 */
+        -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+    }
+
+    .hb span:first-child {
+        transform: translateY(-10px);
+        /* translateY(o) 指定元素由參考點縱向移動 o 距離 */
+        /* top-16px也可以 */
+    }
+
+    .hb span:last-child {
+        transform: translateY(10px);
+        /* bottom-16px也可以 */
+    }
+/* ---------------------以下為漢堡點開動畫 */
+  
+      
+      .hb.hb_open span:nth-child(1) {
+
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg);
+      }
+      
+      .hb.hb_open span:nth-child(2) {
+        opacity: 0;
+        left: -50px;
+      }
+      
+      .hb.hb_open span:nth-child(3) {
+        -webkit-transform: rotate(-135deg);
+        -moz-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+      }
+      
+
+    .overlayMobile.active {
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        background-color: rgb(32, 32, 32) !important;
+        opacity: .6;
+        filter: grayscale(100%);
+        z-index:5;
+    }
+    @media screen and (max-width: 767px) {
+        .header-nav{
+            flex-wrap: nowrap;
+        }
+        .logo{
+            font-size: 25px;
+        }
+        .main-nav {
+            margin-right:13px;
+
+        }
+        .main-nav a{
+            margin-right: 0px;
+            font-size: 16px;
+            padding: 0 3px;
+        }
+        .hb {
+            width: 42px;
+            height: 42px;
+        }
+        .hb span {
+            width: 24px;
+        }
+    
+    }
+
+}

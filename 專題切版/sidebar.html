@@ -1,0 +1,83 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-07-25 15:08:49
+ * @LastEditTime: 2021-08-02 14:27:58
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \dora0403.github.io\專題切版-test\sidebar.html
+-->
+<div class="sidenav">
+  <div class="logoBox d-grid">
+    <span class="ms-3 my-auto">JUST RENT</span>
+  </div>
+  <div class="linkBox">
+    <a href="#" class="dropdown-btn"> 商品總覽 <i class="fas fa-caret-down"></i></a>
+    <div class="dropdown-container">
+      <a href="#">租狗狗</a>
+      <a href="#">租女友</a>
+    </div>
+    <a href="#" class="dropdown-btn"> 想租看這 <i class="fas fa-caret-down"></i></a>
+    <div class="dropdown-container">
+      <a href="#">如何租借</a>
+    </div>
+    <a href="#" class="dropdown-btn"> 關於我們 <i class="fas fa-caret-down"></i></a>
+    <div class="dropdown-container">
+      <a href="#">我們的故事</a>
+      <a href="#">你租我喝飲料計畫</a>
+      <a href="#">聯繫我們</a>
+    </div>
+    <a href="#" class="dropdown-btn"> 共享好文 <i class="fas fa-caret-down"></i></a>
+    <div class="dropdown-container">
+      <a href="#">共享經濟</a>
+      <a href="#">蘋果報導</a>
+      <a href="#">網紅推薦</a>
+    </div>
+  </div>
+  <hr>
+  <p class="text-center mt-3">download the free<br>mobile app</p>
+  <div class="appDownload d-flex justify-content-center">
+    <img src="img/googlePlay_white.jpg" style="height: 30px;" class="mx-1" alt="">
+    <img src="img/appleStore_white.jpg" style="height: 30px;" class="mx-1" alt="">
+  </div>
+
+  <div class="social-media d-flex mt-4 justify-content-center">
+    <a href="#" class="my-auto mx-2"><i class="fa fa-facebook"></i></a>
+    <a href="#" class="my-auto mx-2"><i class="fa fa-twitter"></i></a>
+    <a href="#" class="my-auto mx-2"><i class="fab fa-instagram"></i></a>
+  </div>
+</div>
+
+<script>
+  // Sidenav裡的下拉選單
+  let dropdownBtns = document.querySelectorAll(".dropdown-btn");
+  dropdownBtns.forEach(btn => {
+    btn.addEventListener("click", function () {
+      this.classList.toggle("active");
+      let dropdownContent = this.nextElementSibling;
+
+      if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+      }
+      else {
+        dropdownContent.style.display = "block";
+      }
+    })
+  });
+
+$(document).ready(function() {
+
+  $(document).on('click',function (e) {
+      e.preventDefault();
+      if (e.target.classList.contains("hb") && !($(".sidenav").hasClass("show"))) {
+        $(".sidenav").addClass("show");
+        $(".overlayMobile").addClass("active");
+        $(".hb").addClass("hb_open");
+      }
+      else if ($(".sidenav").hasClass("show") && ($("#sidebarContent").find(e.target).length == 0 || e.target.classList.contains("hb"))) {
+        $(".sidenav").removeClass("show");
+        $(".overlayMobile").removeClass("active");
+        $(".hb").removeClass("hb_open");
+      }
+    })
+});
+</script>
