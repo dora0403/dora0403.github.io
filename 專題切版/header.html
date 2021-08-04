@@ -1,24 +1,42 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-30 00:15:40
- * @LastEditTime: 2021-08-04 19:47:21
+ * @LastEditTime: 2021-08-05 01:51:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \dora0403.github.io\專題切版-test\header2.html
 -->
-<div class="container-xl headerSecton">
+<header>
+
+
+<div class="container-xl">
 <input type="checkbox" id="menu-control">
 
 <div class="header-nav">
-    <div class="logo">
-        <a href="#">JUST RENT</a>
+    <div class="logo d-grid">
+        <a class="m-auto" href="#">JUST RENT</a>
     </div>
-        
 
-        <nav class="main-nav">
-            <a href="#" class="loginBtn">Login</a>
-            <a href="#" class="signUpBtn">Sign-up</a>
+    
+    <div class="header-btn-search-box">
+
+        <!-- 屆時MVC記得在input寫name 對應到action的參數 submit按鈕先hidden掉 待測試靠按enter可否行 -->
+    <div class="header-search-box d-grid">
+        <form class="m-auto">
+        <label class="header-search d-grid" for="header-search-input">
+			<input id="header-search-input" class="m-auto" type="text" placeholder=" 想租什麼呢?" />
+		</label>
+        <button type="submit"></button>
+    </form>
+    </div>
+    <!-- 註冊登入鈕 -->
+        <nav class="nav-btn">
+            <a href="#" class="loginBtn">登入</a>
+            <a href="#" class="signUpBtn">註冊</a>
         </nav>
+    </div>
+
+        
 
         <label for="menu-control" class="hb my-auto">
             <span></span>
@@ -69,7 +87,7 @@
     </div>
 </nav>
 </div>
-
+</header>
 <script>
 const hbBtn = document.querySelector('.hb');
 
@@ -77,5 +95,14 @@ const hbBtn = document.querySelector('.hb');
 // 	e.preventDefault();
 // 	this.classList.toggle('hb_open');
 // })
+
+$("#header-search-input").on('focus', function () {
+	$(this).parent('label').addClass('active');
+});
+
+$("#header-search-input").on('blur', function () {
+	if($(this).val().length == 0)
+		$(this).parent('label').removeClass('active');
+});
 
 </script>

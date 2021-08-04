@@ -2,8 +2,9 @@
 
 /* 為了將聊天icon固定在頁面右下角無論滾動視窗 */
 
-html{
-    
+footer .row{
+    max-width: 1200px;
+    margin: auto;
 }
 body {
     height: 100%;
