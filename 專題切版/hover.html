@@ -1,0 +1,29 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-08-06 18:31:10
+ * @LastEditTime: 2021-08-06 18:31:28
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \dora0403.github.io\專題切版\hover.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="my-img" src="http://dummyimage.com/400x400/000/fff" onmouseover="hover(this);" onmouseout="unhover(this);" />
+</body>
+</html>
+<script>
+function hover(element) {
+  element.setAttribute('src', 'http://dummyimage.com/400x400/eb00eb/fff');
+}
+
+function unhover(element) {
+  element.setAttribute('src', 'http://dummyimage.com/400x400/000/fff');
+}
+</script>
