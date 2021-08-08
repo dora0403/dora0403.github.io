@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: \dora0403.github.io\專題切版-test\header2.html
 -->
-<header>
+<header-top>
 
 
 <div class="container-xl">
@@ -30,16 +30,15 @@
     </form>
     </div>
 
-    <div class="header-member-box d-flex">
+    <div class="header-member-box">
 
         <img src="img/cart.png" alt="" id="shoppingCart-icon" title="購物車">
-        <!-- <img src="img/bell.png" alt="" id="notification-icon" title="通知"> -->
 
         <div class="member-dropdown">
             
             <img src="img/member.png" alt="" id="member-icon" title="會員中心">      
             <ul class="member-subMenu">
-                <div class="profileBox d-flex">
+                <div class="profileBox">
                 <div class="profileImg d-grid"><img class="m-auto" src="https://www.upmedia.mg/upload/article/20210801172246069922.jpg" alt=""></div>
                 <div class="profileWelcome"><span>Hello</span><p class="profile-name">庭安</p></div>
             </div>
@@ -108,7 +107,7 @@
     </div>
 </nav>
 </div>
-</header>
+</header-top>
 <script>
 
 //判斷搜尋裡有沒有打字 如果有打字或是游標還在 就不會還原成放大鏡
@@ -121,12 +120,12 @@ $("#header-search-input").on('blur', function () {
 		$(this).parent('label').removeClass('active');
 });
 
-// 登入後的樣式 (先用按下登入鈕假裝已經登入) 之後改成判斷登入
+// 登入後的樣式 (先用按下桌機登入鈕假裝已經登入) 之後改成判斷登入
 document.querySelector(".nav-btn .loginBtn").addEventListener("click",changeHeaderCSS_login);
 
 function changeHeaderCSS_login(){
    document.querySelector('.nav-btn').style.display='none';
-
 }
+
 
 </script>

@@ -6,11 +6,23 @@
  * @Description: In User Settings Edit
  * @FilePath: \dora0403.github.io\專題切版-test\sidebar.html
 -->
+<div id="sidebarContent">
 <div class="sidenav">
   
   <div class="logoBox d-grid">
     <span class="ms-3 my-auto">JUST RENT</span>
   </div>
+
+  <!-- 登入後秀出名字 -->
+  <div class="profileBox">
+    <div class="profileImg d-grid">
+      <img class="m-auto" src="https://www.upmedia.mg/upload/article/20210801172246069922.jpg" alt="">
+    </div>
+    <div class="profileWelcome">
+      <span>Hello</span><p class="profile-name">庭安</p>
+    </div>
+    </div>
+    
   
   <div class="sidebar-btn d-flex">
     <a href="#" class="loginBtn d-grid"><span class="m-auto">登入</span> </a>
@@ -18,6 +30,13 @@
   </div>
 
   <div class="linkBox">
+    <a href="#" class="dropdown-btn"> 會員中心 <i class="fas fa-caret-down"></i></a>
+    <div class="dropdown-container">
+      <a href="#">通知</a>
+      <a href="#">我的訂單</a>
+      <a href="#">會員資料/修改</a>
+      <a href="#">登出</a>
+    </div>
     <a href="#" class="dropdown-btn"> 商品總覽 <i class="fas fa-caret-down"></i></a>
     <div class="dropdown-container">
       <a href="#">租狗狗</a>
@@ -54,7 +73,7 @@
     <a href="#" class="my-auto mx-2"><i class="fab fa-instagram"></i></a>
   </div>
 </div>
-
+</div>
 <script>
   // Sidenav裡的下拉選單
   let dropdownBtns = document.querySelectorAll(".dropdown-btn");
@@ -72,6 +91,7 @@
     })
   });
 
+  // 漢堡點開秀sidebar 按其他地方後移除
 $(document).ready(function() {
 
   $(document).on('click',function (e) {
@@ -88,4 +108,12 @@ $(document).ready(function() {
       }
     })
 });
+//--------------------------------
+// 登入後的樣式 (先用按下sidebar登入鈕假裝已經登入) 之後改成判斷登入
+document.querySelector(".sidebar-btn .loginBtn").addEventListener("click",changeSidebarCSS_login);
+
+function changeSidebarCSS_login(){
+   document.querySelector('.sidebar-btn').style.display='none';
+}
+
 </script>
