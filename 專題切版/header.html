@@ -1,20 +1,19 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-30 00:15:40
- * @LastEditTime: 2021-08-06 02:50:58
+ * @LastEditTime: 2021-08-09 02:48:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \dora0403.github.io\專題切版-test\header2.html
 -->
 <header-top>
 
-
 <div class="container-xl">
 <input type="checkbox" id="menu-control">
 
 <div class="header-nav">
     <div class="logo d-grid">
-        <a class="m-auto" href="#">JUST RENT</a>
+        <a class="m-auto" href="#">知租網</a>
     </div>
 
     
@@ -35,7 +34,6 @@
         <img src="img/cart.png" alt="" id="shoppingCart-icon" title="購物車">
 
         <div class="member-dropdown">
-            
             <img src="img/member.png" alt="" id="member-icon" title="會員中心">      
             <ul class="member-subMenu">
                 <div class="profileBox">
@@ -74,15 +72,17 @@
                 <a href="#">商品總覽<i class="fas fa-chevron-down arrow"></i></a>
                 
                 <ul class="sub-menu">
-                    <li><a href="#">租狗狗</a></li>
-                    <li><a href="#">租女友</a></li>
-                    <li><a href="https://www.yahoo.com.tw">Card Design</a></li>
+                    <li><a href="#">所有種類</a></li>
+                    <li><a href="#">想租車車</a></li>
+                    <li><a href="#">想租配件</a></li>
+                    <li><a href="#">想租女友</a></li>
+                    <li><a href="#">想租狗狗</a></li>
                 </ul>
             </li>
             <li>
                 <a href="#">想租看這<i class="fas fa-chevron-down arrow"></i></a>
                 <ul class="sub-menu">
-                    <li><a href="#">如何租借</a></li>
+                    <li><a href="https://www.yahoo.com.tw">如何租借</a></li>
                     <!-- <li><a href="#"></a></li> -->
                 </ul>
             </li>
@@ -98,7 +98,7 @@
                 <a href="#">葉配一下<i class="fas fa-chevron-down arrow"></i></a>
                 <ul class="sub-menu">
                     <li><a href="#">共享經濟</a></li>
-                    <li><a href="#">蘋果報導</a></li>
+                    <li><a href="#">上新聞了</a></li>
                     <li><a href="#">網紅推推</a></li>
                 </ul>
             </li>
@@ -121,10 +121,27 @@ $("#header-search-input").on('blur', function () {
 });
 
 // 登入後的樣式 (先用按下桌機登入鈕假裝已經登入) 之後改成判斷登入
-document.querySelector(".nav-btn .loginBtn").addEventListener("click",changeHeaderCSS_login);
+document.querySelector(".nav-btn .loginBtn").addEventListener("click", function(){
+    changeHeaderCSS_login()
+    changeSidebarCSS_login()
+})
 
 function changeHeaderCSS_login(){
    document.querySelector('.nav-btn').style.display='none';
+   document.querySelector('.member-dropdown').style.display='block';
+}
+
+//不論在桌機版或手機版按登出都要回復
+document.querySelector(".member-dropdown .signOutBtn").addEventListener("click", function(){
+backHeaderCSS_signOut();
+backSidebarCSS_signOut()
+
+} )
+
+function backHeaderCSS_signOut(){
+    document.querySelector('.nav-btn').style.display='block';   
+document.querySelector('.member-dropdown').style.display='none';
+
 }
 
 

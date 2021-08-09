@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-25 15:08:49
- * @LastEditTime: 2021-08-05 01:49:07
+ * @LastEditTime: 2021-08-09 10:39:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \dora0403.github.io\專題切版-test\sidebar.html
@@ -9,8 +9,8 @@
 <div id="sidebarContent">
 <div class="sidenav">
   
-  <div class="logoBox d-grid">
-    <span class="ms-3 my-auto">JUST RENT</span>
+  <div class="logoBox">
+    <a href="#" class="ms-3 my-auto">知租網</a>
   </div>
 
   <!-- 登入後秀出名字 -->
@@ -24,23 +24,29 @@
     </div>
     
   
-  <div class="sidebar-btn d-flex">
+  <div class="sidebar-btn">
     <a href="#" class="loginBtn d-grid"><span class="m-auto">登入</span> </a>
     <a href="#" class="signUpBtn d-grid"><span class="m-auto">註冊</span></a>
   </div>
 
   <div class="linkBox">
+    <div class="sidebar-member-link">
     <a href="#" class="dropdown-btn"> 會員中心 <i class="fas fa-caret-down"></i></a>
     <div class="dropdown-container">
       <a href="#">通知</a>
       <a href="#">我的訂單</a>
       <a href="#">會員資料/修改</a>
-      <a href="#">登出</a>
+      <a href="#" class="signOutBtn">登出</a>
     </div>
+  </div>
     <a href="#" class="dropdown-btn"> 商品總覽 <i class="fas fa-caret-down"></i></a>
     <div class="dropdown-container">
-      <a href="#">租狗狗</a>
-      <a href="#">租女友</a>
+      <a href="#">所有種類</a>
+      <a href="#">想租車車</a>
+      <a href="#">想租配件</a>
+      <a href="#">想租女友</a>
+      <a href="#">想租狗狗</a>
+      <a href="#">想租車車</a>
     </div>
     <a href="#" class="dropdown-btn"> 想租看這 <i class="fas fa-caret-down"></i></a>
     <div class="dropdown-container">
@@ -49,13 +55,13 @@
     <a href="#" class="dropdown-btn"> 關於我們 <i class="fas fa-caret-down"></i></a>
     <div class="dropdown-container">
       <a href="#">我們的故事</a>
-      <a href="#">你租我喝飲料計畫</a>
+      <a href="#">回饋計畫</a>
       <a href="#">聯繫我們</a>
     </div>
     <a href="#" class="dropdown-btn"> 共享好文 <i class="fas fa-caret-down"></i></a>
     <div class="dropdown-container">
       <a href="#">共享經濟</a>
-      <a href="#">蘋果報導</a>
+      <a href="#">上新聞了</a>
       <a href="#">網紅推薦</a>
     </div>
   </div>
@@ -91,17 +97,19 @@
     })
   });
 
-  // 漢堡點開秀sidebar 按其他地方後移除
+  // 漢堡點開秀sidebar 按其他地方後sidebar會收回
 $(document).ready(function() {
 
   $(document).on('click',function (e) {
-      e.preventDefault();
+
       if (e.target.classList.contains("hb") && !($(".sidenav").hasClass("show"))) {
+      e.preventDefault(); //加到這
         $(".sidenav").addClass("show");
         $(".overlayMobile").addClass("active");
         $(".hb").addClass("hb_open");
       }
       else if ($(".sidenav").hasClass("show") && ($("#sidebarContent").find(e.target).length == 0 || e.target.classList.contains("hb"))) {
+        e.preventDefault(); //加到這
         $(".sidenav").removeClass("show");
         $(".overlayMobile").removeClass("active");
         $(".hb").removeClass("hb_open");
@@ -109,11 +117,31 @@ $(document).ready(function() {
     })
 });
 //--------------------------------
-// 登入後的樣式 (先用按下sidebar登入鈕假裝已經登入) 之後改成判斷登入
-document.querySelector(".sidebar-btn .loginBtn").addEventListener("click",changeSidebarCSS_login);
+// 登入後的樣式 (先用按下桌機跟手機的登入鈕假裝已經登入) 之後改成判斷登入
+document.querySelector(".sidebar-btn .loginBtn").addEventListener("click",function(){
+    changeHeaderCSS_login()
+    changeSidebarCSS_login()
+})
 
 function changeSidebarCSS_login(){
    document.querySelector('.sidebar-btn').style.display='none';
+   document.querySelector('.logoBox').style.display='none';
+   document.querySelector('#sidebarContent .profileBox').style.display='flex';
+   document.querySelector('.sidebar-member-link').style.display='block';
+
+}
+//登出後恢復原狀
+document.querySelector(".sidebar-member-link .signOutBtn").addEventListener("click",function(){
+backHeaderCSS_signOut();
+backSidebarCSS_signOut()
+} )
+
+function backSidebarCSS_signOut(){
+  document.querySelector('.sidebar-btn').style.display='flex';
+  document.querySelector('.logoBox').style.display='grid';
+  document.querySelector('#sidebarContent .profileBox').style.display='none';
+  document.querySelector('.sidebar-member-link').style.display='none';
+  
 }
 
 </script>

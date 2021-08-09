@@ -76,19 +76,37 @@ a.active:hover {
   padding-right: 15px;
 }
 
-hr {
+#sidebarContent hr {
   padding: 0;
   margin: 0;
   opacity: 0.6;
 }
 
 .logoBox {
+  display: grid;
   width: 100%;
   height: 70px;
-  color: cornflowerblue;
-  font-size: 30px;
   line-height: 2;
 }
+
+.logoBox a {
+  text-decoration: none;
+  color: cornflowerblue;
+  font-size: 30px;
+  font-family: "微軟正黑體";
+  font-weight: bolder;
+  position: relative;
+  
+}
+.logoBox a::after{
+  content: "RentWeb";
+  font-size: 16px;
+  color: #fc8d61;
+  position: absolute;
+  top: 18px;
+  right: 110px;
+}
+
 
 .sidenav p {
   color: rgb(107, 107, 107);
@@ -109,12 +127,14 @@ hr {
 }
 
 .sidebar-btn {
+  display: flex;
   height: 45px;
   background-color: cornflowerblue;
   align-items: center;
   padding: 0;
   margin-bottom: 0;
   box-sizing: border-box;
+
 }
 .sidebar-btn a {
   width: 50%;
@@ -131,12 +151,13 @@ hr {
 }
 
 #sidebarContent .profileBox {
-  display: flex;
-  background-color: rgb(230, 230, 230);
+  /* display: flex; 登入後才出現 */
+  background-color: rgb(200, 200, 200);
   border-radius: 0;
-  height: 100px;
+  height: 105px;
   padding: 5px 0;
   box-sizing: border-box;
+  display: none;
 }
 #sidebarContent .profileBox div:first-child {
   width: 55%;
@@ -158,9 +179,22 @@ hr {
   font-size: 26px;
   margin-top: -8px;
 }
+
+.sidebar-member-link{
+  display: none;
+/* 會員中心選項登入後才出現 */
+}
 @media screen and (max-width: 767px) {
   .sidenav {
     width: 265px;
+  }
+  .logoBox a::after{
+    content: "RentWeb";
+    font-size: 16px;
+    color: #fc8d61;
+    position: absolute;
+    top: 20px;
+    right: 82px;
   }
 
 }

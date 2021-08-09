@@ -11,8 +11,18 @@ header-top {
   text-decoration: none;
   color: cornflowerblue;
   font-size: 45px;
-  font-family: "Nanum Pen Script", cursive;
+  font-family: "微軟正黑體";
   font-weight: bolder;
+  position: relative;
+  
+}
+.logo a::after{
+  content: "RentWeb";
+  font-size: 18px;
+  color: #fc8d61;
+  position: absolute;
+  top: 56px;
+  right: 25px;
 }
 
 .header-nav {
@@ -138,6 +148,7 @@ header-top {
 }
 .member-dropdown {
   position: relative;
+  display: none;
 }
 .member-subMenu {
   position: absolute;
@@ -184,12 +195,16 @@ header-top {
   margin-top: -8px;
 }
 .member-dropdown .member-subMenu li {
-  border-bottom: 1px solid rgb(202, 170, 170);
   position: relative;
   padding: 0 25px;
   margin: 0;
   list-style: none;
 }
+.member-dropdown .member-subMenu li:not(:last-child) {
+  border-bottom: 1px solid rgb(184, 164, 164);
+}
+
+
 .member-dropdown .member-subMenu li a {
   color: rgb(119, 119, 119);
 }
@@ -214,6 +229,7 @@ header-top {
   background: white;
   /* .sub-menu同色 */
   display: grid;
+
 }
 .navbar {
   margin: 0 auto;
@@ -224,6 +240,7 @@ header-top {
   display: flex;
   padding: 0 !important;
   margin-bottom: 10px;
+  
 }
 .links li {
   position: relative;
@@ -235,6 +252,8 @@ header-top {
   white-space: nowrap;
   color: rgb(119, 119, 119);
   font-size: 18px;
+  position: relative;
+  z-index: 35;
 }
 
 .links li:hover .arrow {
@@ -250,7 +269,7 @@ header-top {
 .links .sub-menu {
   position: absolute;
   width: 170px;
-  top: 26px;
+  top: 20px;
   left: -30%;
   line-height: 40px;
   background: white;
@@ -290,11 +309,19 @@ nav .navbar .links li:hover .sub-menu {
 @media (max-width: 991px) {
   .dropdown-nav,
   .nav-btn,
-  .header-member-box,
-  .header-member-box img {
+  .header-member-box .member-dropdown {
     display: none !important;
   }
-  /* .header-member-box消不掉 */
+
+  .logo a{
+    font-size: 30px;
+  }
+  .logo a::after{
+    font-size: 12px;
+    color: #fc8d61;
+    top: 35px;
+    right: 18px;
+  }
 
   .header-nav {
     height: 70px;
@@ -408,7 +435,14 @@ nav .navbar .links li:hover .sub-menu {
     }
 
     .logo a {
-      font-size: 32px;
+      font-size: 25px;
+      margin-top: 11px !important;
+    }
+
+    .logo a::after{
+      font-size: 10px;
+      top: 30px;
+      right: 10px;
     }
     .header-search-box {
       margin-right: 22px;
