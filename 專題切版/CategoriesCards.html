@@ -92,42 +92,25 @@
         }
 
         .category-card {
-            position: relative;
-            /* 讓文字定位 */
-            margin: 15px;
-            height: 200px;
-            -webkit-transform-style: preserve-3d;
+            margin: 15px 20px;
+            height: 180px;
             transform-style: preserve-3d;
-            -webkit-perspective: 1000px;
             perspective: 1000px;
+            
         }
 
-        .frontSide,
-        .backSide {
+        .frontSide, .backSide {
             box-shadow: 0 2px 7px #dfdfdf;
-            -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-            transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-            -o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
             transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-            transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), 
-            -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-        }
-
-        .backSide {
-            /* background: -webkit-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
-            background: -o-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
-            background: linear-gradient(45deg, #cedce7 0%, #596a72 100%); */
+            display: flex;
+            
         }
 
         .category-card:hover .frontSide,
         .category-card:hover .backSide {
-            -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-            transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-            -o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
             transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
-            transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            /* 翻轉 */
         }
 
         .backSide {
@@ -137,114 +120,81 @@
             width: 100%;
         }
 
-        .card-inner {
-            -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
-            transform: translateY(-50%) translateZ(60px) scale(0.94);
-            top: 50%;
-            position: absolute;
-            left: 0;
-            padding: 2rem;
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-            outline: 1px solid transparent;
-            -webkit-perspective: inherit;
+        .card-3d {
+            transform: translateZ(60px) scale(0.94);
+            /* transform: translateZ(60px) scale(0.94); */
+            /* top: 50%;
+            right: 0%;
+            position: absolute;         */
             perspective: inherit;
-            z-index: 2;
-            
+            width: 30%;
+            margin-left:-10px ;
         }
 
-        .category-card .backSide {
-            -webkit-transform: rotateY(180deg);
+        .category-card .backSide {           
             transform: rotateY(180deg);
-            -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
         }
 
         .category-card .frontSide {
-            -webkit-transform: rotateY(0deg);
             transform: rotateY(0deg);
-            -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
         }
 
         .category-card:hover .backSide {
-            -webkit-transform: rotateY(0deg);
             transform: rotateY(0deg);
-            -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
         }
 
         .category-card:hover .frontSide {
-            -webkit-transform: rotateY(-180deg);
             transform: rotateY(-180deg);
-            -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
         }
 
-        .frontSide .categoryName p {
-            font-size: 46px;          
-            margin-bottom: 1rem;
+        .frontSide .categoryName p{
+            font-size: 28px;          
             position: relative;
-            color: #fc8d61;
-            background-color: white;
-            border: 1px solid #fc8d61;
+            color: black;
         }
 
         .frontSide .categoryName p:after {
             content: '';
-            width: 4rem;
+            width: 2.5rem;
             height: 2px;
             position: absolute;
-            background: #C6D4DF;
+            background: #fc8d61;
             display: block;
             left: 0;
             right: 0;
             margin: 0 auto;
-            bottom: -.75rem;
+            bottom: -.45rem;
         }
 
-
-        /* .categoryName {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            background-color: #fe8b5a;
-            opacity: .8;
-            padding: 15px;
-            width: 48%;
-            cursor: pointer;
-            text-shadow: 0px 0px 2px black;
-
-        } */
-
-        /* .categoryName p {
-            font-size: 46px;
-            margin: 0;
-            background-color: w;
-        }
-
-        .categoryName p span {
+        .backSide .checkitOut_ct{
             font-size: 18px;
-            display: block;
-        } */
+            padding: 10px;
+            border: 1px solid #fc8d61; 
+            background-color: white;
+            color: #fc8d61;
+        }
 
-        .category-img {
+        .backSide .checkitOut_ct:hover{ 
+            background-color: #fc8d61;
+            color:white ;
+        }
+
+        .category-img{
+            width: 70%; 
+            height: 180px;
+        }
+        .category-img img {
             width: 100%;
             height: 100%;
+            
             object-fit: cover;
             /* 還是要用contain?? */
             cursor: pointer;
         }
-
-
-        .loginBtn {
-            color: #fc8d61;
-            background-color: white;
-            border: 1px solid #fc8d61;
-        }
-
 
         /* 平板以下不應該有hover */
         @media screen and (max-width: 1024px) {}
@@ -358,48 +308,82 @@
                     <div class="col-6">
                         <div class="category-card">
                             <div class="frontSide">
-                                <img class="category-img"
+                                <div class="category-img">
+                                <img 
                                     src="https://media.vogue.com.tw/photos/5fe5aaba4663bf91fe312514/master/pass/2021%E9%A6%99%E6%B0%B4%20(1).jpg"
                                     alt="">
-                                <div class="categoryName text-center card-inner">
-                                    <p>配件</p>
+                                </div>
+                                <div class="categoryName d-grid card-3d">
+                                    <p class="m-auto">配件</p>
                                 </div>
                             </div>
                             <div class="backSide">
-                                <img class="category-img"
+                                <div class="category-img">
+                                <img
                                     src="https://media.vogue.com.tw/photos/5ff5c24f7fdb36c87cf72cef/master/pass/IMG_9003.JPG"
                                     alt="">
-                                <div class="checkitOut_ct text-center card-inner">
-                                    <p>查看商品</p>
+                                </div>
+                                <div class=" d-grid card-3d">
+                                    <!-- <p class="ctCard-Descpt">參加聚會卻沒東西可以炫?包包 香水 眼鏡出租</p> -->
+                                    <a href="" class="checkitOut_ct m-auto">查看商品</a> 
                                 </div>
                             </div>
-                            <!-- <div class="frontSide" style="background-image: url(https://unsplash.it/500/500/)">
-                                <div class="categoryName">
-                                    <p>Diligord</p>
-                                    <span>Lorem ipsum</span>
-                                </div>
-                            </div>
-                            <div class="backSide">
-                                <div class="inner">
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat
-                                        velit quae suscipit c.</p>
-                                </div>
-                            </div> -->
-
-
-
-
-
-
-
-
                         </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="category-card">
+                                <div class="frontSide">
+                                    <div class="category-img">
+                                    <img 
+                                        src="https://media.vogue.com.tw/photos/5fe5aaba4663bf91fe312514/master/pass/2021%E9%A6%99%E6%B0%B4%20(1).jpg"
+                                        alt="">
+                                    </div>
+                                    <div class="categoryName d-grid card-3d">
+                                        <p class="m-auto">配件</p>
+                                    </div>
+                                </div>
+                                <div class="backSide">
+                                    <div class="category-img">
+                                    <img
+                                        src="https://media.vogue.com.tw/photos/5ff5c24f7fdb36c87cf72cef/master/pass/IMG_9003.JPG"
+                                        alt="">
+                                    </div>
+                                    <div class=" d-grid card-3d">
+                                        <!-- <p class="ctCard-Descpt">參加聚會卻沒東西可以炫?包包 香水 眼鏡出租</p> -->
+                                        <a href="" class="checkitOut_ct m-auto">查看商品</a> 
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="category-card">
+                                    <div class="frontSide">
+                                        <div class="category-img">
+                                        <img 
+                                            src="https://media.vogue.com.tw/photos/5fe5aaba4663bf91fe312514/master/pass/2021%E9%A6%99%E6%B0%B4%20(1).jpg"
+                                            alt="">
+                                        </div>
+                                        <div class="categoryName d-grid card-3d">
+                                            <p class="m-auto">配件</p>
+                                        </div>
+                                    </div>
+                                    <div class="backSide">
+                                        <div class="category-img">
+                                        <img
+                                            src="https://media.vogue.com.tw/photos/5ff5c24f7fdb36c87cf72cef/master/pass/IMG_9003.JPG"
+                                            alt="">
+                                        </div>
+                                        <div class=" d-grid card-3d">
+                                            <!-- <p class="ctCard-Descpt">參加聚會卻沒東西可以炫?包包 香水 眼鏡出租</p> -->
+                                            <a href="" class="checkitOut_ct m-auto">查看商品</a> 
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
                     </div>
-
-
-
-
-
 
 
 
@@ -407,8 +391,9 @@
 
             </div>
 
-        </div>
+        
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
         crossorigin="anonymous"></script>

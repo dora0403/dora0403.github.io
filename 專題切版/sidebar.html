@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-07-25 15:08:49
- * @LastEditTime: 2021-08-09 10:39:25
+ * @LastEditTime: 2021-08-14 21:11:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \dora0403.github.io\專題切版-test\sidebar.html
@@ -10,7 +10,11 @@
 <div class="sidenav">
   
   <div class="logoBox">
-    <a href="#" class="ms-3 my-auto">知租網</a>
+    <a href="#"><img src="img/logo.jpg" alt=""></a>
+    <div class="sidebar-btn">
+      <a href="#" class="loginBtn d-grid"><span class="m-auto">登入</span> </a>
+      <a href="#" class="signUpBtn d-grid"><span class="m-auto">註冊</span></a>
+    </div>
   </div>
 
   <!-- 登入後秀出名字 -->
@@ -24,10 +28,7 @@
     </div>
     
   
-  <div class="sidebar-btn">
-    <a href="#" class="loginBtn d-grid"><span class="m-auto">登入</span> </a>
-    <a href="#" class="signUpBtn d-grid"><span class="m-auto">註冊</span></a>
-  </div>
+  
 
   <div class="linkBox">
     <div class="sidebar-member-link">
@@ -138,7 +139,7 @@ backSidebarCSS_signOut()
 
 function backSidebarCSS_signOut(){
   document.querySelector('.sidebar-btn').style.display='flex';
-  document.querySelector('.logoBox').style.display='grid';
+  document.querySelector('.logoBox').style.display='flex';
   document.querySelector('#sidebarContent .profileBox').style.display='none';
   document.querySelector('.sidebar-member-link').style.display='none';
   
