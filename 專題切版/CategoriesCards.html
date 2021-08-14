@@ -24,16 +24,17 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 
-    <title> Ruckify </title>
+    <title> 商品總類 </title>
 
     <style>
-        .ProductCardsPage {
+        .CategoriesCardsPage {
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .left {
             background-color: #ffffff;
+            box-shadow: 0 2px 7px #f1f1f1;
         }
 
 
@@ -86,192 +87,175 @@
 
         /* -------------------------------------------------------------------- */
         /* 以下為商品卡片 by庭安 */
-        .product-card a {
+        .category-card a {
             text-decoration: none;
         }
 
-        .product-card {
+        .category-card {
             position: relative;
+            /* 讓文字定位 */
+            margin: 15px;
+            height: 200px;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-perspective: 1000px;
+            perspective: 1000px;
+        }
+
+        .frontSide,
+        .backSide {
             box-shadow: 0 2px 7px #dfdfdf;
-            margin: 10px 12px;
-            background-color: #fafafa;
+            -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            -o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), 
+            -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
-        /* 碰到整張卡片的hover */
-        .product-card:hover .product-cart-icon i {
-            color: #fe8b5a;
+        .backSide {
+            /* background: -webkit-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
+            background: -o-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
+            background: linear-gradient(45deg, #cedce7 0%, #596a72 100%); */
         }
 
+        .category-card:hover .frontSide,
+        .category-card:hover .backSide {
+            -webkit-transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transition: -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            -o-transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1), -webkit-transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+        }
 
-        .badge {
+        .backSide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .card-inner {
+            -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
+            transform: translateY(-50%) translateZ(60px) scale(0.94);
+            top: 50%;
             position: absolute;
             left: 0;
-            top: 15px;
-            text-transform: uppercase;
-            font-size: 15px;
-            font-weight: 700;
-            background-color: #fe8b5a;
-            color: #fff;
-            padding: 2px 5px;
+            padding: 2rem;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            outline: 1px solid transparent;
+            -webkit-perspective: inherit;
+            perspective: inherit;
+            z-index: 2;
+            
         }
 
-        repeat {
-            display: block;
+        .category-card .backSide {
+            -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
         }
 
-        repeat[n="1"]:before {
-            content: "★";
+        .category-card .frontSide {
+            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
         }
 
-        repeat[n="2"]:before {
-            content: "★★";
+        .category-card:hover .backSide {
+            -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
         }
 
-        repeat[n="3"]:before {
-            content: "★★★";
+        .category-card:hover .frontSide {
+            -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
         }
 
-        repeat[n="4"]:before {
-            content: "★★★★";
-        }
-
-        repeat[n="5"]:before {
-            content: "★★★★★";
-        }
-
-        .product-img {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 180px;
+        .frontSide .categoryName p {
+            font-size: 46px;          
+            margin-bottom: 1rem;
+            position: relative;
+            color: #fc8d61;
             background-color: white;
-            overflow: hidden;
-            cursor: pointer;
+            border: 1px solid #fc8d61;
         }
 
-        .product-img img {
+        .frontSide .categoryName p:after {
+            content: '';
+            width: 4rem;
+            height: 2px;
+            position: absolute;
+            background: #C6D4DF;
+            display: block;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            bottom: -.75rem;
+        }
+
+
+        /* .categoryName {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background-color: #fe8b5a;
+            opacity: .8;
+            padding: 15px;
+            width: 48%;
+            cursor: pointer;
+            text-shadow: 0px 0px 2px black;
+
+        } */
+
+        /* .categoryName p {
+            font-size: 46px;
+            margin: 0;
+            background-color: w;
+        }
+
+        .categoryName p span {
+            font-size: 18px;
+            display: block;
+        } */
+
+        .category-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        /* 商品卡照片之外的區塊 */
-        .product-details {
-            width: 100%;
-            padding: 10px 15px;
-        }
-
-        .product-catagory {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #ccc;
-        }
-
-        .product-details .product-name {
-            font-weight: bolder;
-            display: block;
-            margin: 8px 0;
-            font-size: 18px;
-            text-transform: uppercase;
-            transition: 0.3s;
-            height: 25px;
-            overflow: hidden;
-        }
-
-        .product-details .product-name a {
-            color: #474747;
-            color: black;
-        }
-
-        .product-details .product-name a:hover {
-            color: #fe8b5a;
-        }
-
-        .product-description {
-            font-size: 15px;
-            color: rgb(134, 134, 134);
-            margin-bottom: 12px !important;
-            height: 65px;
-            box-sizing: border-box;
-            overflow: hidden;
-
-        }
-
-        .product-price-cart-box {
-            overflow: hidden;
-            border-top: 1px solid rgb(226, 226, 226);
-            padding: 15px 0 10px 0;
-
-        }
-
-        .product-price {
-            font-size: 18px;
-            color: #474747;
-            font-weight: 600;
-        }
-
-        .product-price span {
-            font-size: 14px;
+            /* 還是要用contain?? */
+            cursor: pointer;
         }
 
 
-        .product-cart-icon i {
-            margin-right: 5px;
-            color: #cecece;
-            transition: 0.3s;
-            font-size: 18px;
-        }
-
-        /* 商品卡片手機板 */
-        @media screen and (max-width: 767px) {
-            .badge {
-            top: 12px;
-            font-size: 13px;
-            font-weight: 700;
-            padding: 2px 4px;
-        }
-        .product-img {
-            height: 155px;
-        }
-        .product-details .product-name {
-            margin: 5px 0;
-            font-size: 17px;
-            height: 50px;
-            overflow: hidden;
-        }
-
-        .product-description {
-            font-size: 14px;
-            margin-bottom: 10px !important;
-            height: 60px;
-        }
-
-        .product-price-cart-box {
-            padding: 10px 0 0px 0;
-        }
-
-        .product-price {
-            font-size: 17px;
-        }
-
-        .product-price span {
-            font-size: 13px;
+        .loginBtn {
+            color: #fc8d61;
+            background-color: white;
+            border: 1px solid #fc8d61;
         }
 
 
-        .product-cart-icon i {
-            margin-right: 5px;
-            font-size: 17px;
-        }
+        /* 平板以下不應該有hover */
+        @media screen and (max-width: 1024px) {}
 
-        }
+        /* 種類卡片手機板 */
+        @media screen and (max-width: 767px) {}
     </style>
 </head>
 
 <body>
-    <div class="ProductCardsPage">
+    <div class="CategoriesCardsPage">
 
         <div class="row pt-lg-3 px-2">
 
@@ -367,99 +351,51 @@
             <!-- Right 商品卡片部分:Dora -->
             <div class="col-lg-9 col-12 px-2 px-lg-4 mb-4 mx-0">
                 <div class="col-12 mt-lg-3 px-3">
-                    <h2>配件 Accessories</h2>
+                    <h2>所有種類 All Categories</h2>
                 </div>
 
-                <div class="ProductCardsContainer d-flex flex-wrap">
-                    <div class="col-6 col-md-4">
-                        <div class="product-card">
-                            <div class="badge">
-                                <repeat n="5"></repeat>
-                            </div>
-                            <div class="product-img">
-                                <img src="img/Chanel-AC00101.jpg" alt="">
-                            </div>
-                            <div class="product-details">
-                                <span class="product-catagory">配件,耳環</span>
-                                <p class="product-name"><a href="">香奈兒耳環幻象珍珠</a></p>
-                                <p class="product-description">金屬、高級樹脂、幻象珍珠&水鑽/金、珍珠白、粉紅&水晶/ 編號 ...</p>
-                                <div class="product-price-cart-box d-flex">
-                                    <div class="product-price flex-grow-1">$500 <span>/日租</span></div>
-                                    <div class="product-cart-icon d-grid">
-                                        <a href="" class="m-auto"><i class="fa fa-shopping-cart"></i></a>
-                                    </div>
+                <div class="CategoriesCardsContainer d-flex flex-wrap">
+                    <div class="col-6">
+                        <div class="category-card">
+                            <div class="frontSide">
+                                <img class="category-img"
+                                    src="https://media.vogue.com.tw/photos/5fe5aaba4663bf91fe312514/master/pass/2021%E9%A6%99%E6%B0%B4%20(1).jpg"
+                                    alt="">
+                                <div class="categoryName text-center card-inner">
+                                    <p>配件</p>
                                 </div>
                             </div>
+                            <div class="backSide">
+                                <img class="category-img"
+                                    src="https://media.vogue.com.tw/photos/5ff5c24f7fdb36c87cf72cef/master/pass/IMG_9003.JPG"
+                                    alt="">
+                                <div class="checkitOut_ct text-center card-inner">
+                                    <p>查看商品</p>
+                                </div>
+                            </div>
+                            <!-- <div class="frontSide" style="background-image: url(https://unsplash.it/500/500/)">
+                                <div class="categoryName">
+                                    <p>Diligord</p>
+                                    <span>Lorem ipsum</span>
+                                </div>
+                            </div>
+                            <div class="backSide">
+                                <div class="inner">
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias cum repellat
+                                        velit quae suscipit c.</p>
+                                </div>
+                            </div> -->
+
+
+
+
+
+
+
+
                         </div>
                     </div>
 
-                    <div class="col-6 col-md-4">
-                        <div class="product-card">
-                            <div class="badge">
-                                <repeat n="3"></repeat>
-                            </div>
-                            <div class="product-img">
-                                <img src="img/Chanel-AC00101.jpg" alt="">
-                            </div>
-                            <div class="product-details">
-                                <span class="product-catagory">配件,耳環</span>
-                                <p class="product-name"><a href="">標題不要超過十二個字喔喔</a></p>
-                                <p class="product-description">不確定兩行還是三行比較適當 這邊兩行試試看 但高度有寫死70px</p>
-                                <div class="product-price-cart-box d-flex">
-                                    <div class="product-price flex-grow-1">$300 <span>/日租</span></div>
-                                    <div class="product-cart-icon d-grid">
-                                        <a href="" class="m-auto"><i class="fa fa-shopping-cart"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-4">
-                        <div class="product-card">
-                            <div class="badge">
-                                <repeat n="4"></repeat>
-                            </div>
-                            <div class="product-img">
-                                <img src="img/Chanel-AC00101.jpg" alt="">
-                            </div>
-                            <div class="product-details">
-                                <span class="product-catagory">配件,耳環</span>
-                                <p class="product-name"><a href="">高度寫死</a></p>
-                                <p class="product-description">
-                                    女朋友級別身上鍵盤基金決定可見建議不論陽光這次公告，財務驚訝財經，夥伴科技有限公司晶片總體能否轉身集體亞洲部落電子商務都有，體系採購是他，溫度處理體育見面，正式只有現象移動
-                                </p>
-                                <div class="product-price-cart-box d-flex">
-                                    <div class="product-price flex-grow-1">$800 <span>/日租</span></div>
-                                    <div class="product-cart-icon d-grid">
-                                        <a href="" class="m-auto"><i class="fa fa-shopping-cart"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-4">
-                        <div class="product-card">
-                            <div class="badge">
-                                <repeat n="4"></repeat>
-                            </div>
-                            <div class="product-img">
-                                <img src="img/Chanel-AC00101.jpg" alt="">
-                            </div>
-                            <div class="product-details">
-                                <span class="product-catagory">配件,耳環</span>
-                                <p class="product-name"><a href="">香奈兒耳環幻象珍珠</a></p>
-                                <p class="product-description">金屬、高級樹脂、幻象珍珠&水鑽/金、珍珠白、粉紅&水晶/ 編號 AB7009 B06560 NF087</p>
-                                <div class="product-price-cart-box d-flex">
-                                    <div class="product-price flex-grow-1">$100 <span>/日租</span></div>
-                                    <div class="product-cart-icon d-grid">
-                                        <a href="" class="m-auto"><i class="fa fa-shopping-cart"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
 
@@ -494,6 +430,23 @@
         let marker = L.marker([24.8226948, 120.94912]);
         map.addLayer(marker);
 
+        // 種類卡片
+        function categoryCard_Hover(element) {
+            element.querySelector('img:first-child').setAttribute('src', 'https://media.vogue.com.tw/photos/5ff5c24f7fdb36c87cf72cef/master/pass/IMG_9003.JPG');
+        }
+
+        function categoryCard_Unhover(element) {
+            element.querySelector('img:first-child').setAttribute('src', 'https://media.vogue.com.tw/photos/5fe5aaba4663bf91fe312514/master/pass/2021%E9%A6%99%E6%B0%B4%20(1).jpg');
+        }
+
+        // 只是換照片測試 不需要留
+        function categoryCard_Hover2(element) {
+            element.querySelector('img:first-child').setAttribute('src', 'img/Lv02.jpg');
+        }
+
+        function categoryCard_Unhover2(element) {
+            element.querySelector('img:first-child').setAttribute('src', 'img/Lv01.jpg');
+        }
     </script>
 
 </body>
