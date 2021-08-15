@@ -64,7 +64,7 @@
             text-align-last: center;
             border-radius: 0.4rem;
             border-color: rgb(221, 226, 230);
-            background-color: #ffffff;
+            background-color: #f3f3f3;
             font-size: 12px;
         }
 
@@ -75,14 +75,17 @@
         #map {
             width: 100%;
             height: 172px;
+            position: relative;
+            z-index: 1;
         }
 
         .filter_result {
             width: 100%;
             height: 36px;
             text-align: center;
-            background-color: #3F3F3F;
+            background-color: #fc8d61;
             color: #FFFFFF;
+            border: #fc8d61;
         }
 
         /* -------------------------------------------------------------------- */
@@ -181,7 +184,7 @@
             position: absolute;
             width: 110px;
             height: 35px;
-            background-color: #fe8b5a;          
+            background-color: #fe8b5a;
             opacity: .95;
             top: -8%;
             right: 0%;
@@ -246,7 +249,7 @@
             font-size: 15px;
             color: rgb(134, 134, 134);
             margin-bottom: 12px !important;
-            height: 65px;
+            height: 45px;
             box-sizing: border-box;
             overflow: hidden;
 
@@ -291,6 +294,21 @@
             }
         }
 
+        @media (max-width: 991px) {
+
+            .ProductCardsPage {
+                margin: 0 15px;
+            }
+
+            /*名駿  */
+            .cell_phone {
+                display: none;
+            }
+        }
+
+        
+
+
         /* 商品卡片手機板 */
         @media screen and (max-width: 767px) {
             .badge {
@@ -314,7 +332,7 @@
             .product-description {
                 font-size: 14px;
                 margin-bottom: 10px !important;
-                height: 60px;
+                height: 40px;
             }
 
             .product-price-cart-box {
@@ -354,7 +372,7 @@
                         </label> <br>
 
                         <input type="text" id="Search" class="btn input_text distence" placeholder="Item Name or Space">
-                        <select name="Category" id="Category" class="input_text distence">
+                        <select name="Category" id="Category" class="input_text distence cell_phone">
                             <option value="0">Select a Category</option>
                             <option value="1">交通工具</option>
                             <option value="2">人才</option>
@@ -365,7 +383,7 @@
                             <option value="7">書本</option>
                         </select>
 
-                        <select name="SubCategory" id="SubCategory" class="input_text distence">
+                        <select name="SubCategory " id="SubCategory" class="input_text distence cell_phone">
                             <option value="0">Select a Sub-Category</option>
                             <option value="1">PS5-遊戲片</option>
                             <option value="2">Switch-遊戲片</option>
@@ -373,7 +391,7 @@
                         </select>
                     </div>
 
-                    <div class="group">
+                    <div class="group cell_phone">
                         <label for="Location" class="distence">
                             <strong>Location</strong>
                         </label> <br>
@@ -383,7 +401,7 @@
                         <div id="map" class="distence"> </div>
                     </div>
 
-                    <div class="group">
+                    <div class="group cell_phone">
                         <label for="Sort-by" class="distence">
                             <strong>Sort by</strong>
                         </label> <br>
@@ -397,7 +415,7 @@
                         <label for="distance">Distance</label><br>
                     </div>
 
-                    <div class="group">
+                    <div class="group cell_phone">
                         <label for="Condition" class="distence">
                             <strong>Condition</strong>
                         </label> <br>
@@ -415,7 +433,7 @@
                         <label for="check4">Has Some Character</label><br>
                     </div>
 
-                    <div class="group">
+                    <div class="group cell_phone">
                         <label for="Budget" class="distence">
                             <strong>Budget</strong>
                         </label> <br>
@@ -450,7 +468,9 @@
                                 <img src="img/Chanel01.jpg" alt="">
                             </div>
                             <div class="product-details">
-                                <a href=""><div class="checkitOut"> <span class="m-auto">商品詳情</span></div></a>  
+                                <a href="">
+                                    <div class="checkitOut"> <span class="m-auto">商品詳情</span></div>
+                                </a>
                                 <span class="product-catagory">配件,耳環</span>
                                 <p class="product-name"><a href="">香奈兒耳環幻象珍珠</a></p>
                                 <p class="product-description">金屬、高級樹脂、幻象珍珠&水鑽/金、珍珠白、粉紅&水晶/ 編號 ...</p>
@@ -477,7 +497,7 @@
                                 <div class="checkitOut"><span class="m-auto">商品詳情</span> </div>
                                 <span class="product-catagory">配件,包包</span>
                                 <p class="product-name"><a href="">標題不要超過十二個字喔喔</a></p>
-                                <p class="product-description">不確定兩行還是三行比較適當 這邊兩行試試看 但高度有寫死70px</p>
+                                <p class="product-description">不確定兩行還是三行比較適當 這邊兩行試試看 但高度有寫死45px</p>
                                 <div class="product-price-cart-box d-flex">
                                     <div class="product-price flex-grow-1">$300 <span>/日租</span></div>
                                     <div class="product-cart-icon d-grid">
@@ -559,19 +579,33 @@
         crossorigin="anonymous"></script>
 
     <script>
-        let map = L.map('map', {
-            center: [24.9, 121],
-            zoom: 8
+        // 名駿
+        let Search = document.querySelector("#Search");
+        let cell_phone = document.querySelectorAll(".cell_phone");
+
+        Search.addEventListener("click", function () {
+            cell_phone.forEach(x => x.classList.remove('cell_phone'));
         });
 
-        let osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-        let osm = new L.TileLayer(osmUrl, { minZoom: 3, maxZoom: 19 });
-        map.addLayer(osm);
-        // map.setView([24.8226948,120.94912], 7);
 
-        let marker = L.marker([24.8226948, 120.94912]);
-        map.addLayer(marker);
+        Create_map();
 
+        function Create_map() {
+            let map = L.map('map', {
+                center: [24.9, 121],
+                zoom: 7,
+            });
+
+            let osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+            let osm = new L.TileLayer(osmUrl, { minZoom: 3, maxZoom: 18 });
+            map.addLayer(osm);
+            // map.setView([24.8226948,120.94912], 7);
+            let marker = L.marker([24.8226948, 120.94912]);
+            map.addLayer(marker);
+        }
+        // ------------------------------------------------------------------------
+
+        // 庭安
         // 商品卡片
         function productCard_Hover(element) {
             element.querySelector('img:first-child').setAttribute('src', 'img/Chanel02.jpg');
