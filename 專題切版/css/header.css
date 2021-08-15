@@ -35,7 +35,7 @@ header-top .container-xl {
 }
 
 .header-member-box i, .header-member-box img{
-  margin-right: 30px;
+  margin-right: 20px;
   cursor: pointer;
   z-index: 50;
   position: relative;
@@ -90,7 +90,7 @@ header-top .container-xl {
   display: none;
 }
 .header-search-box {
-  margin-right: 30px;
+  margin-right: 25px;
   margin-top: -3px;
 }
 .header-search {

@@ -29,7 +29,7 @@
     <style>
         .ProductCardsPage {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 20px auto;
         }
 
         .left {
@@ -90,6 +90,11 @@
 
         /* -------------------------------------------------------------------- */
         /* 以下為商品卡片 by庭安 */
+        .ProductCardsContainer h2{
+                padding-left: 10px;
+                /* 為配合對齊下面卡片(卡片有左右margin12) */
+        }
+
         .product-card a {
             text-decoration: none;
         }
@@ -277,7 +282,7 @@
             margin-right: 5px;
             color: #cecece;
             transition: 0.3s;
-            font-size: 18px;
+            font-size: 20px;
         }
 
         /* 平板以下不應該有hover */
@@ -298,6 +303,11 @@
 
             .ProductCardsPage {
                 margin: 0 15px;
+            }
+
+            .ProductCardsContainer h2{
+                margin-top: 20px;
+                
             }
 
             /*名駿  */
@@ -452,12 +462,12 @@
             </div>
 
             <!-- Right 商品卡片部分:Dora -->
-            <div class="col-lg-9 col-12 px-2 px-lg-4 mb-4 mx-0">
-                <div class="col-12 mt-lg-3 px-3">
+            <div class="col-lg-9 col-12 px-2 px-lg-4 mb-4 mx-0 ">
+                <div class="col-12 px-3 ProductCardsContainer">
                     <h2>配件 Accessories</h2>
-                </div>
+                
 
-                <div class="ProductCardsContainer d-flex flex-wrap">
+                <div class=" d-flex flex-wrap">
                     <div class="col-6 col-md-4">
                         <div class="product-card" onmouseover="productCard_Hover(this);"
                             onmouseout="productCard_Unhover(this);">
@@ -563,7 +573,7 @@
 
 
 
-
+                </div>
 
                 </div>
 
