@@ -6,7 +6,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
-    <link rel="Shortcut Icon" type="image/x-icon" href="img/123.webp" />
+    <link rel="Shortcut Icon" type="image/x-icon" href="Img/123.webp" />
 
     <title>Bulls and Cows 你有多會猜！</title>
     <style>
@@ -347,7 +347,7 @@
           guessTimes++;
           if(A==4){
             setTimeout(function(){
-               alert(`猜中了！很會喔！但還是猜了 ${guessTimes} 次 比我還遜 再見！`);
+               alert(`恭喜猜中了！但還是猜了 ${guessTimes} 次 略遜版主一籌 再見！`);
                //如果alert後要做以下這些事情 就要一起放在延遲方法裡面 寫在外面的話會先跑
                window.onclick=function(){
                    window.location.reload();
@@ -387,7 +387,7 @@
 
     function changeModalContent(){
       document.querySelector(".hintBtn").addEventListener('click',function(){
-        document.querySelector("#hintModal .modal-title").innerText="這麼簡單也要提示?";
+        document.querySelector("#hintModal .modal-title").innerText="以你的程度應該不用提示喔";
         document.querySelector("#hintModal .modal-body").innerText=`答案是 ${answerArray[0]} X ${answerArray[2]} X \n下次要自己動腦想喔！`;
       })
       document.querySelector(".answerBtn").addEventListener('click',function(){
