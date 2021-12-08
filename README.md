@@ -20,9 +20,9 @@
 
 ## 純切版CSS HTML
 1. [Line官方網站](https://dora0403.github.io/Layout%20CSS%20HTML/Line%20Official%20Website%20RWD/line.html) 
-      - **RWD** 
+      - RWD
 2. [Build School官方網站](https://dora0403.github.io/Layout%20CSS%20HTML/BuildSchool%20Official%20Website/BS.html)
-     - **RWD** 
-     - **Bootstrap 5**
+      - RWD 
+      - Bootstrap 5
 3. [Toyota官網](https://dora0403.github.io/Layout%20CSS%20HTML/Toyota/toyota.html)
 4. [黃阿瑪的后宮生活](https://dora0403.github.io/Layout%20CSS%20HTML/HuangAMa/index.html)
