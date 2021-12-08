@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
-    <link rel="Shortcut Icon" type="image/x-icon" href="img/123.webp" />
+    <link rel="Shortcut Icon" type="image/x-icon" href="Img/123.webp" />
     <style>
         .jumbotron{
             height: 130px;
@@ -290,12 +290,12 @@
     //按X刪除
     document.querySelector("#delete").addEventListener('click', function() {
         if(input.value==""){
-            alert("你又沒填！要叉叉掉啥米！？")
-            input.placeholder="不要亂按！"
+            alert("我發現你還沒猜喔！請填一個數字！")
+            input.placeholder="猜了再按！"
         }
         else{
             input.value="";
-            input.placeholder= "想認輸?";
+            input.placeholder= "偷換答案XD";
         }
             
         });
@@ -303,15 +303,15 @@
     //按勾送出答案
     document.querySelector("#enter").addEventListener('click', function() {
         if(input.value==""){
-            alert("你又沒填！按勾勾幹麻？")
-            input.placeholder="不要亂按！"
+            alert("我發現你還沒猜喔！請填一個數字！")
+            input.placeholder="猜了再按！"
             return;
         }
         if(input.value == answer){
                 hint.innerText=String(answer);
 
             setTimeout(function(){
-               alert("猜中了！很會喔！隨便點一下重新載入吧！");
+               alert("猜中了！祝你有個幸運的一天^^！隨便點一下重新載入吧！");
                //如果alert後要做以下這些事情 就要一起放在延遲方法裡面 寫在外面的話會先跑
                hint.innerText="再玩一次?";
                input.value=""; input.placeholder="來玩啊！";
@@ -332,12 +332,14 @@
             
             else if(parseInt(input.value) > answer){
                 max=input.value;
+                input.placeholder="快猜中了！"
             }
             else if(parseInt(input.value) < answer){
                 min=input.value;
             }
                 hint.innerText=`${min}~${max}`;
                 input.value="";
+                input.placeholder="快猜中了！"
         });
 </script>
 

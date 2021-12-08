@@ -6,7 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="Shortcut Icon" type="image/x-icon" href="img/小日曆ICON.png" />
+  <link rel="Shortcut Icon" type="image/x-icon" href="Img/小日曆ICON.png" />
 
   <!-- 字體 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,7 +70,7 @@
 
     .title {
       height: 170px;
-      background-image: url("../JS-Calender/img/背景1.jpg");
+      background-image: url("../JS-Calender/Img/背景1.jpg");
       background-size: cover;
     }
 
@@ -247,7 +247,7 @@
         <div class="title d-flex">
 
           <div class="icon_quotation_box d-flex align-self-center ml-4">
-            <img src="img/flower.png">
+            <img src="Img/flower.png">
             <p class="my-auto mx-3 quotation"></p>
           </div>
           <div class="monthBox d-flex">
@@ -258,16 +258,16 @@
           <div class="yearWithSelector d-flex flex-column justify-content-center mx-5">
             <div class="yearWithSearch d-flex align-content-center">
               <p class="text-center my-auto" id="year"></p>
-              <button title="找月份"><img src="img/search.png" alt="" id="datepicker"></button>
+              <button title="找月份"><img src="Img/search.png" alt="" id="datepicker"></button>
             </div>
 
             <div class="selector mx-auto">
-              <button onclick="goPreviousMonth()" title="上個月"><img src="img/arror left2.png" alt=""></button>
-              <button onclick="goNextMonth()" title="下個月"><img src="img/arror right2.png" alt=""></button>
-              <button title="回主頁"><img src="img/homepage.png" alt="" id="homePage"></button>
-              <!-- <a href="https://www.notion.so/zh-tw" title="作筆記" target="_blank"><img src="img/takenote.png" alt=""
+              <button onclick="goPreviousMonth()" title="上個月"><img src="Img/arror left2.png" alt=""></button>
+              <button onclick="goNextMonth()" title="下個月"><img src="Img/arror right2.png" alt=""></button>
+              <button title="回主頁"><img src="Img/homepage.png" alt="" id="homePage"></button>
+              <!-- <a href="https://www.notion.so/zh-tw" title="作筆記" target="_blank"><img src="Img/takenote.png" alt=""
                   id="notion"></a> -->
-              <!-- <img src="img/next2.png" alt="">  粉色箭頭 -->
+              <!-- <img src="Img/next2.png" alt="">  粉色箭頭 -->
             </div>
           </div>
         </div>
@@ -378,18 +378,18 @@
 
   <script>
     const quotations = [
-      { img: "img/sun.png", words: "如果你的面前有陰影，那是因為你的背後有陽光。" },
-      { img: "img/road.png", words: "你只有走完必須走的路，才能過想過的生活。" },
-      { img: "img/happiness.png", words: "快樂不是因為擁有的多而是因為計較的少！" },
-      { img: "img/flower.png", words: "你若盛開，蝴蝶自來。" },
-      { img: "img/dream.png", words: "一切成就都緣於一個夢想和毫無根據的自信。" },
-      { img: "img/work.png", words: "在逆境中看到生活的美，在希望中別忘記奮鬥。" },
-      { img: "img/2steps.png", words: "成功只有兩步：第一步，和堅持到最後一步。" },
-      { img: "img/star.png", words: "經歷過最黑的夜，才能看見最亮的星星。" },
-      { img: "img/peace.png", words: "生氣是拿別人做錯的事來懲罰自己" },
-      { img: "img/hope.png", words: "Learn from yesterday, live for today,\nhope for tomorrow." },
-      { img: "img/knowledge.png", words: "Knowledge is power." },
-      { img: "img/workHard.png", words: "Genius is one percent inspiration and ninety-nine percent perspiration." }
+      { img: "Img/sun.png", words: "如果你的面前有陰影，那是因為你的背後有陽光。" },
+      { img: "Img/road.png", words: "你只有走完必須走的路，才能過想過的生活。" },
+      { img: "Img/happiness.png", words: "快樂不是因為擁有的多而是因為計較的少！" },
+      { img: "Img/flower.png", words: "你若盛開，蝴蝶自來。" },
+      { img: "Img/dream.png", words: "一切成就都緣於一個夢想和毫無根據的自信。" },
+      { img: "Img/work.png", words: "在逆境中看到生活的美，在希望中別忘記奮鬥。" },
+      { img: "Img/2steps.png", words: "成功只有兩步：第一步，和堅持到最後一步。" },
+      { img: "Img/star.png", words: "經歷過最黑的夜，才能看見最亮的星星。" },
+      { img: "Img/peace.png", words: "生氣是拿別人做錯的事來懲罰自己" },
+      { img: "Img/hope.png", words: "Learn from yesterday, live for today,\nhope for tomorrow." },
+      { img: "Img/knowledge.png", words: "Knowledge is power." },
+      { img: "Img/workHard.png", words: "Genius is one percent inspiration and ninety-nine percent perspiration." }
     ]
     const month_en = ["JAN", "FEB", "MAR", "APR", "MAY", "JUNE", "JULY", "AUG", "SEPT", "OCT", "NOV", "DEC"];
     let tbody = document.getElementsByTagName("tbody")[0];
@@ -564,7 +564,7 @@
       let todoObj = { id: id, title: todoItem, detail: todoDetail, bgColor: todoColor };
       let todoList = [];
       if (todoItem == "") {
-        alert('幹啥大事要說阿！')
+        alert('請填上您的大事！')
         return;
       }
       else {

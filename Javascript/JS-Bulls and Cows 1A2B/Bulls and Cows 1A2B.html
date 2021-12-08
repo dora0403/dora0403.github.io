@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/160bae148b.js" crossorigin="anonymous"></script>
     <link rel="Shortcut Icon" type="image/x-icon" href="Img/123.webp" />
 
-    <title>Bulls and Cows 你有多會猜！</title>
+    <title>Bulls and Cows 1A2B 動動腦！</title>
     <style>
       .gameBox{
           background-color: rgb(255, 241, 246);
@@ -220,7 +220,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">還沒開始阿！</h5>
+          <h5 class="modal-title" id="exampleModalLabel">遊戲還沒開始喔！</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -347,7 +347,7 @@
           guessTimes++;
           if(A==4){
             setTimeout(function(){
-               alert(`恭喜猜中了！但還是猜了 ${guessTimes} 次 略遜版主一籌 再見！`);
+               alert(`恭喜猜中了！共猜了 ${guessTimes} 次 再加油喔！`);
                //如果alert後要做以下這些事情 就要一起放在延遲方法裡面 寫在外面的話會先跑
                window.onclick=function(){
                    window.location.reload();
