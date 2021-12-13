@@ -601,11 +601,11 @@
 
     function setTitle() {
       tbody.innerHTML = "";
-      document.querySelector(".icon_quotation_box img").src = quotations[(month % 12)].img;
-      document.querySelector(".icon_quotation_box p").innerText = quotations[(month % 12)].words;
+      document.querySelector(".icon_quotation_box img").src = quotations.at(month % 12).img;
+      document.querySelector(".icon_quotation_box p").innerText = quotations.at(month % 12).words;
 
       document.getElementById("year").innerText = `${new Date(year, month, 1).getFullYear()}`;
-      document.querySelector(".monthBox span").innerText = month_en[(month % 12)];
+      document.querySelector(".monthBox span").innerText = month_en.at(month % 12);
       document.querySelector(".monthBox h1").innerText = `${(new Date(year, month, 1).getMonth() + 1).toString().padStart(2, "0")}`
 
     }
