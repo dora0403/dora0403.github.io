@@ -11,7 +11,7 @@
 3. [英雄聯盟牌卡](https://dora0403.github.io/Javascript/JS-LoL/0617%20LoLCard_Ajax_Template.html)
       - ajax
       - template
-6. [哆啦猜數字-1A2B](https://dora0403.github.io/Javascript/JS-BullsAndCows1A2B/Bulls and Cows 1A2B.html)
+6. [哆啦猜數字-1A2B](https://dora0403.github.io/Javascript/JS-BullsAndCows1A2B/JS-BullsAndCows.html)
 7. [哆啦猜數字-0~100](https://dora0403.github.io/Javascript/JS-NumberGuessing0-100/GuessNumber.html)
 8. [Apple 購買頁面1_all](https://dora0403.github.io/Javascript/JS-Apple/Apple.html)
       - template
