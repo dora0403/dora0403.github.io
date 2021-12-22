@@ -1,0 +1,16 @@
+Question 1 
+What is the difference between session, tempdata, viewdata, and viewbag?
+
+1. ViewBag其內部是使用ViewData儲存資料的
+
+2. ViewBag 和 ViewData 的Key是共用的，所以若使用 ViewData["Name"] = "Dora" 而後面又寫 ViewBag.Name= "Andy" ，則最後key值為Name的資料就會變成Andy。
+
+3. key 值是唯一的不能重複，如果重複使用就會被覆蓋掉。
+
+4. Key值不區分大小寫(例如: Name會等同於 name)
+
+5. ViewBag和ViewData儲存的值只有在從Controller到View中，而TempData中的資料不僅可以從Controller到View中，在不同的Action之間或者從一個頁面跳轉到另一頁面(Controller to Controller)後也有效。TempData會過期。
+
+6. Session也是ASP.NET MVC程式傳遞值的一種方式，但與TempData不同，Session不會過期。Session在同一使用者的請求中，即使重新整理頁面，依然有效。
+
+7. Session的生命週期是最長的，須注意的是，它預設使用Cookies來儲存資料，所以必須注意資料保密的問題。
